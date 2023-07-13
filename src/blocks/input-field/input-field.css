@@ -1,0 +1,10 @@
+.input-field {
+  position: relative;
+  padding: 0 0 9px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  font-size: 14px;
+  line-height: 1.21;
+  background-color: transparent;
+}
