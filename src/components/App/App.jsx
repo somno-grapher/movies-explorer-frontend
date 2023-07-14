@@ -179,7 +179,6 @@ function App() {
       auth.checkToken(jwt)
         .then((jsonResponse) => {
           const email = jsonResponse.email;
-          // const email = jsonResponse.data.email;
           setEmail(email);
           api.setToken(jwt);
           setIsLoggedIn(true);
@@ -259,6 +258,25 @@ function App() {
               />
             }
           />
+
+          {/* TODO: update (route from mesto) */}
+          {/* <Route
+            path="/"
+            element={
+              <ProtectedRouteElement
+                element={Main}
+                isLoggedIn={isLoggedIn}
+                cards={cards}
+                handleAddPlaceClick={handleAddPlaceClick}
+                handleEditAvatarClick={handleEditAvatarClick}
+                handleEditProfileClick={handleEditProfileClick}
+                onCardClick={handleCardClick}
+                onCardDelete={handleCardDelete}
+                onCardLike={handleCardLike}
+              />
+            }
+          /> */}
+
           <Route
             path="/signin"
             element={
