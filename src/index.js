@@ -5,15 +5,15 @@ import { HashRouter } from 'react-router-dom';
 // import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';
-import App from './components/App';
+import App from './components/App/App';
 
 const root = ReactDOM.createRoot(document.querySelector('.root'));
 root.render(
   <React.StrictMode>
     <HashRouter>
-    {/* <BrowserRouter> */}
+      {/* <BrowserRouter> */}
       <App />
-    {/* </BrowserRouter> */}
+      {/* </BrowserRouter> */}
     </HashRouter>
   </React.StrictMode>
 );

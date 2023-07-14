@@ -3,24 +3,24 @@ import React, { useEffect, useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
 // project import
-import AddPlacePopup from './AddPlacePopup';
-import api from '../utils/api';
-import CurrentUserContext from '../contexts/CurrentUserContext';
-import EditProfilePopup from './EditProfilePopup';
-import EditAvatarPopup from './EditAvatarPopup';
-import Footer from './Footer.js';
-import Header from './Header.js';
-import ImagePopup from './ImagePopup.js';
-import InfoTooltip from './InfoTooltip';
-import Login from './Login';
-import Main from './Main.js';
-import PopupWithForm from './PopupWithForm.js';
-import ProtectedRouteElement from './ProtectedRoute';
-import Register from './Register';
-import * as auth from '../utils/auth';
+import AddPlacePopup from '../AddPlacePopup';
+import api from '../../utils/api';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+import EditProfilePopup from '../EditProfilePopup';
+import EditAvatarPopup from '../EditAvatarPopup';
+import Footer from '../Footer.js';
+import Header from '../Header.js';
+import ImagePopup from '../ImagePopup.js';
+import InfoTooltip from '../InfoTooltip';
+import Login from '../Login';
+import Main from '../Main.js';
+import PopupWithForm from '../PopupWithForm.js';
+import ProtectedRouteElement from '../ProtectedRoute';
+import Register from '../Register';
+import * as auth from '../../utils/auth';
 
-import okIconPath from '../images/icons/ok.svg';
-import errorIconPath from '../images/icons/error.svg';
+import okIconPath from '../../images/icons/ok.svg';
+import errorIconPath from '../../images/icons/error.svg';
 
 
 function App() {
