@@ -1,26 +1,32 @@
-// react import
+// react vendor import
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
-// project import
+// react project import
 import AddPlacePopup from '../AddPlacePopup';
-import api from '../../utils/api';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import EditProfilePopup from '../EditProfilePopup';
 import EditAvatarPopup from '../EditAvatarPopup';
-import Footer from '../Footer.js';
-import Header from '../Header.js';
+import Footer from '../Footer';
+import Header from '../Header';
 import ImagePopup from '../ImagePopup.js';
 import InfoTooltip from '../InfoTooltip';
 import Login from '../Login';
-import Main from '../Main.js';
-import PopupWithForm from '../PopupWithForm.js';
+import Main from '../Main';
+import PopupWithForm from '../PopupWithForm';
 import ProtectedRouteElement from '../ProtectedRoute';
 import Register from '../Register';
+
+// js import
+import api from '../../utils/api';
 import * as auth from '../../utils/auth';
 
+// img import
 import okIconPath from '../../images/icons/ok.svg';
 import errorIconPath from '../../images/icons/error.svg';
+
+// CSS import
+import './App.css';
 
 
 function App() {

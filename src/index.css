@@ -1,8 +1,15 @@
-/* * vendor: ascending order */
+@import url('./vendor/normalize.css');
+@import url('./vendor/fonts/fonts.css');
 
-@import url(./vendor/normalize.css);
-@import url(./vendor/fonts/fonts.css);
-
+.body {
+  background-color: #202020;
+  font-family: 'Inter', Arial, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+}
 
 /* * BEM: pseudo-ascending order */
 
@@ -15,8 +22,6 @@
 /* other */
 
 @import url(./blocks/avatar/avatar.css);
-
-@import url(./blocks/body/body.css);
 
 @import url(./blocks/card/card.css);
 @import url(./blocks/card/__counter-likes/card__counter-likes.css);
@@ -65,7 +70,6 @@
 
 @import url(./blocks/logo/logo.css);
 
-@import url(./blocks/page/page.css);
 @import url(./blocks/page/__content/page__content.css);
 @import url(./blocks/page/__header/page__header.css);
 

@@ -4,7 +4,7 @@ import { useContext } from 'react';
 
 // project import
 import Card from './Card.js';
-import CurrentUserContext from '../contexts/CurrentUserContext';
+import CurrentUserContext from '../contexts/CurrentUserContext.js';
 
 function Main({
   cards,
