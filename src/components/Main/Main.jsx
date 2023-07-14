@@ -3,8 +3,12 @@ import React from 'react';
 import { useContext } from 'react';
 
 // react project import
-import Card from './Card';
-import CurrentUserContext from '../contexts/CurrentUserContext';
+import Card from '../Card';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+import Promo from '../Promo/Promo';
+
+// CSS import
+import './Main.css';
 
 function Main({
   cards,
@@ -18,7 +22,8 @@ function Main({
   const currentUser = useContext(CurrentUserContext);
 
   return (
-    <main className="content page__content">
+    <main /* className="content page__content" */>
+      <Promo />
       <section className="profile content__profile">
         <button className="profile__avatar-container"
           onClick={handleEditAvatarClick}>
@@ -42,7 +47,7 @@ function Main({
       <section className="photo-grid">
         <ul className="photo-grid__list">
           {cards.slice(0).reverse().map((card) => {
-          // {cards.map((card) => {
+            // {cards.map((card) => {
             return (
               <Card
                 key={card._id}

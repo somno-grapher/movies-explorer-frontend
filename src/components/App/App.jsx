@@ -12,7 +12,7 @@ import Header from '../Header';
 import ImagePopup from '../ImagePopup.js';
 import InfoTooltip from '../InfoTooltip';
 import Login from '../Login';
-import Main from '../Main';
+import Main from '../Main/Main';
 import PopupWithForm from '../PopupWithForm';
 import ProtectedRouteElement from '../ProtectedRoute';
 import Register from '../Register';
@@ -236,11 +236,11 @@ function App() {
 
       {/* regular page */}
 
-      <div className="page">
-        <Header
+      <div className="app">
+        {/* <Header
           email={email}
           onSignOut={handleSignOut}
-        />
+        /> */}
         <Routes>
           <Route
             path="/"
