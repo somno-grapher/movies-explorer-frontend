@@ -1,0 +1,44 @@
+/* .about */
+
+.about {
+  display: flex;
+  flex-direction: column;
+  padding: 110px 70px;
+}
+
+@media screen and (max-width: 917px) {
+  .about {
+    padding: 90px 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .about {
+    padding: 70px 18px;
+  }
+}
+
+
+/* .about__description */
+
+.about__description {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/* .about__article */
+
+.about__article {
+  flex: 0 0 550px;
+}
+
+
+/* .about__article-header */
+
+.about__article-header {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  line-height: 1.2;
+}

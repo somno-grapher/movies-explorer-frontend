@@ -1,0 +1,23 @@
+.main-subtitle {
+  margin: 0;
+  padding: 0 0 94px;
+  position: relative;
+  font-size: 22px;
+  line-height: 1.23;
+  font-weight: 400;
+}
+
+.main-subtitle::after {
+  position: absolute;
+  left: 0;
+  bottom: 70px;
+  width: 100%;
+  border-bottom: 1px solid #dadada;
+  content: '';
+}
+
+@media screen and (max-width: 767px) {
+  .main-subtitle {
+    font-size: 18px;
+  }
+}

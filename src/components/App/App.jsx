@@ -237,10 +237,10 @@ function App() {
       {/* regular page */}
 
       <div className="app">
-        {/* <Header
+        <Header
           email={email}
           onSignOut={handleSignOut}
-        /> */}
+        />
         <Routes>
           <Route
             path="/"

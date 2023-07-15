@@ -6,6 +6,7 @@ import { useContext } from 'react';
 import Card from '../Card';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import Promo from '../Promo/Promo';
+import AboutProject from '../AboutProject/AboutProject';
 
 // CSS import
 import './Main.css';
@@ -22,8 +23,9 @@ function Main({
   const currentUser = useContext(CurrentUserContext);
 
   return (
-    <main /* className="content page__content" */>
+    <main className="main">
       <Promo />
+      <AboutProject />
       <section className="profile content__profile">
         <button className="profile__avatar-container"
           onClick={handleEditAvatarClick}>
