@@ -19,5 +19,12 @@
 @media screen and (max-width: 767px) {
   .main-subtitle {
     font-size: 18px;
+    padding-bottom: 89px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main-subtitle::after {
+    bottom: 60px;
   }
 }
