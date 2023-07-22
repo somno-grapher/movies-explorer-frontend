@@ -1,0 +1,23 @@
+.about__timeline-duration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 9px 0;
+  list-style-type: none;
+  text-align: center;
+  background-color: #3ddc84;
+  color: #000;
+}
+
+.about__timeline-duration:nth-of-type(2) {
+  background-color: #303030;
+  color: #fff;
+}
+
+@media screen and (max-width: 767px) {
+  .about__timeline {
+    padding-top: 11px;
+    padding-bottom: 11px;
+  }
+}

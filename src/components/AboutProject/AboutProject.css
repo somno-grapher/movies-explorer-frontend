@@ -1,3 +1,9 @@
+/* TODO: split into files */
+@import url(./blocks/about__timeline.css);
+@import url(./blocks/about__timeline-task.css);
+@import url(./blocks/about__timeline-duration.css);
+
+
 /* .about */
 
 .about {

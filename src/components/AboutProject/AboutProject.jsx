@@ -33,6 +33,25 @@ function AboutProject() {
         </article>
       </div>
 
+      <ul className="about__timeline">
+        {/* <li className="about__timeline-item"> */}
+        <li className="about__timeline-duration">
+          1 неделя
+        </li>
+        <li className="about__timeline-duration">
+          4 недели
+        </li>
+        <li className="about__timeline-task">
+          Back-end
+        </li>
+        {/* </li> */}
+        {/* <li className="about__timeline-item"> */}
+        <li className="about__timeline-task">
+          Front-end
+        </li>
+        {/* </li> */}
+      </ul>
+
     </section >
   );
 
