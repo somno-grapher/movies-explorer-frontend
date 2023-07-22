@@ -34,7 +34,6 @@ function AboutProject() {
       </div>
 
       <ul className="about__timeline">
-        {/* <li className="about__timeline-item"> */}
         <li className="about__timeline-duration">
           1 неделя
         </li>
@@ -44,12 +43,9 @@ function AboutProject() {
         <li className="about__timeline-task">
           Back-end
         </li>
-        {/* </li> */}
-        {/* <li className="about__timeline-item"> */}
         <li className="about__timeline-task">
           Front-end
         </li>
-        {/* </li> */}
       </ul>
 
     </section >

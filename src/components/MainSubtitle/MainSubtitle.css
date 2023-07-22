@@ -1,6 +1,6 @@
 .main-subtitle {
   margin: 0;
-  padding: 0 0 94px;
+  padding: 0 0 24px;
   position: relative;
   font-size: 22px;
   line-height: 1.23;
@@ -10,7 +10,7 @@
 .main-subtitle::after {
   position: absolute;
   left: 0;
-  bottom: 70px;
+  bottom: 0;
   width: 100%;
   border-bottom: 1px solid #dadada;
   content: '';

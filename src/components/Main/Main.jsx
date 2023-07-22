@@ -7,6 +7,7 @@ import Card from '../Card';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import Promo from '../Promo/Promo';
 import AboutProject from '../AboutProject/AboutProject';
+import Techs from '../Techs/Techs.jsx';
 
 // CSS import
 import './Main.css';
@@ -26,6 +27,7 @@ function Main({
     <main className="main">
       <Promo />
       <AboutProject />
+      <Techs />
       <section className="profile content__profile">
         <button className="profile__avatar-container"
           onClick={handleEditAvatarClick}>
