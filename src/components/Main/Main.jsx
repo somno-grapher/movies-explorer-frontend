@@ -8,9 +8,12 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 import Promo from '../Promo/Promo';
 import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs.jsx';
+import AboutMe from '../AboutMe/AboutMe.jsx';
+
 
 // CSS import
 import './Main.css';
+// import AboutMe from '../AboutMe/AboutMe';
 
 function Main({
   cards,
@@ -28,6 +31,7 @@ function Main({
       <Promo />
       <AboutProject />
       <Techs />
+      <AboutMe/>
       <section className="profile content__profile">
         <button className="profile__avatar-container"
           onClick={handleEditAvatarClick}>
