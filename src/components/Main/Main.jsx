@@ -9,6 +9,7 @@ import Promo from '../Promo/Promo';
 import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs.jsx';
 import AboutMe from '../AboutMe/AboutMe.jsx';
+import Portfolio from '../Portfolio/Portfolio.jsx';
 
 
 // CSS import
@@ -31,7 +32,8 @@ function Main({
       <Promo />
       <AboutProject />
       <Techs />
-      <AboutMe/>
+      <AboutMe />
+      <Portfolio />
       <section className="profile content__profile">
         <button className="profile__avatar-container"
           onClick={handleEditAvatarClick}>

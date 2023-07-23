@@ -16,7 +16,7 @@
 }
 
 @media screen and (max-width: 767px) {
-  .about__timeline {
+  .about__timeline-duration {
     padding-top: 11px;
     padding-bottom: 11px;
   }

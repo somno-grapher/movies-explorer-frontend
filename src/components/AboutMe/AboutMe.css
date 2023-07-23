@@ -136,6 +136,11 @@
   font-weight: 500;
   text-decoration: none;
   color: #fff;
+  transition: .3s;
+}
+
+.about-me__github:hover {
+  opacity: .7;
 }
 
 
@@ -159,7 +164,7 @@
 
 @media screen and (max-width: 767px) {
   .about-me__photo {
-    order:-1;
+    order: -1;
     width: 292px;
     height: 352px;
     margin-left: 0;
