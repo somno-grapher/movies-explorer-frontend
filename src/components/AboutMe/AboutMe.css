@@ -46,6 +46,12 @@
   }
 }
 
+@media screen and (max-width: 767px) {
+  .about-me__description {
+    max-width: 100%;
+  }
+}
+
 
 /* .about-me__article-header */
 
