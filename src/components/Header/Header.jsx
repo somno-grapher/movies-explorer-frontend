@@ -12,9 +12,9 @@ function Header({
 }) {
 
   return (
-    <header className="header page__header">
+    <header className="header">
       <img
-        className="logo header__logo"
+        className="header__logo"
         src={logoPath}
         alt="Логотип"
       />
