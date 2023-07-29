@@ -8,7 +8,7 @@ import MainSubtitle from '../MainSubtitle/MainSubtitle';
 import './AboutMe.css';
 
 // img import
-import myPhotoPath from '../../images/my-photo.jpg';
+import myPhotoPath from '../../images/avatar.jpg';
 
 function AboutMe() {
 
@@ -20,13 +20,14 @@ function AboutMe() {
       <article className="about-me__article">
         <div className="about-me__description">
           <h3 className="about-me__article-header">
-            Николай
+            Виталий
           </h3>
           <h4 className="about-me__article-subheader">
-            Веб-разработчик, 42 года
+            Фронтенд-разработчик, 30 лет
           </h4>
           <p className="about-me__article-text">
-            Я родился и живу в Московской области, в настоящее время работаю инженером-проектировщиком/конструктором автоматизированных систем управления. Год назад начал целенаправленно обучаться веб-разработке.
+            Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена
+            и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.
           </p>
           <a href="https://github.com/somno-grapher" className="about-me__github">Github</a>
         </div>
