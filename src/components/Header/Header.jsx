@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
 
-import logoPath from '../images/logo/mesto-russia-logo.svg';
+import logoPath from '../../images/logo/logo.svg';
 
 function Header({
   email,
