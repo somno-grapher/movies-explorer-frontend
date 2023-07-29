@@ -21,16 +21,25 @@ function Header({
       <div className="header__pivot">
         <Routes>
           <Route
-            path="/signin"
+            path="/"
+            // path="/signin"
             element={
-              <Link
-                className="header__entry-link"
-                to="/signup"
-              >
-                Регистрация
-              </Link>}
+              <>
+                <Link
+                  className="header__regular-item"
+                  to="/signup"
+                >
+                  Регистрация
+                </Link>
+                <Link
+                  className="header__signin-item"
+                  to="/signin"
+                >
+                  Войти
+                </Link>
+              </>}
           />
-          <Route
+          {/* <Route
             path="/signup"
             element={
               <Link
@@ -39,10 +48,10 @@ function Header({
               >
                 Войти
               </Link>}
-          />
+          /> */}
         </Routes>
       </div>
-      <div className="header__details">
+      {/* <div className="header__details">
         <Routes>
           <Route
             path="/"
@@ -64,7 +73,7 @@ function Header({
             }
           />
         </Routes>
-      </div>
+      </div> */}
     </header>
   );
 }
