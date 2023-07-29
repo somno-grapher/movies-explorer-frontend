@@ -21,7 +21,7 @@
 
 /* other */
 
-@import url(./blocks/avatar/avatar.css);
+/* @import url(./blocks/avatar/avatar.css); */
 
 @import url(./blocks/card/card.css);
 @import url(./blocks/card/__counter-likes/card__counter-likes.css);
@@ -48,12 +48,12 @@
 @import url(./blocks/entry/__submit-button/entry__submit-button.css);
 @import url(./blocks/entry/__title/entry__title.css);
 
-@import url(./blocks/header/header.css);
+/* @import url(./blocks/header/header.css);
 @import url(./blocks/header/__datails/header__datails.css);
 @import url(./blocks/header/__email/header__email.css);
 @import url(./blocks/header/__entry-link/header__entry-link.css);
 @import url(./blocks/header/__pivot/header__pivot.css);
-@import url(./blocks/header/__sign-out-link/header__sign-out-link.css);
+@import url(./blocks/header/__sign-out-link/header__sign-out-link.css); */
 
 @import url(./blocks/input-field/input-field.css);
 
@@ -69,7 +69,7 @@
 @import url(./blocks/logo/logo.css);
 
 @import url(./blocks/page/__content/page__content.css);
-@import url(./blocks/page/__header/page__header.css);
+/* @import url(./blocks/page/__header/page__header.css); */
 
 @import url(./blocks/photo-grid/__list/photo-grid__list.css);
 

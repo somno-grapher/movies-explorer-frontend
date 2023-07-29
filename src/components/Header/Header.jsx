@@ -3,6 +3,9 @@ import { Link, Routes, Route } from 'react-router-dom';
 
 import logoPath from '../../images/logo/logo.svg';
 
+// CSS import
+import './Header.css';
+
 function Header({
   email,
   onSignOut
