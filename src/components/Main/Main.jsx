@@ -34,7 +34,7 @@ function Main({
       <Techs />
       <AboutMe />
       <Portfolio />
-      <section className="profile content__profile">
+      {/* <section className="profile content__profile">
         <button className="profile__avatar-container"
           onClick={handleEditAvatarClick}>
           <img src={currentUser.avatar}
@@ -69,7 +69,7 @@ function Main({
             )
           })}
         </ul>
-      </section>
+      </section> */}
     </main>
   );
 

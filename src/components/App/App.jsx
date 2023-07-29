@@ -7,7 +7,7 @@ import AddPlacePopup from '../AddPlacePopup';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import EditProfilePopup from '../EditProfilePopup';
 import EditAvatarPopup from '../EditAvatarPopup';
-import Footer from '../Footer';
+import Footer from '../Footer/Footer.jsx';
 import Header from '../Header';
 import ImagePopup from '../ImagePopup.js';
 import InfoTooltip from '../InfoTooltip';
