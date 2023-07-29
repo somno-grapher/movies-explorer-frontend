@@ -1,9 +1,3 @@
-/* TODO: split into files */
-@import url(./blocks/about__timeline.css);
-@import url(./blocks/about__timeline-task.css);
-@import url(./blocks/about__timeline-duration.css);
-
-
 /* .about */
 
 .about {
@@ -28,6 +22,8 @@
 /* .about__description */
 
 .about__description {
+  padding-top: 70px;
+  padding-bottom: 110px;
   display: flex;
   column-gap: 40px;
 }
@@ -35,12 +31,16 @@
 @media screen and (max-width: 917px) {
   .about__description {
     column-gap: 30px;
+    padding-bottom: 93px;
   }
 }
 
 @media screen and (max-width: 767px) {
   .about__description {
+    padding-top: 60px;
+    padding-bottom: 56px;
     flex-direction: column;
+    row-gap: 56px;
   }
 }
 
@@ -56,7 +56,7 @@
 
 .about__article-header {
   margin: 0;
-  padding: 70px 0 26px;
+  padding: 0 0 26px;
   font-size: 20px;
   line-height: 1.2;
   font-weight: 400;
@@ -79,14 +79,13 @@
 
 .about__article-text {
   margin: 0;
-  padding: 0 0 110px;
+  padding: 0;
   font-size: 14px;
   line-height: 1.43;
 }
 
 @media screen and (max-width: 917px) {
   .about__article-text {
-    padding-bottom: 93px;
     font-size: 12px;
     line-height: 1.5;
   }
@@ -94,8 +93,77 @@
 
 @media screen and (max-width: 767px) {
   .about__article-text {
-    padding-bottom: 56px;
     font-size: 11px;
     line-height: 1.45;
+  }
+}
+
+
+/* .about__timeline */
+
+.about__timeline {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.21;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 767px) {
+  .about__timeline {
+    grid-template-columns: 100fr 184fr;
+    font-size: 11px;
+    line-height: 1.18;
+  }
+}
+
+
+/* .about__timeline-task */
+
+.about__timeline-task {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 14px 0 0;
+  background-color: #202020;
+  color: #8b8b8b;
+}
+
+@media screen and (max-width: 767px) {
+  .about__timeline {
+    padding-top: 10px;
+    padding-bottom: 11px;
+  }
+}
+
+
+/* .about__timeline-duration */
+
+.about__timeline-duration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 9px 0;
+  list-style-type: none;
+  text-align: center;
+  background-color: #3ddc84;
+  color: #000;
+}
+
+.about__timeline-duration:nth-of-type(2) {
+  background-color: #303030;
+  color: #fff;
+}
+
+@media screen and (max-width: 767px) {
+  .about__timeline-duration {
+    padding-top: 11px;
+    padding-bottom: 11px;
   }
 }
