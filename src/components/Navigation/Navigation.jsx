@@ -42,6 +42,13 @@ function Navigation() {
         <div className="navigation__account-icon"></div>
       </Link>
 
+      <button
+        type="button"
+        className="navigation__close-button"
+        // onClick={onClose}
+      >
+      </button>
+
       {/* <Link
         className="navigation__sign-out-link"
         to="/signin"

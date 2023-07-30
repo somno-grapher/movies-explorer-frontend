@@ -164,3 +164,39 @@
   background-position: center;
   background-size: 11px;
 }
+
+
+.navigation__close-button {
+  display: none;
+}
+
+.navigation__close-button:hover {
+  opacity: .8;
+}
+
+@media screen and (max-width: 917px) {
+  .navigation__close-button {
+    display: block;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    width: 32px;
+    height: 32px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("../../images/icons/diagonal-cross.svg");
+    cursor: pointer;
+    position: absolute;
+    right: 22.44px;
+    top: 22.44px;
+    transition: .3s;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .navigation__close-button {
+    right: 13.44px;
+    top: 13.44px;
+  }
+}
