@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import logoPath from '../../images/logo/logo.svg';
+import hamburgerPath from '../../images/icons/hamburger.svg';
 
 // CSS import
 import './Header.css';
@@ -66,8 +67,9 @@ function Header({
               Аккаунт
             </p>
             <div className="header__account-icon"></div>
-
           </Link>
+
+          <img src={hamburgerPath} alt="Бургер" className="header__hamburger" />
 
           {/* <Link
                   className="header__sign-out-link"
@@ -76,7 +78,11 @@ function Header({
                 >
                   Выйти
                 </Link> */}
-        </div>)}
+        </div>
+
+
+
+      )}
 
     </header >
   );
