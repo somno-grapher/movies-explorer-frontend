@@ -12,6 +12,12 @@ function Navigation() {
 
       <nav className="navigation__navbar">
         <Link
+          className="navigation__item navigation__item_type_main"
+          to="/"
+        >
+          Главная
+        </Link>
+        <Link
           className="navigation__item navigation__item_type_movies"
           to="/movies"
         >
@@ -37,12 +43,13 @@ function Navigation() {
       </Link>
 
       {/* <Link
-                  className="navigation__sign-out-link"
-                  to="/signin"
-                  onClick={onSignOut}
-                >
-                  Выйти
-                </Link> */}
+        className="navigation__sign-out-link"
+        to="/signin"
+        onClick={onSignOut}
+      >
+        Выйти
+      </Link> */}
+
     </div>
 
   );
