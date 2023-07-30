@@ -241,6 +241,7 @@ function App() {
           email={email}
           onSignOut={handleSignOut}
           isLoggedIn={true}
+          // isLoggedIn={false}
           // isLoggedIn={isLoggedIn}
         />
         <Routes>

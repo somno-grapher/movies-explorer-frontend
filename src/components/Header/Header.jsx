@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
+import Navigation from '../Navigation/Navigation.jsx';
+
 import logoPath from '../../images/logo/logo.svg';
 import hamburgerPath from '../../images/icons/hamburger.svg';
 
@@ -41,49 +43,12 @@ function Header({
           </Link>
         </div>)}
 
-      {isLoggedIn && (
-        <div className="header__authorized">
-
-          <nav className="header__navbar">
-            <Link
-              className="header__item header__item_type_movies"
-              to="/movies"
-            >
-              Фильмы
-            </Link>
-            <Link
-              className="header__item header__item_type_regular"
-              to="/saved-movies"
-            >
-              Сохраненные фильмы
-            </Link>
-          </nav>
-
-          <Link
-            className="header__account"
-            to="/profile"
-          // onClick={onSignOut}
-          >
-            <p className="header__account-title">
-              Аккаунт
-            </p>
-            <div className="header__account-icon"></div>
-          </Link>
-
+      {isLoggedIn &&
+        <>
+          <Navigation />
           <img src={hamburgerPath} alt="Бургер" className="header__hamburger" />
-
-          {/* <Link
-                  className="header__sign-out-link"
-                  to="/signin"
-                  onClick={onSignOut}
-                >
-                  Выйти
-                </Link> */}
-        </div>
-
-
-
-      )}
+        </>
+      }
 
     </header >
   );
