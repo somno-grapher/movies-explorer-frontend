@@ -240,6 +240,8 @@ function App() {
         <Header
           email={email}
           onSignOut={handleSignOut}
+          isLoggedIn={true}
+          // isLoggedIn={isLoggedIn}
         />
         <Routes>
           <Route

@@ -9,7 +9,8 @@ import './Header.css';
 
 function Header({
   email,
-  onSignOut
+  onSignOut,
+  isLoggedIn
 }) {
 
   const location = useLocation();
@@ -24,7 +25,7 @@ function Header({
         alt="Логотип"
       />
 
-      {location.pathname === "/" && (
+      {!isLoggedIn && (
         <div className="header__unauthorized">
           <Link
             className="header__item header__item_type_regular"
@@ -40,7 +41,7 @@ function Header({
           </Link>
         </div>)}
 
-      {location.pathname === "/movies" && (
+      {isLoggedIn && (
         <div className="header__authorized">
 
           <nav className="header__navbar">
