@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Routes, Route } from 'react-router-dom';
+import { Link, Routes, Route, useLocation } from 'react-router-dom';
 
 import logoPath from '../../images/logo/logo.svg';
 
@@ -11,70 +11,81 @@ function Header({
   onSignOut
 }) {
 
+  const location = useLocation();
+
   return (
-    <header className="header">
+
+    <header
+      className={location.pathname === '/' ? "header header_main" : "header"}>
       <img
         className="header__logo"
         src={logoPath}
         alt="Логотип"
       />
-      <div className="header__pivot">
-        <Routes>
-          <Route
-            path="/"
-            // path="/signin"
-            element={
-              <>
-                <Link
-                  className="header__regular-item"
-                  to="/signup"
-                >
-                  Регистрация
-                </Link>
-                <Link
-                  className="header__signin-item"
-                  to="/signin"
-                >
-                  Войти
-                </Link>
-              </>}
-          />
-          {/* <Route
-            path="/signup"
-            element={
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className="header__unauthorized">
               <Link
-                className="header__entry-link"
+                className="header__item header__item_type_regular"
+                to="/signup"
+              >
+                Регистрация
+              </Link>
+              <Link
+                className="header__item header__item_type_signin"
                 to="/signin"
               >
                 Войти
-              </Link>}
-          /> */}
-        </Routes>
-      </div>
-      {/* <div className="header__details">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <p
-                  className="header__email"
-                >
-                  {`${email}`}
-                </p>
+              </Link>
+            </div>}
+        />
+      </Routes>
+
+      <Routes>
+        <Route
+          path="/movies"
+          element={
+            <div className="header__authorized">
+              <nav className="header__navbar">
                 <Link
+                  className="header__item header__item_type_movies"
+                  to="/movies"
+                >
+                  Фильмы
+                </Link>
+                <Link
+                  className="header__item header__item_type_regular"
+                  to="/saved-movies"
+                >
+                  Сохраненные фильмы
+                </Link>
+              </nav>
+              <Link
+                className="header__account"
+                to="/profile"
+              // onClick={onSignOut}
+              >
+                <p className="header__account-title">
+                  Аккаунт
+                </p>
+                <img className="header__account-icon" src="" alt="Иконка аккаунта" />
+              </Link>
+              {/* <Link
                   className="header__sign-out-link"
                   to="/signin"
                   onClick={onSignOut}
                 >
                   Выйти
-                </Link>
-              </>
-            }
-          />
-        </Routes>
-      </div> */}
-    </header>
+                </Link> */}
+            </div>
+          }
+        />
+      </Routes>
+
+    </header >
   );
 }
 
