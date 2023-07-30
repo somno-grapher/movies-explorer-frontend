@@ -41,6 +41,7 @@ function Header({
 
       {location.pathname === "/movies" && (
         <div className="header__authorized">
+
           <nav className="header__navbar">
             <Link
               className="header__item header__item_type_movies"
@@ -55,6 +56,7 @@ function Header({
               Сохраненные фильмы
             </Link>
           </nav>
+
           <Link
             className="header__account"
             to="/profile"
@@ -63,8 +65,10 @@ function Header({
             <p className="header__account-title">
               Аккаунт
             </p>
-            <img className="header__account-icon" src="" alt="Иконка аккаунта" />
+            <div className="header__account-icon"></div>
+
           </Link>
+
           {/* <Link
                   className="header__sign-out-link"
                   to="/signin"

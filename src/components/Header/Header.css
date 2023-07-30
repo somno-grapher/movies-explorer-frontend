@@ -21,9 +21,11 @@
     padding-right: 14px;
   }
 }
-.header_main{
+
+.header_main {
   background-color: #073042;
 }
+
 .header__logo {
   width: 38px;
   height: 38px;
@@ -94,6 +96,12 @@
   font-weight: 400;
 }
 
+@media screen and (max-width: 917px) {
+  .header__authorized {
+    display: none;
+  }
+}
+
 .header__navbar {
   display: flex;
   column-gap: 16px;
@@ -105,23 +113,25 @@
   }
 }
 
-.header__email {
-  margin: 0;
-  padding: 0 24px 0 0;
-  color: #fff;
-  font-size: 18px;
-  line-height: 1.22;
+.header__account {
+  display: flex;
+  column-gap: 7px;
+  align-items: center;
   font-weight: 500;
+  text-decoration: none;
 }
 
+.header__account-title {
+  color: #fff;
+}
 
-
-.header__sign-out-link {
-  margin: 0;
-  padding: 0;
-  color: #a9a9a9;
-  font-size: 18px;
-  line-height: 1.22;
-  text-decoration: none;
-  font-weight: 400;
+.header__account-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 13px;
+  background-color: #313131;
+  background-image: url('../../images/icons/user.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 11px;
 }
