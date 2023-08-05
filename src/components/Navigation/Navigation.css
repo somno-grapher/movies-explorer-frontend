@@ -9,6 +9,7 @@
   font-weight: 400;
 }
 
+/* TODO: fix poping up when changing resolution */
 @media screen and (max-width: 917px) {
   .navigation {
     position: fixed;
@@ -23,9 +24,10 @@
     padding-top: 159px;
     padding-bottom: 90px;
     background-color: #202020;
-    /* visibility: hidden; */
-    /* opacity: 0; */
+    visibility: hidden;
+    opacity: 0;
     transition: .3s;
+    z-index: 1;
   }
 }
 
@@ -35,6 +37,13 @@
     height: 100%;
     padding-top: 144px;
     padding-bottom: 46px;
+  }
+}
+
+@media screen and (max-width: 917px) {
+  .navigation_opened {
+    visibility: visible;
+    opacity: 1;
   }
 }
 

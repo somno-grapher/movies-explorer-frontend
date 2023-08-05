@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import Navigation from '../Navigation/Navigation.jsx';
 
 import logoPath from '../../images/logo/logo.svg';
-import hamburgerPath from '../../images/icons/hamburger.svg';
 
 // CSS import
 import './Header.css';
@@ -16,6 +15,16 @@ function Header({
 }) {
 
   const location = useLocation();
+
+  const [isNavigationOpen, setNavigationState] = useState(false);
+
+  function openNavigation() {
+    setNavigationState(true);
+  }
+
+  function closeNavigation() {
+    setNavigationState(false);
+  }
 
   return (
 
@@ -45,8 +54,15 @@ function Header({
 
       {isLoggedIn &&
         <>
-          <Navigation />
-          <img src={hamburgerPath} alt="Бургер" className="header__hamburger" />
+          <Navigation
+            isOpen={isNavigationOpen}
+            onClose={closeNavigation}
+          />
+          <button
+            type="button"
+            className="header__hamburger"
+            onClick={openNavigation}
+          />
         </>
       }
 

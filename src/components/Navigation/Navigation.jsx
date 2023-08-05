@@ -1,31 +1,39 @@
-import React from 'react';
+// react vendor import
 import { Link } from 'react-router-dom';
 
 // CSS import
 import './Navigation.css';
 
-function Navigation() {
+function Navigation({
+  isOpen,
+  onClose
+}) {
+
+  const stateClass = isOpen ? 'navigation_opened' : '';
 
   return (
 
-    <div className="navigation">
+    <div className={`navigation ${stateClass}`}>
 
       <nav className="navigation__navbar">
         <Link
           className="navigation__item navigation__item_type_main"
           to="/"
+          onClick={onClose}
         >
           Главная
         </Link>
         <Link
           className="navigation__item navigation__item_type_movies"
           to="/movies"
+          onClick={onClose}
         >
           Фильмы
         </Link>
         <Link
           className="navigation__item navigation__item_type_regular"
           to="/saved-movies"
+          onClick={onClose}
         >
           Сохраненные фильмы
         </Link>
@@ -34,7 +42,7 @@ function Navigation() {
       <Link
         className="navigation__account"
         to="/profile"
-      // onClick={onSignOut}
+        onClick={onClose}
       >
         <p className="navigation__account-title">
           Аккаунт
@@ -45,7 +53,7 @@ function Navigation() {
       <button
         type="button"
         className="navigation__close-button"
-        // onClick={onClose}
+        onClick={onClose}
       >
       </button>
 

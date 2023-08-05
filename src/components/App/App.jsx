@@ -38,6 +38,8 @@ function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupState] = useState(false);
   const [isEditProfilePopupOpen, setEditProfilePopupState] = useState(false);
   const [isInfoTooltipOpen, setInfoTooltipState] = useState(false);
+  // new
+  // const [isNavigationOpen, setNavigationState] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
   const [email, setEmail] = useState('');
@@ -56,6 +58,11 @@ function App() {
 
   const navigate = useNavigate();
 
+  // new
+  // function handleOpenNavigationClick() {
+  //   setNavigationState(true);
+  // }
+
   function closeAllPopups() {
     setAddPlacePopupState(false);
     setConfirmPopupState(false);
@@ -63,6 +70,8 @@ function App() {
     setEditProfilePopupState(false);
     setInfoTooltipState(false);
     setSelectedCard({});
+    // new
+    // setNavigationState(false);
   }
 
   function handleAddPlaceClick() {
@@ -241,8 +250,8 @@ function App() {
           email={email}
           onSignOut={handleSignOut}
           isLoggedIn={true}
-          // isLoggedIn={false}
-          // isLoggedIn={isLoggedIn}
+        // isLoggedIn={false}
+        // isLoggedIn={isLoggedIn}
         />
         <Routes>
           <Route
