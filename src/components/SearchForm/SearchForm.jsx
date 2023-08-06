@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import searchIconPath from '../../images/icons/magnifier.svg';
 
+import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
 // CSS import
 import './SearchForm.css';
@@ -62,9 +63,10 @@ function SearchForm({
 
       </div>
 
-      <input type="checkbox">
-
-      </input>
+      <div className="search-form__checkbox-area">
+        <FilterCheckbox />
+        <span>Короткометражки</span>
+      </div>
 
     </form>
 

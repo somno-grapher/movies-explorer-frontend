@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  align-items: center;
 }
 
 @media screen and (max-width: 917px) {
@@ -21,6 +22,7 @@
 }
 
 .search-form__upper-container {
+  align-self: stretch;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -113,4 +115,21 @@
 
 .search-form__submit-button:hover {
   opacity: .8;
+}
+
+.search-form__checkbox-area {
+  display: flex;
+  column-gap:12px;
+  align-items: center;
+  color:#fff;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.29;
+}
+
+@media screen and (max-width: 767px) {
+  .search-form__checkbox-area {
+  font-size: 11px;
+    line-height: 1.64;
+  }
 }
