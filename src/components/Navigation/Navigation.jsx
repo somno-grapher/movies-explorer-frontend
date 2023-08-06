@@ -1,5 +1,5 @@
 // react vendor import
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 // CSS import
 import './Navigation.css';
@@ -16,27 +16,27 @@ function Navigation({
     <div className={`navigation ${stateClass}`}>
 
       <nav className="navigation__navbar">
-        <Link
-          className="navigation__item navigation__item_type_main"
+        <NavLink
           to="/"
+          className={({ isActive }) => `navigation__item navigation__item_main ${isActive ? "navigation__item_active" : ""}`}
           onClick={onClose}
         >
           Главная
-        </Link>
-        <Link
-          className="navigation__item navigation__item_type_movies"
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => `navigation__item ${isActive ? "navigation__item_active" : ""}`}
           to="/movies"
           onClick={onClose}
         >
           Фильмы
-        </Link>
-        <Link
-          className="navigation__item navigation__item_type_regular"
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => `navigation__item ${isActive ? "navigation__item_active" : ""}`}
           to="/saved-movies"
           onClick={onClose}
         >
           Сохраненные фильмы
-        </Link>
+        </NavLink>
       </nav>
 
       <Link
