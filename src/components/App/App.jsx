@@ -3,16 +3,18 @@ import React, { useEffect, useState } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 
 // react project import
+import Header from '../Header/Header.jsx';
+import Main from '../Main/Main.jsx';
+import Movies from '../Movies/Movies.jsx';
+import Footer from '../Footer/Footer.jsx';
+
 import AddPlacePopup from '../AddPlacePopup';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import EditProfilePopup from '../EditProfilePopup';
 import EditAvatarPopup from '../EditAvatarPopup';
-import Footer from '../Footer/Footer.jsx';
-import Header from '../Header/Header.jsx';
 import ImagePopup from '../ImagePopup.js';
 import InfoTooltip from '../InfoTooltip';
 import Login from '../Login';
-import Main from '../Main/Main';
 import PopupWithForm from '../PopupWithForm';
 import ProtectedRouteElement from '../ProtectedRoute';
 import Register from '../Register';
@@ -254,11 +256,29 @@ function App() {
         // isLoggedIn={isLoggedIn}
         />
         <Routes>
+
           <Route
             path="/"
             element={
               <ProtectedRouteElement
                 element={Main}
+                isLoggedIn={isLoggedIn}
+                cards={cards}
+                handleAddPlaceClick={handleAddPlaceClick}
+                handleEditAvatarClick={handleEditAvatarClick}
+                handleEditProfileClick={handleEditProfileClick}
+                onCardClick={handleCardClick}
+                onCardDelete={handleCardDelete}
+                onCardLike={handleCardLike}
+              />
+            }
+          />
+
+          <Route
+            path="/movies"
+            element={
+              <ProtectedRouteElement
+                element={Movies}
                 isLoggedIn={isLoggedIn}
                 cards={cards}
                 handleAddPlaceClick={handleAddPlaceClick}
