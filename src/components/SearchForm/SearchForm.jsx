@@ -1,13 +1,15 @@
-// react import
+// react vendor import
 import React from 'react';
 import { useState } from "react";
 
-import searchIconPath from '../../images/icons/magnifier.svg';
-
+// react project import
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
 // CSS import
 import './SearchForm.css';
+
+// images import
+import searchIconPath from '../../images/icons/magnifier.svg';
 
 function SearchForm({
   isOpen,

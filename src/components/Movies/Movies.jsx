@@ -1,26 +1,19 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+// react vendor import
+import React from 'react';
 
+// react project import
 import SearchForm from '../SearchForm/SearchForm.jsx';
-
-import logoPath from '../../images/logo/logo.svg';
+import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
 
 // CSS import
 import './Movies.css';
 
-function Movies({
-  email,
-  onSignOut,
-  isLoggedIn
-}) {
-
-
+function Movies() {
   return (
-
     <main className="movies">
-      <SearchForm/>
+      <SearchForm />
+      <MoviesCardList />
     </main>
-
   );
 }
 
