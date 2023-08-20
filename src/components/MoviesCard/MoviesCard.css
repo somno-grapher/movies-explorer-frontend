@@ -1,11 +1,15 @@
+/* .movies-card */
+
 .movies-card {
-  /* TODO: exclude border*/
-  border: 1px solid grey;
   position: relative;
   margin: 0;
   padding: 0;
+  /* TODO: exclude border */
+  /* border: 1px solid grey; */
   list-style-type: none;
 }
+
+/* .movies-card__like-button */
 
 .movies-card__like-button {
   position: absolute;
@@ -22,6 +26,14 @@
   line-height: .91;
   font-weight: 400;
   transition: .3s;
+}
+
+
+@media screen and (max-width: 480px) {
+  .movies-card__image {
+    top: 10px;
+    right: 10px;
+  }
 }
 
 .movies-card__like-button:after {
@@ -49,14 +61,32 @@
   opacity: .8;
 }
 
+/* .movies-card__image-container */
+
+.movies-card__image-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56%;
+}
+
+/* .movies-card__image */
+
 .movies-card__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: fit-content;
   display: block;
   width: 100%;
-  height: 201px;
+  height: 100%;
+  /* TODO: consult the designer which one is better */
+  /* object-fit: contain; */
   object-fit: cover;
   object-position: center;
   border-radius: 6px;
 }
+
+/* .movies-card__info */
 
 .movies-card__info {
   display: flex;
@@ -66,6 +96,22 @@
   padding: 14px 14px 0;
 }
 
+@media screen and (max-width: 917px) {
+  .movies-card__info {
+    padding-top: 25px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .movies-card__info {
+    padding-top: 16px;
+  }
+}
+
+/* .movies-card__title */
+
 .movies-card__title {
   margin: 0;
   padding: 0;
@@ -74,6 +120,15 @@
   line-height: 1.23;
   font-weight: 500;
 }
+
+@media screen and (max-width: 480px) {
+  .movies-card__info {
+    font-size: 12px;
+    line-height: 1.25;
+  }
+}
+
+/* .movies-card__duration */
 
 .movies-card__duration {
   margin: 0;

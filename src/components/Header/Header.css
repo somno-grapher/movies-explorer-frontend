@@ -15,7 +15,7 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .header {
     padding-left: 14px;
     padding-right: 14px;
@@ -40,7 +40,7 @@
   line-height: 1.23;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .header__unauthorized {
     font-size: 10px;
     line-height: 1.6;
@@ -173,7 +173,7 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .header__hamburger {
     width: 40px;
     height: 43px;

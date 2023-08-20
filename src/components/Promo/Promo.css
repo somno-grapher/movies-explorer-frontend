@@ -14,7 +14,7 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .promo {
     padding: 183px 10px 40px;
   }
@@ -23,7 +23,7 @@
 
 /* .promo__title */
 
-  .promo__title {
+.promo__title {
   margin: 0 0 102px;
   padding: 0;
   max-width: 626px;
@@ -40,7 +40,7 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .promo__title {
     margin-bottom: 60px;
     font-size: 31px;
@@ -50,7 +50,7 @@
 
 /* .promo__image */
 
-  .promo__image {
+.promo__image {
   align-self: flex-end;
   height: 224px;
   object-fit: contain;

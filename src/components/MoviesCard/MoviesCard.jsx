@@ -21,12 +21,14 @@ function MoviesCard({ cardData }) {
       //  onClick={handleDeleteClick}
       >
       </button>
-      <img
-        className="movies-card__image"
-        src={`https://api.nomoreparties.co${cardData.image.url}`}
-        alt={cardData.nameRU}
-      //  onClick={handleCardClick}
-      />
+      <div className='movies-card__image-container'>
+        <img
+          className="movies-card__image"
+          src={`https://api.nomoreparties.co${cardData.image.url}`}
+          alt={cardData.nameRU}
+        //  onClick={handleCardClick}
+        />
+      </div>
       <div className="movies-card__info">
         <h2 className="movies-card__title">
           {cardData.nameRU}

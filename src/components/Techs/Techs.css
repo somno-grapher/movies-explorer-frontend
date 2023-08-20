@@ -13,7 +13,7 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .techs {
     padding: 70px 18px;
   }
@@ -40,7 +40,7 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .techs__header {
     max-width: 292px;
     padding-top: 60px;
@@ -72,7 +72,7 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .techs__text {
     max-width: 292px;
     padding-bottom: 50px;

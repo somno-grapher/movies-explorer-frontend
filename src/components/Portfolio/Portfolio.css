@@ -12,7 +12,7 @@
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .portfolio {
     padding: 70px 14px;
   }
@@ -30,7 +30,7 @@
   color: #8b8b8b;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 480px) {
   .portfolio__header {
     padding-bottom: 21px;
     font-size: 14px;
