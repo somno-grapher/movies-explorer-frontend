@@ -6,6 +6,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header.jsx';
 import Main from '../Main/Main.jsx';
 import Movies from '../Movies/Movies.jsx';
+import SavedMovies from '../SavedMovies/SavedMovies.jsx';
 import Footer from '../Footer/Footer.jsx';
 
 import AddPlacePopup from '../AddPlacePopup';
@@ -279,6 +280,23 @@ function App() {
             element={
               <ProtectedRouteElement
                 element={Movies}
+                isLoggedIn={isLoggedIn}
+                cards={cards}
+                handleAddPlaceClick={handleAddPlaceClick}
+                handleEditAvatarClick={handleEditAvatarClick}
+                handleEditProfileClick={handleEditProfileClick}
+                onCardClick={handleCardClick}
+                onCardDelete={handleCardDelete}
+                onCardLike={handleCardLike}
+              />
+            }
+          />
+
+          <Route
+            path="/saved-movies"
+            element={
+              <ProtectedRouteElement
+                element={SavedMovies}
                 isLoggedIn={isLoggedIn}
                 cards={cards}
                 handleAddPlaceClick={handleAddPlaceClick}
