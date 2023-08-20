@@ -22,7 +22,8 @@ function MoviesCardList() {
         })}
       </ul>
       <form className="movies-card-list__controls">
-        <button className="movies-card-list__more-button">
+        <button type="button"
+          className="movies-card-list__more-button">
           Ещё
         </button>
       </form>
