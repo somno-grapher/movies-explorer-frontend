@@ -30,11 +30,15 @@ function Header({
 
     <header
       className={location.pathname === '/' ? "header header_main" : "header"}>
-      <img
-        className="header__logo"
-        src={logoPath}
-        alt="Логотип"
-      />
+      <Link
+        to="/"
+      >
+        <img
+          className="header__logo"
+          src={logoPath}
+          alt="Логотип"
+        />
+      </Link>
 
       {!isLoggedIn && (
         <div className="header__unauthorized">

@@ -14,7 +14,7 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 520px) {
   .promo {
     padding: 183px 10px 40px;
   }
@@ -40,7 +40,7 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 520px) {
   .promo__title {
     margin-bottom: 60px;
     font-size: 31px;

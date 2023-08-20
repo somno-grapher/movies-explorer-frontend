@@ -20,7 +20,7 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 520px) {
   .portfolio-link {
     min-height: 67px;
     font-size: 18px;
@@ -46,7 +46,7 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 520px) {
   .portfolio-link-image {
     width: 10px;
   }

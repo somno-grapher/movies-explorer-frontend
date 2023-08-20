@@ -9,7 +9,7 @@
   /* border: 1px solid grey; */
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 520px) {
   .movies-card-list {
     padding-top: 40px;
   }
@@ -37,7 +37,7 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 520px) {
   .movies-card-list__grid {
     grid-template-columns: repeat(1, 1fr);
     row-gap: 36px;
@@ -78,7 +78,7 @@
   opacity: .8;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 520px) {
   .movies-card-list__more-button {
     width: 240px;
   }
