@@ -1,13 +1,13 @@
 .movies-card {
   /* TODO: exclude border*/
-  /* border: 1px solid grey; */
+  border: 1px solid grey;
   position: relative;
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
 
-.movies-card__save-button {
+.movies-card__like-button {
   position: absolute;
   top: 14px;
   right: 14px;
@@ -24,7 +24,26 @@
   transition: .3s;
 }
 
-.movies-card__save-button:hover {
+.movies-card__like-button:after {
+  content: 'Сохранить';
+}
+
+.movies-card__like-button_liked {
+  width: 21px;
+  height: 21px;
+  background-color: transparent;
+  background-position: center;
+  background-size: 21px;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  background-image: url("../../images/icons/check-mark.svg");
+}
+
+.movies-card__like-button_liked:after {
+  content: '';
+}
+
+.movies-card__like-button:hover {
   cursor: pointer;
   /* TODO: make no transparent */
   opacity: .8;

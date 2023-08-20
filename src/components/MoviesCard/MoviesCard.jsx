@@ -9,23 +9,18 @@ import './MoviesCard.css';
 
 function MoviesCard({ cardData }) {
 
-  const isSaved = false;
+  // TODO: update
+  const isLiked = Math.round(Math.random());
 
   return (
     <li className='movies-card'>
-      {/* {card.name} */}
-      {isSaved
-        ?
-        <></>
-        :
-        <button
-          type="button"
-          className="movies-card__save-button"
-        //  onClick={handleDeleteClick}
-        >
-          Сохранить
-        </button>
-      }
+      <button
+        type="button"
+        className={`movies-card__like-button
+        ${isLiked && "movies-card__like-button_liked"}`}
+      //  onClick={handleDeleteClick}
+      >
+      </button>
       <img
         className="movies-card__image"
         src={`https://api.nomoreparties.co${cardData.image.url}`}
