@@ -8,6 +8,7 @@ import Main from '../Main/Main.jsx';
 import Movies from '../Movies/Movies.jsx';
 import SavedMovies from '../SavedMovies/SavedMovies.jsx';
 import Footer from '../Footer/Footer.jsx';
+import Register from '../Register/Register.jsx';
 
 import AddPlacePopup from '../AddPlacePopup';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
@@ -15,10 +16,8 @@ import EditProfilePopup from '../EditProfilePopup';
 import EditAvatarPopup from '../EditAvatarPopup';
 import ImagePopup from '../ImagePopup.js';
 import InfoTooltip from '../InfoTooltip';
-import Login from '../Login';
 import PopupWithForm from '../PopupWithForm';
 import ProtectedRouteElement from '../ProtectedRoute';
-import Register from '../Register';
 
 // js import
 import api from '../../utils/api';
@@ -249,63 +248,82 @@ function App() {
       {/* regular page */}
 
       <div className="app">
-        <Header
-          email={email}
-          onSignOut={handleSignOut}
-          isLoggedIn={true}
-        // isLoggedIn={false}
-        // isLoggedIn={isLoggedIn}
-        />
+
         <Routes>
 
           <Route
             path="/"
             element={
-              <ProtectedRouteElement
-                element={Main}
-                isLoggedIn={isLoggedIn}
-                cards={cards}
-                handleAddPlaceClick={handleAddPlaceClick}
-                handleEditAvatarClick={handleEditAvatarClick}
-                handleEditProfileClick={handleEditProfileClick}
-                onCardClick={handleCardClick}
-                onCardDelete={handleCardDelete}
-                onCardLike={handleCardLike}
-              />
+              <>
+                {/* TODO: use <Outlet /> for DRY */}
+                <Header
+                  email={email}
+                  onSignOut={handleSignOut}
+                  isLoggedIn={true}
+                // isLoggedIn={isLoggedIn}
+                />
+                <ProtectedRouteElement
+                  element={Main}
+                  isLoggedIn={isLoggedIn}
+                  cards={cards}
+                  handleAddPlaceClick={handleAddPlaceClick}
+                  handleEditAvatarClick={handleEditAvatarClick}
+                  handleEditProfileClick={handleEditProfileClick}
+                  onCardClick={handleCardClick}
+                  onCardDelete={handleCardDelete}
+                  onCardLike={handleCardLike}
+                />
+              </>
             }
           />
 
           <Route
             path="/movies"
             element={
-              <ProtectedRouteElement
-                element={Movies}
-                isLoggedIn={isLoggedIn}
-                cards={cards}
-                handleAddPlaceClick={handleAddPlaceClick}
-                handleEditAvatarClick={handleEditAvatarClick}
-                handleEditProfileClick={handleEditProfileClick}
-                onCardClick={handleCardClick}
-                onCardDelete={handleCardDelete}
-                onCardLike={handleCardLike}
-              />
+              <>
+                <Header
+                  email={email}
+                  onSignOut={handleSignOut}
+                  isLoggedIn={true}
+                // isLoggedIn={isLoggedIn}
+                />
+                <ProtectedRouteElement
+                  element={Movies}
+                  isLoggedIn={isLoggedIn}
+                  cards={cards}
+                  handleAddPlaceClick={handleAddPlaceClick}
+                  handleEditAvatarClick={handleEditAvatarClick}
+                  handleEditProfileClick={handleEditProfileClick}
+                  onCardClick={handleCardClick}
+                  onCardDelete={handleCardDelete}
+                  onCardLike={handleCardLike}
+                />
+              </>
             }
           />
 
           <Route
             path="/saved-movies"
             element={
-              <ProtectedRouteElement
-                element={SavedMovies}
-                isLoggedIn={isLoggedIn}
-                cards={cards}
-                handleAddPlaceClick={handleAddPlaceClick}
-                handleEditAvatarClick={handleEditAvatarClick}
-                handleEditProfileClick={handleEditProfileClick}
-                onCardClick={handleCardClick}
-                onCardDelete={handleCardDelete}
-                onCardLike={handleCardLike}
-              />
+              <>
+                <Header
+                  email={email}
+                  onSignOut={handleSignOut}
+                  isLoggedIn={true}
+                // isLoggedIn={isLoggedIn}
+                />
+                <ProtectedRouteElement
+                  element={SavedMovies}
+                  isLoggedIn={isLoggedIn}
+                  cards={cards}
+                  handleAddPlaceClick={handleAddPlaceClick}
+                  handleEditAvatarClick={handleEditAvatarClick}
+                  handleEditProfileClick={handleEditProfileClick}
+                  onCardClick={handleCardClick}
+                  onCardDelete={handleCardDelete}
+                  onCardLike={handleCardLike}
+                />
+              </>
             }
           />
 
@@ -327,18 +345,18 @@ function App() {
             }
           /> */}
 
-          <Route
+          {/* <Route
             path="/signin"
             element={
               <Login
                 handleLogin={handleLogin}
               />}
-          />
+          /> */}
           <Route
             path="/signup"
             element={
               <Register
-                handleRegister={handleRegister}
+              // handleRegister={handleRegister}
               />}
           />
         </Routes>
