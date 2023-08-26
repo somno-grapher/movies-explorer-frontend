@@ -1,12 +1,64 @@
+/* .entry */
+
 .entry {
+  /* provide vertical centering */
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* TODO: check why height does not work */
+  min-height: 100%;
+}
+
+/* provide vertical scrolling */
+@media screen and (max-height: 600px) {
+  .entry {
+    position: static;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .entry {
+    align-items: stretch;
+  }
+}
+
+/* .entry__container */
+
+.entry__container {
   display: flex;
   flex-direction: column;
   width: 396px;
   margin-right: auto;
   margin-left: auto;
-  padding-top: 70px;
-  padding-bottom: 70px;
+  /* provide better UI on low viewport heights */
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
+
+@media screen and (max-width: 520px) {
+  .entry__container {
+    width: 260px;
+    justify-content: space-between;
+    /* padding-top: 56px; */
+    /* padding-bottom: 30px; */
+  }
+}
+
+
+@media screen and (max-width: 520px) {
+  .entry__form {
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+/* .entry__logo */
 
 .entry__logo {
   width: 38px;

@@ -273,6 +273,7 @@ function App() {
                   onCardDelete={handleCardDelete}
                   onCardLike={handleCardLike}
                 />
+                <Footer />
               </>
             }
           />
@@ -298,6 +299,7 @@ function App() {
                   onCardDelete={handleCardDelete}
                   onCardLike={handleCardLike}
                 />
+                <Footer />
               </>
             }
           />
@@ -323,6 +325,7 @@ function App() {
                   onCardDelete={handleCardDelete}
                   onCardLike={handleCardLike}
                 />
+                <Footer />
               </>
             }
           />
@@ -360,7 +363,6 @@ function App() {
               />}
           />
         </Routes>
-        <Footer />
       </div>
 
 
