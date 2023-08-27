@@ -3,8 +3,7 @@ import React, { useState } from "react";
 
 // react project import
 import Entry from '../Entry/Entry.jsx';
-
-// TODO: delete css
+import Input from '../Input/Input.jsx';
 
 function Register({
   handleRegister
@@ -40,6 +39,10 @@ function Register({
       linkTitle="Войти"
       linkPath="/signin"
       onSubmit={handleSubmit}>
+      <Input
+        id="register-email"
+        title="Имя"
+        style="entry" />
     </Entry>
   );
 

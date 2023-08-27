@@ -51,6 +51,8 @@ function Entry({
           </button>
         </form>
 
+        {/* TODO: make erroe message */}
+
         {/* navbar */}
         <nav className="entry__navbar">
           <p className="entry__link-tip">
