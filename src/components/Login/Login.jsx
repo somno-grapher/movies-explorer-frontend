@@ -6,8 +6,8 @@ import Entry from '../Entry/Entry.jsx';
 
 // TODO: delete css
 
-function Register({
-  handleRegister
+function Login({
+  handleLogin
 }) {
 
   const [formValue, setFormValue] = useState({
@@ -25,25 +25,24 @@ function Register({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleRegister(
+    handleLogin(
       formValue.password,
       formValue.email,
       setFormValue);
   }
 
-  // *to be rendered
   return (
     <Entry
-      title="Добро пожаловать!"
-      buttonText="Зарегистрироваться"
-      linkTip="Уже зарегистрированы?"
-      linkTitle="Войти"
-      linkPath="/signin"
+      title="Рады видеть!"
+      buttonText="Войти"
+      linkTip="Еще не зарегистрированы?"
+      linkTitle="Регистрация"
+      linkPath="/signup"
       onSubmit={handleSubmit}>
     </Entry>
   );
 
 }
 
-export default Register;
+export default Login;
 

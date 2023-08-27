@@ -9,6 +9,7 @@ import Movies from '../Movies/Movies.jsx';
 import SavedMovies from '../SavedMovies/SavedMovies.jsx';
 import Footer from '../Footer/Footer.jsx';
 import Register from '../Register/Register.jsx';
+import Login from '../Login/Login.jsx';
 
 import AddPlacePopup from '../AddPlacePopup';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
@@ -348,20 +349,18 @@ function App() {
             }
           /> */}
 
-          {/* <Route
+          <Route
             path="/signin"
-            element={
-              <Login
-                handleLogin={handleLogin}
-              />}
-          /> */}
+            element={<Login
+              handleLogin={handleLogin} />
+            } />
+
           <Route
             path="/signup"
-            element={
-              <Register
-              // handleRegister={handleRegister}
-              />}
-          />
+            element={<Register
+              handleRegister={handleRegister} />
+            } />
+
         </Routes>
       </div>
 
