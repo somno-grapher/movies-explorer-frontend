@@ -25,13 +25,16 @@ function Entry({
       <div className="entry__container">
 
         {/* logo */}
-        <Link to="/">
+        <Link className="entry__logo-link-wrapper"
+          to="/">
           <img className="entry__logo"
             src={logoPath}
             alt="Логотип" />
         </Link>
+
         {/* title */}
         <h2 className="entry__title">{title}</h2>
+
         {/* form */}
         <form className="entry__form"
           // TODO: check purpose
