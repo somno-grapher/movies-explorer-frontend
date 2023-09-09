@@ -3,6 +3,8 @@ import React, { useState } from "react";
 
 // react project import
 import Entry from '../Entry/Entry.jsx';
+import EntryInput from '../EntryInput/EntryInput.jsx';
+
 
 // TODO: delete css
 
@@ -39,6 +41,24 @@ function Login({
       linkTitle="Регистрация"
       linkPath="/signup"
       onSubmit={handleSubmit}>
+      <EntryInput
+        id="register-email"
+        label="E-mail"
+        placeholder="Введите e-mail"
+        validationAttributes={{
+          type: "email",
+          reqired: true,
+        }}
+      />
+      <EntryInput
+        id="register-password"
+        label="Пароль"
+        placeholder="Введите пароль"
+        validationAttributes={{
+          type: "password",
+          reqired: true,
+        }}
+      />
     </Entry>
   );
 
