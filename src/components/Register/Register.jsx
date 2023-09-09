@@ -41,8 +41,7 @@ function Register({
       onSubmit={handleSubmit}>
       <Input
         id="register-email"
-        title="Имя"
-        style="entry" />
+        title="Имя" />
     </Entry>
   );
 

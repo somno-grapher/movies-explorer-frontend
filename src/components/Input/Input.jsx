@@ -6,8 +6,7 @@ import './Input.css';
 
 function Input({
   id,
-  title,
-  style
+  title
 }) {
 
   // *control input
@@ -25,15 +24,12 @@ function Input({
 
   // *render component
   return (
-    <label className={`input
-    input_style_${style}`}>
-      <p className={`input__title
-      input__title_style_${style}`}>
+    <label className={`entry__input`}>
+      <p className={`entry__input-title`}>
         {title}
       </p>
       <input
-        className={`input__field
-        input__field_style_${style}`}
+        className={`entry__input-field`}
         type="email"
         name={id}
         id={id}
@@ -44,8 +40,7 @@ function Input({
         required={true}
         // TODO: exclude placeholder
         placeholder="Placeholder" />
-      <span className={`input__error
-      input__error_style_${style}
+      <span className={`entry__input-error
       ${id}-error`}>
         {/* TODO: delete */}
         Error message

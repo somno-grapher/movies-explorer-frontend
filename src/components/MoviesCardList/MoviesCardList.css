@@ -19,6 +19,7 @@
 
 .movies-card-list__grid {
   display: grid;
+  /* TODO auto-fit minmax 300px 1fr */
   grid-template-columns: repeat(3, 1fr);
   /* TODO: check */
   /* grid-auto-rows: 1fr; */

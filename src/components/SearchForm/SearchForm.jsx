@@ -37,6 +37,7 @@ function SearchForm({
     >
       <div className="search-form__upper-container">
 
+        {/* TODO convert it into placeholder */}
         <img
           src={searchIconPath}
           alt="Иконка поиска"

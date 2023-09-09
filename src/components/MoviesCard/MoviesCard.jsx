@@ -10,14 +10,20 @@ import './MoviesCard.css';
 function MoviesCard({ cardData }) {
 
   // TODO: update
-  const isLiked = Math.round(Math.random());
+  const styles = [
+    "movies-card__like-button_style_save",
+    "movies-card__like-button_style_saved",
+    "movies-card__like-button_style_delete",
+  ]
 
   return (
     <li className='movies-card'>
       <button
         type="button"
         className={`movies-card__like-button
-        ${isLiked && "movies-card__like-button_liked"}`}
+        // TODO update
+         ${styles[Math.round(Math.random() * 2)]}
+        `}
       //  onClick={handleDeleteClick}
       >
       </button>

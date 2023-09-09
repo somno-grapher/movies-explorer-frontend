@@ -33,6 +33,7 @@ function Header({
 
     <header
       className={location.pathname === '/' ? "header header_main" : "header"}>
+      {/* TODO convert into component */}
       <Link
         to="/"
       >

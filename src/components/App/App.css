@@ -1,4 +1,5 @@
 .app {
+  /* TODO 100% width */
   max-width: min(1280px, 100%);
   margin-left: auto;
   margin-right: auto;

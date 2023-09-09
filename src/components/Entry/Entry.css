@@ -1,5 +1,6 @@
 /* *.entry */
 
+/* TODO provide a better solution for vertical centering like in NotFound component */
 .entry {
   /* provide vertical centering */
   position: fixed;

@@ -10,6 +10,7 @@ import SavedMovies from '../SavedMovies/SavedMovies.jsx';
 import Footer from '../Footer/Footer.jsx';
 import Register from '../Register/Register.jsx';
 import Login from '../Login/Login.jsx';
+import NotFound from '../NotFound/NotFound.jsx';
 
 import AddPlacePopup from '../AddPlacePopup';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
@@ -360,6 +361,12 @@ function App() {
             element={<Register
               handleRegister={handleRegister} />
             } />
+
+          <Route
+            path="*"
+            element={
+              <NotFound />}
+          />
 
         </Routes>
       </div>
