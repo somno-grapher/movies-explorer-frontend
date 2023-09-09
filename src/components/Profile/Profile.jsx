@@ -31,12 +31,15 @@ export default function Login({
       setFormValue);
   }
 
+  const userName = "Жан Жак"
+  const title = "Привет, " + userName + "!";
+
   // 2B rendered
   return (
     <Entry
-      title="Рады видеть!"
-      buttonText="Войти"
-      linkTip="Еще не зарегистрированы?"
+      type="profile"
+      title={title}
+      buttonText="Сохранить"
       linkTitle="Регистрация"
       linkPath="/signup"
       onSubmit={handleSubmit}>

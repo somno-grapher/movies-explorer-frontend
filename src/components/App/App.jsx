@@ -10,6 +10,7 @@ import SavedMovies from '../SavedMovies/SavedMovies.jsx';
 import Footer from '../Footer/Footer.jsx';
 import Register from '../Register/Register.jsx';
 import Login from '../Login/Login.jsx';
+import Profile from '../Profile/Profile.jsx';
 import NotFound from '../NotFound/NotFound.jsx';
 
 import AddPlacePopup from '../AddPlacePopup';
@@ -353,14 +354,33 @@ function App() {
           <Route
             path="/signin"
             element={<Login
-              handleLogin={handleLogin} />
-            } />
+              handleLogin={handleLogin}
+            />}
+          />
 
           <Route
             path="/signup"
             element={<Register
-              handleRegister={handleRegister} />
-            } />
+              handleRegister={handleRegister}
+            />}
+          />
+
+          <Route
+            path="/profile"
+            element={
+              <>
+                <Header
+                  email={email}
+                  onSignOut={handleSignOut}
+                  isLoggedIn={true}
+                // isLoggedIn={isLoggedIn}
+                /><Profile
+                // TODO inplement handler
+                // handleRegister={handleUpdateProfile}
+                />
+              </>
+            }
+          />
 
           <Route
             path="*"

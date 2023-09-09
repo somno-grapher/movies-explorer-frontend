@@ -8,7 +8,9 @@ import logoPath from '../../images/logo/logo.svg';
 // CSS import
 import './Entry.css';
 
-function Entry({
+// main function
+export default function Entry({
+  type,
   name,
   title,
   buttonText,
@@ -19,19 +21,26 @@ function Entry({
   children
 }) {
 
+  // utils
+  const isLogoDisplayed = type !== "profile"
+    ? true
+    : false;
+
   // 2B rendered
   return (
     <main className="entry">
       <div className="entry__container">
 
         {/* logo */}
-        {/* TODO convert into a component */}
-        <Link className="entry__logo-link-wrapper"
-          to="/">
-          <img className="entry__logo"
-            src={logoPath}
-            alt="Логотип" />
-        </Link>
+        {isLogoDisplayed &&
+          <Link className="entry__logo-link-wrapper"
+            to="/">
+            <img className="entry__logo"
+              src={logoPath}
+              alt="Логотип" />
+          </Link>
+        }
+
 
         {/* title */}
         <h2 className="entry__title">{title}</h2>
@@ -71,8 +80,6 @@ function Entry({
         </nav>
 
       </div>
-    </main>
+    </main >
   );
 }
-
-export default Entry;
