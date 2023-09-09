@@ -11,17 +11,17 @@ function NotFound() {
   const navigate = useNavigate();
 
   function goBack() {
-    navigate(-1, { replace: true });
+    // { replace: true } does not work with -1
+    navigate(-1);
   }
 
   // to be rendered
   return (
     <div className="not-found">
+      {/* container is used for go-back-button positioning on wide screens */}
       <div className="not-found__container">
-        <main className="not-found__main">
-          <h1 className="not-found__title">404</h1>
-          <p className="not-found__text">Страница не найдена</p>
-        </main>
+        <h1 className="not-found__title">404</h1>
+        <p className="not-found__text">Страница не найдена</p>
         <button
           className="not-found__go-back-button"
           onClick={goBack}
