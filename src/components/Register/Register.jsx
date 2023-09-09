@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 // react project import
 import Entry from '../Entry/Entry.jsx';
-import Input from '../Input/Input.jsx';
+import EntryInput from '../EntryInput/EntryInput.jsx';
 
 function Register({
   handleRegister
@@ -30,7 +30,7 @@ function Register({
       setFormValue);
   }
 
-  // *to be rendered
+  // to be rendered
   return (
     <Entry
       title="Добро пожаловать!"
@@ -39,9 +39,24 @@ function Register({
       linkTitle="Войти"
       linkPath="/signin"
       onSubmit={handleSubmit}>
-      <Input
-        id="register-email"
-        title="Имя" />
+      <EntryInput
+        id="register-name"
+        label="Имя"
+        placeholder="Введите Ваше имя"
+        validationAttributes={{
+          type: "text",
+          reqired: true,
+        }}
+      />
+      <EntryInput
+        id="register-name"
+        label="E-mail"
+        placeholder="Введите Ваш e-mail"
+        validationAttributes={{
+          type: "email",
+          reqired: true,
+        }}
+      />
     </Entry>
   );
 
