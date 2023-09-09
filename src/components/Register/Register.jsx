@@ -60,7 +60,7 @@ function Register({
       <EntryInput
         id="register-password"
         label="Пароль"
-        placeholder="Введите пароль"
+        placeholder="Введите пароль" 
         validationAttributes={{
           type: "password",
           reqired: true,

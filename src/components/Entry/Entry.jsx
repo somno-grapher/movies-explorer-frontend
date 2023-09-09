@@ -25,6 +25,7 @@ function Entry({
       <div className="entry__container">
 
         {/* logo */}
+        {/* TODO convert into a component */}
         <Link className="entry__logo-link-wrapper"
           to="/">
           <img className="entry__logo"
@@ -37,7 +38,7 @@ function Entry({
 
         {/* form */}
         <form className="entry__form"
-          // TODO: check purpose
+          // TODO: check the purpose
           name={`${name}-form`}
           // TODO: provide js validation
           // noValidate
@@ -45,13 +46,18 @@ function Entry({
           <div className="entry__inputs-container">
             {children}
           </div>
-          <button className="entry__submit-button"
-            type="submit">
-            {buttonText}
-          </button>
+          <div className="entry__lower-container">
+            <span className="entry__error">
+              {/* TODO update */}
+              Ошибка
+            </span>
+            <button className="entry__submit-button"
+              type="submit">
+              {buttonText}
+            </button>
+          </div>
         </form>
 
-        {/* TODO: make erroe message */}
 
         {/* navbar */}
         <nav className="entry__navbar">

@@ -1,4 +1,4 @@
-/* *.entry */
+/* .entry */
 
 /* TODO provide a better solution for vertical centering like in NotFound component */
 .entry {
@@ -34,7 +34,7 @@
   }
 }
 
-/* *.entry__container */
+/* .entry__container */
 
 .entry__container {
   display: flex;
@@ -55,7 +55,7 @@
   }
 }
 
-/* *.entry__logo-link-wrapper */
+/* .entry__logo-link-wrapper */
 
 @media screen and (max-width: 520px) {
   .entry__logo-link-wrapper {
@@ -63,7 +63,7 @@
   }
 }
 
-/* *.entry__logo */
+/* .entry__logo */
 
 .entry__logo {
   width: 38px;
@@ -71,7 +71,7 @@
   object-fit: contain;
 }
 
-/* *.entry__title */
+/* .entry__title */
 
 .entry__title {
   margin: 0;
@@ -90,7 +90,7 @@
   }
 }
 
-/* *.entry__form */
+/* .entry__form */
 
 .entry__form {
   display: flex;
@@ -104,7 +104,7 @@
   }
 }
 
-/* *.entry__inputs-container */
+/* .entry__inputs-container */
 
 .entry__inputs-container {
   min-height: 311px;
@@ -116,7 +116,30 @@
   }
 }
 
-/* *entry__submit-button */
+/* .entry__lower-container */
+
+.entry__lower-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* .entry__error */
+
+.entry__error {
+  padding-bottom: 20px;
+  font-size: 11px;
+  line-height: 1.21;
+  font-weight: 400;
+  text-align: center;
+  color: #ee3465;
+  visibility: hidden;
+}
+
+.entry__error_visible {
+  visibility: visible;
+}
+
+/* .entry__submit-button */
 
 .entry__submit-button {
   min-height: 45px;
@@ -143,7 +166,7 @@
   opacity: .8;
 }
 
-/* *.entry__navbar */
+/* .entry__navbar */
 
 .entry__navbar {
   display: flex;
@@ -171,7 +194,7 @@
   color: #8b8b8b;
 }
 
-/* *.entry__link */
+/* .entry__link */
 
 .entry__link {
   margin: 0;
