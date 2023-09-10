@@ -31,13 +31,13 @@ export default function Login({
       setFormValue);
   }
 
-  const userName = "Жан Жак"
+  const userName = "Жак Ив"
   const title = "Привет, " + userName + "!";
 
   // 2B rendered
   return (
     <Dialog
-      type="profile"
+      styling="profile"
       title={title}
       buttonText="Сохранить"
       linkTitle="Выйти из аккаунта"

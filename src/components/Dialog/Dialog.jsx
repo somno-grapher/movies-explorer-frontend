@@ -10,7 +10,7 @@ import './Dialog.css';
 
 // main function
 export default function Dialog({
-  type,
+  styling,
   name,
   title,
   buttonText,
@@ -22,13 +22,13 @@ export default function Dialog({
 }) {
 
   // utils
-  const isLogoDisplayed = type !== "profile"
+  const isLogoDisplayed = styling !== "profile"
     ? true
     : false;
 
   // 2B rendered
   return (
-    <main className={`dialog dialog_${type}`}>
+    <main className={`dialog dialog_styling_${styling}`}>
       <div className="dialog__container">
 
         {/* logo */}

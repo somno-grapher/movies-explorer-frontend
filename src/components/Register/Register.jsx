@@ -33,6 +33,7 @@ function Register({
   // to be rendered
   return (
     <Dialog
+      styling="entry"
       title="Добро пожаловать!"
       buttonText="Зарегистрироваться"
       linkTip="Уже зарегистрированы?"

@@ -34,6 +34,7 @@ export default function Login({
   // 2B rendered
   return (
     <Dialog
+      styling="entry"
       title="Рады видеть!"
       buttonText="Войти"
       linkTip="Еще не зарегистрированы?"

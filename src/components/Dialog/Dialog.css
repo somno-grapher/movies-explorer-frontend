@@ -1,20 +1,21 @@
 /* .dialog */
 
 .dialog {
-  position: fixed;
-  left: 0;
-  top: 0;
   display: flex;
   align-items: center;
   width: 100%;
-  height: 100%;
-  overflow-y: auto;
+  height: 100vh;
 }
 
 @media screen and (max-width: 520px) {
   .dialog {
     align-items: stretch;
   }
+}
+
+.dialog_styling_profile {
+  /* 74px is the Header height */
+  height: calc(100vh - 74px);
 }
 
 /* .dialog__container */
@@ -28,6 +29,7 @@
 
 @media screen and (max-width: 520px) {
   .dialog__container {
+    /* we use auto margins instead of the parent justify-content:center to prevent the content overflow */
     margin-top: 0;
     margin-bottom: 0;
     width: calc(100% - 60px);
