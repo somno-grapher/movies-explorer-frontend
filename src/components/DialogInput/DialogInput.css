@@ -1,43 +1,80 @@
-/* .entry-input */
+/* .dialog-input */
 
-.entry-input {
+.dialog-input {
   display: flex;
   flex-direction: column;
   line-height: 1.21;
 }
 
-/* .entry-input__label */
+/* .dialog-input__container */
 
-.entry-input__label {
+.dialog-input__container {
+  display: flex;
+}
+
+.dialog-input__container_styling_entry {
+  flex-direction: column;
+}
+
+.dialog-input__container_styling_profile {
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* .dialog-input__label */
+
+.dialog-input__label {
   margin: 0;
-  padding: 0 0 5px;
+  padding-top: 0;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.dialog-input__label_styling_entry {
+  padding-bottom: 5px;
   font-size: 10px;
   color: #8b8b8b;
 }
 
-/* .entry-input__field */
+.dialog-input__label_styling_profile {
+  flex-basis: 141px;
+  padding-bottom: 0;
+  font-size: 11px;
+  color: #fff;
+}
 
-.entry-input__field {
+/* .dialog-input__field */
+
+.dialog-input__field {
   position: relative;
   border: none;
   background-color: transparent;
   color: #fff;
-  font-size: 14px;
   font-weight: 400;
 }
 
-.entry-input__field_invalid {
+.dialog-input__field_styling_entry {
+  font-size: 14px;
+}
+
+.dialog-input__field_styling_profile {
+  font-size: 11px;
+  flex-basis: 100%;
+  text-align: right;
+}
+
+.dialog-input__field_invalid {
   color: #ee3465;
 }
 
-.entry-input__field::placeholder {
+.dialog-input__field::placeholder {
   color: #8b8b8b;
   opacity: 1;
 }
 
-/* .entry-input__error */
+/* .dialog-input__error */
 
-.entry-input__error {
+.dialog-input__error {
   position: relative;
   min-height: 25px;
   margin: 10px 0 0;
@@ -49,7 +86,7 @@
   visibility: hidden;
 }
 
-.entry-input__error::before {
+.dialog-input__error::before {
   position: absolute;
   left: 0;
   top: 0;
@@ -60,10 +97,10 @@
   visibility: visible;
 }
 
-.entry-input__field:focus+.entry-input__error::before {
+.dialog-input__field:focus+.dialog-input__error::before {
   border-color: #4285f4;
 }
 
-.entry__input__error_visible {
+.dialog__input__error_visible {
   visibility: visible;
 }

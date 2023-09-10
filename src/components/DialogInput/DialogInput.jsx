@@ -29,26 +29,34 @@ export default function DialogInput({
 
   // 2B rendered
   return (
-    <div className={`entry-input`}>
+    <div className={`dialog-input`}>
 
-      {/* label */}
-      <label className={`entry-input__label`}>
-        {label}
-      </label>
+      {/* container */}
+      <div className={`dialog-input__container
+      dialog-input__container_styling_${styling}`}>
 
-      {/* field */}
-      <input
-        className={`entry-input__field`}
-        name={id}
-        id={id}
-        placeholder={placeholder}
-        value={value}
-        onChange={handleChange}
-        {...validationAttributes}
-      />
+        {/* label */}
+        <label className={`dialog-input__label
+        dialog-input__label_styling_${styling}`}>
+          {label}
+        </label>
+
+        {/* field */}
+        <input
+          className={`dialog-input__field
+          dialog-input__field_styling_${styling}`}
+          name={id}
+          id={id}
+          placeholder={placeholder}
+          value={value}
+          onChange={handleChange}
+          {...validationAttributes}
+        />
+
+      </div>
 
       {/* error */}
-      <span className={`entry-input__error
+      <span className={`dialog-input__error
       ${id}-error`}>
         {/* TODO: delete */}
         Error message
