@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 
 // CSS import
-import './EntryInput.css';
+import './DialogInput.css';
 
-export default function EntryInput({
+export default function DialogInput({
   // TODO check if name and id are needed
   id,
   label,
@@ -21,8 +21,7 @@ export default function EntryInput({
     setValue(value);
   }
 
-  // to be rendered
-
+  // 2B rendered
   return (
     <div className={`entry-input`}>
 

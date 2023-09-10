@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 
 // react project import
-import Entry from '../Entry/Entry.jsx';
-import EntryInput from '../EntryInput/EntryInput.jsx';
+import Dialog from '../Dialog/Dialog.jsx';
+import DialogInput from '../DialogInput/DialogInput.jsx';
 
 // main function
 export default function Login({
@@ -33,14 +33,14 @@ export default function Login({
 
   // 2B rendered
   return (
-    <Entry
+    <Dialog
       title="Рады видеть!"
       buttonText="Войти"
       linkTip="Еще не зарегистрированы?"
       linkTitle="Регистрация"
       linkPath="/signup"
       onSubmit={handleSubmit}>
-      <EntryInput
+      <DialogInput
         id="register-email"
         label="E-mail"
         placeholder="Введите e-mail"
@@ -49,7 +49,7 @@ export default function Login({
           reqired: true,
         }}
       />
-      <EntryInput
+      <DialogInput
         id="register-password"
         label="Пароль"
         placeholder="Введите пароль"
@@ -58,7 +58,7 @@ export default function Login({
           reqired: true,
         }}
       />
-    </Entry>
+    </Dialog>
   );
 
 }

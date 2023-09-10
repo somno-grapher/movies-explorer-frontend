@@ -3,7 +3,6 @@ import React from 'react';
 import { useContext } from 'react';
 
 // react project import
-import Card from '../Card';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import Promo from '../Promo/Promo';
 import AboutProject from '../AboutProject/AboutProject';

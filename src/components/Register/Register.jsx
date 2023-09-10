@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 
 // react project import
-import Entry from '../Entry/Entry.jsx';
-import EntryInput from '../EntryInput/EntryInput.jsx';
+import Dialog from '../Dialog/Dialog.jsx';
+import DialogInput from '../DialogInput/DialogInput.jsx';
 
 function Register({
   handleRegister
@@ -32,14 +32,14 @@ function Register({
 
   // to be rendered
   return (
-    <Entry
+    <Dialog
       title="Добро пожаловать!"
       buttonText="Зарегистрироваться"
       linkTip="Уже зарегистрированы?"
       linkTitle="Войти"
       linkPath="/signin"
       onSubmit={handleSubmit}>
-      <EntryInput
+      <DialogInput
         id="register-name"
         label="Имя"
         placeholder="Введите имя"
@@ -48,7 +48,7 @@ function Register({
           reqired: true,
         }}
       />
-      <EntryInput
+      <DialogInput
         id="register-email"
         label="E-mail"
         placeholder="Введите e-mail"
@@ -57,16 +57,16 @@ function Register({
           reqired: true,
         }}
       />
-      <EntryInput
+      <DialogInput
         id="register-password"
         label="Пароль"
-        placeholder="Введите пароль" 
+        placeholder="Введите пароль"
         validationAttributes={{
           type: "password",
           reqired: true,
         }}
       />
-    </Entry>
+    </Dialog>
   );
 
 }

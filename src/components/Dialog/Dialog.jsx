@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 import logoPath from '../../images/logo/logo.svg';
 
 // CSS import
-import './Entry.css';
+import './Dialog.css';
 
 // main function
-export default function Entry({
+export default function Dialog({
   type,
   name,
   title,
@@ -28,14 +28,14 @@ export default function Entry({
 
   // 2B rendered
   return (
-    <main className="entry">
-      <div className="entry__container">
+    <main className={`dialog dialog_${type}`}>
+      <div className="dialog__container">
 
         {/* logo */}
         {isLogoDisplayed &&
-          <Link className="entry__logo-link-wrapper"
+          <Link className="dialog__logo-link-wrapper"
             to="/">
-            <img className="entry__logo"
+            <img className="dialog__logo"
               src={logoPath}
               alt="Логотип" />
           </Link>
@@ -43,24 +43,24 @@ export default function Entry({
 
 
         {/* title */}
-        <h2 className="entry__title">{title}</h2>
+        <h2 className="dialog__title">{title}</h2>
 
         {/* form */}
-        <form className="entry__form"
+        <form className="dialog__form"
           // TODO: check the purpose
           name={`${name}-form`}
           // TODO: provide js validation
           // noValidate
           onSubmit={onSubmit}>
-          <div className="entry__inputs-container">
+          <div className="dialog__inputs-container">
             {children}
           </div>
-          <div className="entry__lower-container">
-            <span className="entry__error">
+          <div className="dialog__lower-container">
+            <span className="dialog__error">
               {/* TODO update */}
               Ошибка
             </span>
-            <button className="entry__submit-button"
+            <button className="dialog__submit-button"
               type="submit">
               {buttonText}
             </button>
@@ -69,11 +69,11 @@ export default function Entry({
 
 
         {/* navbar */}
-        <nav className="entry__navbar">
-          <p className="entry__link-tip">
+        <nav className="dialog__navbar">
+          <p className="dialog__link-tip">
             {linkTip}
           </p>
-          <Link className="entry__link"
+          <Link className="dialog__link"
             to={linkPath}>
             {linkTitle}
           </Link>
