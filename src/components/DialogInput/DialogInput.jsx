@@ -1,5 +1,8 @@
 // react vendor import
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
+// react project import
+import DialogStylingContext from '../../contexts/dialogStylingContext.js'
 
 // CSS import
 import './DialogInput.css';
@@ -20,6 +23,9 @@ export default function DialogInput({
     const value = e.target.value;
     setValue(value);
   }
+
+  // utils
+  const styling = useContext(DialogStylingContext);
 
   // 2B rendered
   return (

@@ -23,8 +23,15 @@
 .dialog__container {
   display: flex;
   flex-direction: column;
-  width: 396px;
   margin: auto;
+}
+
+.dialog__container_styling_entry {
+  width: 396px;
+}
+
+.dialog__container_styling_profile {
+  width: 410px;
 }
 
 @media screen and (max-width: 520px) {
@@ -33,10 +40,19 @@
     margin-top: 0;
     margin-bottom: 0;
     width: calc(100% - 60px);
-    max-width: 396px;
     justify-content: space-between;
+  }
+
+  .dialog__container_styling_entry {
+    max-width: 396px;
     padding-top: 56px;
     padding-bottom: 30px;
+  }
+
+  .dialog__container_styling_profile {
+    max-width: 410px;
+    padding-top: 70px;
+    padding-bottom: 40px;
   }
 }
 
@@ -60,18 +76,35 @@
 
 .dialog__title {
   margin: 0;
-  padding: 40px 0;
   color: #fff;
   font-weight: 500;
   font-size: 24px;
   line-height: 1.21;
 }
 
+.dialog__title_styling_entry {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.dialog__title_styling_profile {
+  padding-top: 0;
+  padding-bottom: 123px;
+  text-align: center;
+}
+
 @media screen and (max-width:520px) {
   .dialog__title {
     align-self: center;
-    padding-top: 50px;
     padding-bottom: 80px;
+  }
+
+  .dialog__title_styling_entry {
+    padding-top: 50px;
+  }
+
+  .dialog__title_styling_profile {
+    padding-top: 0;
   }
 }
 
@@ -92,14 +125,15 @@
 /* .dialog__inputs-container */
 
 .dialog__inputs-container {
-  min-height: 311px;
+  min-height: 266px;
+  /* min-height: 311px; */
 }
 
-@media screen and (max-width: 520px) {
+/* @media screen and (max-width: 520px) {
   .dialog__inputs-container {
     min-height: 266px;
   }
-}
+} */
 
 /* .dialog__lower-container */
 
@@ -111,13 +145,17 @@
 /* .dialog__error */
 
 .dialog__error {
+  min-height: 49px;
   padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
   font-size: 11px;
   line-height: 1.21;
   font-weight: 400;
   text-align: center;
   color: #ee3465;
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 
 .dialog__error_visible {
@@ -184,9 +222,16 @@
 .dialog__link {
   margin: 0;
   padding: 0;
-  color: #4285f4;
   text-decoration: none;
   transition: .3s;
+}
+
+.dialog__link_styling_entry {
+  color: #4285f4;
+}
+
+.dialog__link_styling_profile {
+  color: #ee3465;
 }
 
 .dialog__link:hover {

@@ -1,6 +1,9 @@
 // react vendor import
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
+
+// react project import
+import DialogStylingContext from '../../contexts/dialogStylingContext.js'
 
 // image import
 import logoPath from '../../images/logo/logo.svg';
@@ -10,7 +13,6 @@ import './Dialog.css';
 
 // main function
 export default function Dialog({
-  styling,
   name,
   title,
   buttonText,
@@ -22,14 +24,23 @@ export default function Dialog({
 }) {
 
   // utils
+
+  const styling = useContext(DialogStylingContext);
+
   const isLogoDisplayed = styling !== "profile"
     ? true
     : false;
 
-  // 2B rendered
+   // 2B rendered
   return (
-    <main className={`dialog dialog_styling_${styling}`}>
-      <div className="dialog__container">
+    <main className={`dialog
+    dialog_styling_${styling}`
+    }>
+
+      {/* container */}
+      <div className={`dialog__container
+      dialog__container_styling_${styling}`
+      }>
 
         {/* logo */}
         {isLogoDisplayed &&
@@ -41,9 +52,12 @@ export default function Dialog({
           </Link>
         }
 
-
         {/* title */}
-        <h2 className="dialog__title">{title}</h2>
+        <h2 className={`dialog__title
+        dialog__title_styling_${styling}`
+        }>
+          {title}
+        </h2>
 
         {/* form */}
         <form className="dialog__form"
@@ -67,13 +81,13 @@ export default function Dialog({
           </div>
         </form>
 
-
         {/* navbar */}
         <nav className="dialog__navbar">
           <p className="dialog__link-tip">
             {linkTip}
           </p>
-          <Link className="dialog__link"
+          <Link className={`dialog__link
+          dialog__link_styling_${styling}`}
             to={linkPath}>
             {linkTitle}
           </Link>

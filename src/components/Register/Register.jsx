@@ -4,7 +4,9 @@ import React, { useState } from "react";
 // react project import
 import Dialog from '../Dialog/Dialog.jsx';
 import DialogInput from '../DialogInput/DialogInput.jsx';
+import DialogStylingContext from '../../contexts/dialogStylingContext.js'
 
+// main function
 function Register({
   handleRegister
 }) {
@@ -32,42 +34,43 @@ function Register({
 
   // to be rendered
   return (
-    <Dialog
-      styling="entry"
-      title="Добро пожаловать!"
-      buttonText="Зарегистрироваться"
-      linkTip="Уже зарегистрированы?"
-      linkTitle="Войти"
-      linkPath="/signin"
-      onSubmit={handleSubmit}>
-      <DialogInput
-        id="register-name"
-        label="Имя"
-        placeholder="Введите имя"
-        validationAttributes={{
-          type: "text",
-          reqired: true,
-        }}
-      />
-      <DialogInput
-        id="register-email"
-        label="E-mail"
-        placeholder="Введите e-mail"
-        validationAttributes={{
-          type: "email",
-          reqired: true,
-        }}
-      />
-      <DialogInput
-        id="register-password"
-        label="Пароль"
-        placeholder="Введите пароль"
-        validationAttributes={{
-          type: "password",
-          reqired: true,
-        }}
-      />
-    </Dialog>
+    <DialogStylingContext.Provider value='entry'>
+      <Dialog
+        title="Добро пожаловать!"
+        buttonText="Зарегистрироваться"
+        linkTip="Уже зарегистрированы?"
+        linkTitle="Войти"
+        linkPath="/signin"
+        onSubmit={handleSubmit}>
+        <DialogInput
+          id="register-name"
+          label="Имя"
+          placeholder="Введите имя"
+          validationAttributes={{
+            type: "text",
+            reqired: "true",
+          }}
+        />
+        <DialogInput
+          id="register-email"
+          label="E-mail"
+          placeholder="Введите e-mail"
+          validationAttributes={{
+            type: "email",
+            reqired: "true",
+          }}
+        />
+        <DialogInput
+          id="register-password"
+          label="Пароль"
+          placeholder="Введите пароль"
+          validationAttributes={{
+            type: "password",
+            reqired: "true",
+          }}
+        />
+      </Dialog>
+    </DialogStylingContext.Provider>
   );
 
 }
