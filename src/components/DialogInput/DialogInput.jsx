@@ -29,11 +29,8 @@ export default function DialogInput({
 
   // 2B rendered
   return (
-    <div className={`dialog-input`}>
-
-      {/* container */}
-      <div className={`dialog-input__container
-      dialog-input__container_styling_${styling}`}>
+    <div className={`dialog-input
+    dialog-input_styling_${styling}`}>
 
         {/* label */}
         <label className={`dialog-input__label
@@ -53,10 +50,9 @@ export default function DialogInput({
           {...validationAttributes}
         />
 
-      </div>
-
       {/* error */}
       <span className={`dialog-input__error
+      dialog-input__error_styling_${styling}
       ${id}-error`}>
         {/* TODO: delete */}
         Error message

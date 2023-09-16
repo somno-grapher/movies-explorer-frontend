@@ -10,9 +10,15 @@ import gotoArrowPath from '../../images/icons/goto-arrow.svg';
 function PortfolioLink({ href, children }) {
 
   return (
-    <a href={href} className="portfolio-link">
+    <a className="portfolio-link"
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+    >
       {children}
-      <img src={gotoArrowPath} alt="Стрелка перехода" className="portfolio-link-image" />
+      <img src={gotoArrowPath}
+        alt="Стрелка перехода"
+        className="portfolio-link-image" />
     </a>
   );
 

@@ -1,32 +1,50 @@
 // react vendor import
-import React from 'react';
+import React, { useContext } from 'react';
 
 // react project import
-// import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
+import MoviesContext from '../../contexts/moviesContext.js'
 
 // CSS import
 import './MoviesCard.css';
 
-function MoviesCard({ cardData }) {
+function MoviesCard({
+  cardData
+}) {
+
+  const moviesContext = useContext(MoviesContext);
 
   // TODO: update
   const styles = [
     "movies-card__like-button_style_save",
     "movies-card__like-button_style_saved",
-    "movies-card__like-button_style_delete",
   ]
 
   return (
     <li className='movies-card'>
-      <button
-        type="button"
-        className={`movies-card__like-button
+
+      {/* button */}
+      {moviesContext === "movies"
+        ?
+        <button
+          type="button"
+          className={`movies-card__like-button
         // TODO update
-         ${styles[Math.round(Math.random() * 2)]}
+         ${styles[Math.round(Math.random())]}
         `}
-      //  onClick={handleDeleteClick}
-      >
-      </button>
+        //  onClick={handleLikeClick}
+        >
+        </button>
+        :
+        <button
+          type="button"
+          className={`movies-card__delete-button
+        `}
+        //  onClick={handleDeleteClick}
+        >
+        </button>
+      }
+
+      {/* image */}
       <div className='movies-card__image-container'>
         <img
           className="movies-card__image"
@@ -35,6 +53,8 @@ function MoviesCard({ cardData }) {
         //  onClick={handleCardClick}
         />
       </div>
+
+      {/* info */}
       <div className="movies-card__info">
         <h2 className="movies-card__title">
           {cardData.nameRU}
@@ -43,6 +63,7 @@ function MoviesCard({ cardData }) {
           {cardData.duration}
         </p>
       </div>
+
     </li>
   );
 }

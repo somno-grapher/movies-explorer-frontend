@@ -17,12 +17,20 @@ function Footer() {
         <nav className="footer__navbar">
           <ul className="footer__navbar-list">
             <li className="footer__navbar-item">
-              <a href="https://practicum.yandex.ru/" className="footer__link">
+              <a href="https://practicum.yandex.ru/"
+                className="footer__link"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Яндекс.Практикум
               </a>
             </li>
             <li>
-              <a href="https://github.com/" className="footer__link">
+              <a href="https://github.com/"
+                className="footer__link"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Github
               </a>
             </li>

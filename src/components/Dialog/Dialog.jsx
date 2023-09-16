@@ -1,5 +1,5 @@
 // react vendor import
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from 'react-router-dom';
 
 // react project import
@@ -27,11 +27,19 @@ export default function Dialog({
 
   const styling = useContext(DialogStylingContext);
 
+  const [isEditMode, setIsEditMode] = useState(() => {
+    if (styling === "profile") {
+      return false
+    } else {
+      return true
+    };
+  });
+
   const isLogoDisplayed = styling !== "profile"
     ? true
     : false;
 
-   // 2B rendered
+  // 2B rendered
   return (
     <main className={`dialog
     dialog_styling_${styling}`
@@ -74,24 +82,36 @@ export default function Dialog({
               {/* TODO update */}
               Ошибка
             </span>
-            <button className="dialog__submit-button"
-              type="submit">
-              {buttonText}
-            </button>
+            {!isEditMode &&
+              <button className="dialog__edit-button"
+                type="button"
+                onClick={() => setIsEditMode(true)}
+              >
+                Редактировать
+              </button>
+            }
+            {isEditMode &&
+              <button className="dialog__submit-button"
+                type="submit">
+                {buttonText}
+              </button>
+            }
           </div>
         </form>
 
         {/* navbar */}
-        <nav className="dialog__navbar">
-          <p className="dialog__link-tip">
-            {linkTip}
-          </p>
-          <Link className={`dialog__link
+        {(!isEditMode || styling !== "profile") &&
+          <nav className="dialog__navbar">
+            <p className="dialog__link-tip">
+              {linkTip}
+            </p>
+            <Link className={`dialog__link
           dialog__link_styling_${styling}`}
-            to={linkPath}>
-            {linkTitle}
-          </Link>
-        </nav>
+              to={linkPath}>
+              {linkTitle}
+            </Link>
+          </nav>
+        }
 
       </div>
     </main >

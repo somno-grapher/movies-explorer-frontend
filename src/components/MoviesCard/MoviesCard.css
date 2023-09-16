@@ -31,6 +31,7 @@
   font-weight: 400;
   transition: .3s;
   z-index: 1;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 520px) {
@@ -41,7 +42,6 @@
 }
 
 .movies-card__like-button:hover {
-  cursor: pointer;
   /* TODO: make no transparent */
   opacity: .8;
 }
@@ -59,9 +59,40 @@
   background-image: url("../../images/icons/check-mark.svg");
 }
 
-.movies-card__like-button_style_delete {
+/* .movies-card__delete-button */
+
+.movies-card__delete-button {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  min-height: 21px;
+  min-width: 21px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 8px;
   background-color: #313131;
   background-image: url("../../images/icons/diagonal-cross.svg");
+  padding: 0 9px;
+  border: none;
+  border-radius: 10px;
+  transition: .3s;
+  z-index: 1;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 520px) {
+  .movies-card__delete-button {
+    top: 10px;
+    right: 10px;
+  }
+}
+
+.movies-card__delete-button:hover {
+  /* TODO: make no transparent */
+  opacity: .8;
 }
 
 /* .movies-card__image-container */
