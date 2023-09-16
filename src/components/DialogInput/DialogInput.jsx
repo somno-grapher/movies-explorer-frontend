@@ -12,7 +12,8 @@ export default function DialogInput({
   id,
   label,
   placeholder,
-  validationAttributes
+  validationAttributes,
+  isDisabled
 }) {
 
   // control input
@@ -48,6 +49,7 @@ export default function DialogInput({
         value={value}
         onChange={handleChange}
         {...validationAttributes}
+        {...isDisabled}
       />
 
       {/* error */}

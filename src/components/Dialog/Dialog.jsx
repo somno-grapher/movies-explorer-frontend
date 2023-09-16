@@ -22,7 +22,6 @@ export default function Dialog({
   linkTitle,
   linkPath,
   onSubmit,
-  children,
   inputs
 }) {
 
@@ -86,10 +85,10 @@ export default function Dialog({
                   label={input.label}
                   placeholder={input.placeholder}
                   validationAttributes={input.validationAttributes}
+                  isDisabled={input.isDisabled}
                 />
               )
             })}
-            {/* {children} */}
           </div>
           <div className="dialog__lower-container">
             <span className="dialog__error">
