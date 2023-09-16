@@ -20,7 +20,8 @@ export default function Dialog({
   linkTitle,
   linkPath,
   onSubmit,
-  children
+  children,
+  inputs
 }) {
 
   // utils
@@ -75,7 +76,12 @@ export default function Dialog({
           // noValidate
           onSubmit={onSubmit}>
           <div className="dialog__inputs-container">
-            {children}
+            {inputs.map((input, i) => {
+              return (
+                  input
+              )
+            })}
+            {/* {children} */}
           </div>
           <div className="dialog__lower-container">
             <span className="dialog__error">
