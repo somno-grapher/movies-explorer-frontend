@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 // react project import
 import DialogStylingContext from '../../contexts/dialogStylingContext.js'
+import DialogInput from '../DialogInput/DialogInput.jsx';
+
 
 // image import
 import logoPath from '../../images/logo/logo.svg';
@@ -78,7 +80,13 @@ export default function Dialog({
           <div className="dialog__inputs-container">
             {inputs.map((input, i) => {
               return (
-                  input
+                <DialogInput
+                  key={i}
+                  id={input.id}
+                  label={input.label}
+                  placeholder={input.placeholder}
+                  validationAttributes={input.validationAttributes}
+                />
               )
             })}
             {/* {children} */}

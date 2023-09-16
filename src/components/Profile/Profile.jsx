@@ -24,26 +24,26 @@ export default function Login() {
         linkPath="/"
 
         inputs={[
-          <DialogInput
-            id="register-name"
-            label="Имя"
-            placeholder="Введите имя"
-            validationAttributes={{
+          {
+            id: "register-name",
+            label: "Имя",
+            placeholder: "Введите имя",
+            validationAttributes: {
               type: "text",
               required: true,
               value: userName
-            }}
-          />,
-          <DialogInput
-            id="register-email"
-            label="E-mail"
-            placeholder="Введите e-mail"
-            validationAttributes={{
+            }
+          },
+          {
+            id: "register-email",
+            label: "E-mail",
+            placeholder: "Введите e-mail",
+            validationAttributes: {
               type: "email",
               required: true,
               value: "arbitrary.email"
-            }}
-          />
+            }
+          }
         ]}
 
       >
