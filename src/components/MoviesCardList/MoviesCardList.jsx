@@ -1,10 +1,11 @@
 // react vendor import
-import React from 'react';
+import React, { useContext } from 'react';
 
 // react project import
 import MoviesCard from '../MoviesCard/MoviesCard.jsx';
 import Preloader from '../Preloader/Preloader.jsx';
 import cardsData from './MoviesCardsData.js';
+import MoviesContext from '../../contexts/moviesContext.js'
 
 // CSS import
 import './MoviesCardList.css';
@@ -13,6 +14,9 @@ import './MoviesCardList.css';
 const isLoading = false;
 
 function MoviesCardList() {
+
+  const moviesContext = useContext(MoviesContext);
+
   return (
     <main className="movies-card-list">
       {isLoading
@@ -29,12 +33,14 @@ function MoviesCardList() {
               )
             })}
           </ul>
-          <form className="movies-card-list__controls">
-            <button type="button"
-              className="movies-card-list__more-button">
-              Ещё
-            </button>
-          </form>
+          {moviesContext === "movies" &&
+            <form className="movies-card-list__controls">
+              <button type="button"
+                className="movies-card-list__more-button">
+                Ещё
+              </button>
+            </form>
+          }
         </>
       }
     </main>
