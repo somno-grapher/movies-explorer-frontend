@@ -32,23 +32,23 @@ export default function DialogInput({
     <div className={`dialog-input
     dialog-input_styling_${styling}`}>
 
-        {/* label */}
-        <label className={`dialog-input__label
+      {/* label */}
+      <label className={`dialog-input__label
         dialog-input__label_styling_${styling}`}>
-          {label}
-        </label>
+        {label}
+      </label>
 
-        {/* field */}
-        <input
-          className={`dialog-input__field
+      {/* field */}
+      <input
+        className={`dialog-input__field
           dialog-input__field_styling_${styling}`}
-          name={id}
-          id={id}
-          placeholder={placeholder}
-          value={value}
-          onChange={handleChange}
-          {...validationAttributes}
-        />
+        name={id}
+        id={id}
+        placeholder={placeholder}
+        value={value}
+        onChange={handleChange}
+        {...validationAttributes}
+      />
 
       {/* error */}
       <span className={`dialog-input__error

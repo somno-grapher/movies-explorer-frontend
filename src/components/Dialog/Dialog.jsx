@@ -92,7 +92,8 @@ export default function Dialog({
             }
             {isEditMode &&
               <button className="dialog__submit-button"
-                type="submit">
+                type="submit"
+              >
                 {buttonText}
               </button>
             }

@@ -48,7 +48,7 @@ function Register({
           placeholder="Введите имя"
           validationAttributes={{
             type: "text",
-            reqired: "true",
+            required: true,
           }}
         />
         <DialogInput
@@ -57,7 +57,7 @@ function Register({
           placeholder="Введите e-mail"
           validationAttributes={{
             type: "email",
-            reqired: "true",
+            required: true,
           }}
         />
         <DialogInput

@@ -200,6 +200,12 @@
   opacity: .8;
 }
 
+.dialog__submit-button_disabled {
+  background-color: #f8f8f8;
+  color: #c2c2c2;
+  pointer-events: none;
+}
+
 /* .dialog__navbar */
 
 .dialog__navbar {
@@ -220,7 +226,7 @@
   }
 }
 
-/* *dialog__link-tip */
+/* dialog__link-tip */
 
 .dialog__link-tip {
   margin: 0;

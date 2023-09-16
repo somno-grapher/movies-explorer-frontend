@@ -49,7 +49,7 @@ export default function Login({
           placeholder="Введите e-mail"
           validationAttributes={{
             type: "email",
-            reqired: "true",
+            required: true,
           }}
         />
         <DialogInput
@@ -58,7 +58,7 @@ export default function Login({
           placeholder="Введите пароль"
           validationAttributes={{
             type: "password",
-            reqired: "true",
+            required: true,
           }}
         />
       </Dialog>

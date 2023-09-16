@@ -1,9 +1,8 @@
-# movies-explorer-api
+# movies-explorer-frontend
 
-Репозиторий для пользовательской бэкенд-части приложения кинопоиска.  
-Адрес репозитория: https://github.com/somno-grapher/movies-explorer-api.git
+Репозиторий для клиентской части приложения кинопоиска.  
+Адрес репозитория: https://github.com/somno-grapher/movies-explorer-frontend.git
 
-## Ссылки на проект
+## Ссылка на макет
 
-IP 158.160.2.117
-https://api.d-movies-explorer.nomoredomains.work
+https://disk.yandex.ru/d/vxn7rwrhIeYGmg

@@ -1,5 +1,5 @@
 // react vendor import
-import React, { useState } from "react";
+import React from "react";
 
 // react project import
 import Dialog from '../Dialog/Dialog.jsx';
@@ -12,27 +12,7 @@ export default function Login({
   handleLogin
 }) {
 
-  const [formValue, setFormValue] = useState({
-    email: '',
-    password: ''
-  });
-
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setFormValue({
-      ...formValue,
-      [name]: value
-    });
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    handleLogin(
-      formValue.password,
-      formValue.email,
-      setFormValue);
-  }
-
+  // TODO update
   const userName = "Жак Ив"
   const title = "Привет, " + userName + "!";
 
@@ -44,23 +24,25 @@ export default function Login({
         buttonText="Сохранить"
         linkTitle="Выйти из аккаунта"
         linkPath="/"
-        onSubmit={handleSubmit}>
+      >
+        <DialogInput
+          id="register-name"
+          label="Имя"
+          placeholder="Введите имя"
+          validationAttributes={{
+            type: "text",
+            required: true,
+            value: userName
+          }}
+        />
         <DialogInput
           id="register-email"
           label="E-mail"
           placeholder="Введите e-mail"
           validationAttributes={{
             type: "email",
-            reqired: "true",
-          }}
-        />
-        <DialogInput
-          id="register-password"
-          label="Пароль"
-          placeholder="Введите пароль"
-          validationAttributes={{
-            type: "password",
-            reqired: "true",
+            required: true,
+            value: "arbitrary.email"
           }}
         />
       </Dialog>
