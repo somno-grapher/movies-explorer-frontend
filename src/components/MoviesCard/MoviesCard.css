@@ -21,6 +21,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 8px;
+  background-color: #313131;
   padding: 0 9px;
   border: none;
   /* TODO think about better implementation */
@@ -46,17 +47,17 @@
   opacity: .8;
 }
 
-.movies-card__like-button_style_save {
-  background-color: #313131;
-}
-
-.movies-card__like-button_style_save:after {
+.movies-card__like-button:after {
   content: "Сохранить";
 }
 
-.movies-card__like-button_style_saved {
+.movies-card__like-button_liked {
   background-color: #ee3465;
   background-image: url("../../images/icons/check-mark.svg");
+}
+
+.movies-card__like-button_liked:after {
+  content: '';
 }
 
 /* .movies-card__delete-button */

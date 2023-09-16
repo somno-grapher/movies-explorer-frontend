@@ -15,8 +15,7 @@ function MoviesCard({
 
   // TODO: update
   const styles = [
-    "movies-card__like-button_style_save",
-    "movies-card__like-button_style_saved",
+    "movies-card__like-button_liked"
   ]
 
   return (
