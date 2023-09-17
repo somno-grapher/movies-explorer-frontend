@@ -16,8 +16,11 @@
 
 @media screen and (max-width: 520px) {
   .search-form {
-    padding-top: 98px;
+    box-sizing: border-box;
+    padding-top: 92px;
     padding-bottom: 50px;
+    padding-right: 4px;
+    padding-left: 4px;
   }
 }
 
@@ -32,7 +35,7 @@
 
 @media screen and (max-width: 520px) {
   .search-form__upper-container {
-    padding-bottom: 59px;
+    padding-bottom: 53px;
   }
 }
 

@@ -15,7 +15,7 @@
 
 @media screen and (max-width: 520px) {
   .movies {
-    padding-left: 14px;
-    padding-right: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
