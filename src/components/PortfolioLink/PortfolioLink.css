@@ -10,6 +10,7 @@
   font-weight: 400;
   color: #fff;
   text-decoration: none;
+  letter-spacing: -.04em;
   transition: .3s;
 }
 
@@ -36,8 +37,9 @@
 /* .portfolio-link-image */
 
 .portfolio-link-image {
-  width: 17px;
+  width: 19px;
   object-fit: contain;
+  padding: 6px 6px 0px
 }
 
 @media screen and (max-width: 917px) {
