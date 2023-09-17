@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 // react project import
 import Navigation from '../Navigation/Navigation.jsx';
+import Logo from '../Logo/Logo.jsx';
 
 // image import
 import logoPath from '../../images/logo/logo.svg';
@@ -33,16 +34,8 @@ function Header({
 
     <header
       className={location.pathname === '/' ? "header header_main" : "header"}>
-      {/* TODO convert into component */}
-      <Link
-        to="/"
-      >
-        <img
-          className="header__logo"
-          src={logoPath}
-          alt="Логотип"
-        />
-      </Link>
+
+      <Logo />
 
       {!isLoggedIn && (
         <div className="header__unauthorized">
