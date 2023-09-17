@@ -5,6 +5,7 @@
   font-size: 22px;
   line-height: 1.23;
   font-weight: 400;
+  letter-spacing: -.04em;
 }
 
 .main-subtitle::after {
