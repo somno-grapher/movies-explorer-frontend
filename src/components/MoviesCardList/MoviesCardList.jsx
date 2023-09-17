@@ -33,14 +33,15 @@ function MoviesCardList() {
               )
             })}
           </ul>
-          {moviesContext === "movies" &&
-            <form className="movies-card-list__controls">
+          <form className={`movies-card-list__controls
+            ${moviesContext === "saved-movies" && "movies-card-list__controls_saved-movies"}`}>
+            {moviesContext === "movies" &&
               <button type="button"
-                className="movies-card-list__more-button">
+                className={`movies-card-list__more-button`}>
                 Ещё
               </button>
-            </form>
-          }
+            }
+          </form>
         </>
       }
     </main>
