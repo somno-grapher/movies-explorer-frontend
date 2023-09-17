@@ -52,6 +52,7 @@
 }
 
 .search-form__icon {
+  padding-left: 3px;
   width: 34px;
   height: 34px;
 }
