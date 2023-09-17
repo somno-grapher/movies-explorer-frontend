@@ -33,7 +33,6 @@
   opacity: .7;
 }
 
-
 /* .portfolio-link-image */
 
 .portfolio-link-image {
@@ -50,6 +49,7 @@
 
 @media screen and (max-width: 520px) {
   .portfolio-link-image {
-    width: 10px;
+    width: 11px;
+    padding: 0px 4px 0px;
   }
 }

@@ -12,10 +12,9 @@
 
 @media screen and (max-width: 520px) {
   .portfolio {
-    padding: 70px 14px;
+    padding: 0 14px 50px;
   }
 }
-
 
 /* .portfolio__header */
 
@@ -36,7 +35,6 @@
   }
 }
 
-
 /* .portfolio__links-list */
 
 .portfolio__links-list {
@@ -46,7 +44,6 @@
   padding: 0;
   list-style-type: none;
 }
-
 
 /* .portfolio__links-list-item */
 
