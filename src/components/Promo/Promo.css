@@ -30,6 +30,7 @@
   font-size: 40px;
   line-height: 1.3;
   font-weight: 400;
+  letter-spacing: -.04em;
 }
 
 @media screen and (max-width: 917px) {
@@ -52,7 +53,7 @@
 
 .promo__image {
   align-self: flex-end;
-  height: 224px;
+  height: 244px;
   object-fit: contain;
 }
 
