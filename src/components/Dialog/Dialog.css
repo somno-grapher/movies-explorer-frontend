@@ -59,7 +59,7 @@
 /* .dialog__logo-link-wrapper */
 
 @media screen and (max-width: 520px) {
-  .dialog__logo-link-wrapper {
+  .dialog__logo-container {
     align-self: center;
   }
 }
@@ -124,8 +124,12 @@
 
 /* .dialog__inputs-container */
 
-.dialog__inputs-container {
+.dialog__inputs-container_styling_entry {
   min-height: 266px;
+}
+
+.dialog__inputs-container_styling_profile {
+  min-height: 212px;
 }
 
 /* .dialog__lower-container */
@@ -216,6 +220,14 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 1.21;
+}
+
+.dialog__navbar_styling_entry {
+  font-size: 14px;
+}
+
+.dialog__navbar_styling_profile {
+  font-size: 13px;
 }
 
 @media screen and (max-width: 520px) {

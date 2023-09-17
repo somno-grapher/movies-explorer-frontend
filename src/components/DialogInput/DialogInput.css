@@ -32,6 +32,8 @@
 /* .dialog-input__field */
 
 .dialog-input__field {
+  padding: 0;
+  margin: 0;
   position: relative;
   border: none;
   background-color: transparent;
@@ -44,6 +46,7 @@
 }
 
 .dialog-input__field_styling_profile {
+  min-height: 14px;
   font-size: 11px;
   flex-basis: 100%;
   text-align: right;
@@ -63,8 +66,8 @@
 .dialog-input__error {
   position: relative;
   min-height: 19px;
-  margin: 10px 0 0;
-  padding: 6px 0 0;
+  margin: 0;
+  padding: 0;
   color: #ee3465;
   font-weight: 400;
   font-size: 12px;
@@ -72,8 +75,15 @@
   visibility: hidden;
 }
 
+.dialog-input__error_styling_entry {
+  margin-top: 10px;
+  padding-top: 6px;
+}
+
 .dialog-input__error_styling_profile {
   grid-column: 1/3;
+  margin-top: 15px;
+  padding-top: 1px;
 }
 
 .dialog-input__error::before {

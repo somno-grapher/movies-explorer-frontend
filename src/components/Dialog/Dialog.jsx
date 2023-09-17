@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 // react project import
 import DialogStylingContext from '../../contexts/dialogStylingContext.js'
 import DialogInput from '../DialogInput/DialogInput.jsx';
-
+import Logo from '../Logo/Logo.jsx';
 
 // image import
 import logoPath from '../../images/logo/logo.svg';
@@ -54,12 +54,10 @@ export default function Dialog({
 
         {/* logo */}
         {isLogoDisplayed &&
-          <Link className="dialog__logo-link-wrapper"
+          <div className="dialog__logo-container"
             to="/">
-            <img className="dialog__logo"
-              src={logoPath}
-              alt="Логотип" />
-          </Link>
+            <Logo />
+          </div>
         }
 
         {/* title */}
@@ -76,7 +74,8 @@ export default function Dialog({
           // TODO: provide js validation
           // noValidate
           onSubmit={onSubmit}>
-          <div className="dialog__inputs-container">
+          <div className={`dialog__inputs-container
+          dialog__inputs-container_styling_${styling}`}>
             {inputs.map((input, i) => {
               return (
                 <DialogInput
@@ -115,7 +114,8 @@ export default function Dialog({
 
         {/* navbar */}
         {(!isEditMode || styling !== "profile") &&
-          <nav className="dialog__navbar">
+          <nav className={`dialog__navbar
+          dialog__navbar_styling_${styling}`}>
             <p className="dialog__link-tip">
               {linkTip}
             </p>

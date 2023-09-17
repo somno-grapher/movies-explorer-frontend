@@ -6,9 +6,6 @@ import { Link, useLocation } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation.jsx';
 import Logo from '../Logo/Logo.jsx';
 
-// image import
-import logoPath from '../../images/logo/logo.svg';
-
 // CSS import
 import './Header.css';
 
