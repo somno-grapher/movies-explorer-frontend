@@ -22,11 +22,11 @@ export default function Login() {
         linkPath="/signup"
         inputs={[
           {
-            id: "register-name",
-            label: "Имя",
-            placeholder: "Введите имя",
+            id: "register-email",
+            label: "E-mail",
+            placeholder: "Введите почту",
             validationAttributes: {
-              type: "text",
+              type: "email",
               required: true,
             }
           },

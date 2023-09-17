@@ -1,12 +1,7 @@
 /* .not-found */
 
 .not-found {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,7 +45,7 @@
 /* .not-found__text */
 
 .not-found__text {
-  margin: 0;
+  margin: 3px 0 0;
   padding: 0;
   color: #fff;
   font-size: 16px;
@@ -65,10 +60,8 @@
 /* .not-found__go-back-button */
 
 .not-found__go-back-button {
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  bottom: -184px;
+  position: relative;
+  top:184px;
   border: none;
   background-color: transparent;
   color: #4285f4;
