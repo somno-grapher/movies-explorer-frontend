@@ -6,19 +6,12 @@
   line-height: 1.23;
   font-weight: 400;
   letter-spacing: -.04em;
-}
-
-.main-subtitle::after {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
   border-bottom: 1px solid #dadada;
-  content: '';
 }
 
 @media screen and (max-width: 520px) {
   .main-subtitle {
+    padding-bottom: 28px;
     font-size: 18px;
   }
 }

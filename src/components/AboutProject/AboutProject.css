@@ -18,7 +18,6 @@
   }
 }
 
-
 /* .about__description */
 
 .about__description {
@@ -38,19 +37,17 @@
 @media screen and (max-width: 520px) {
   .about__description {
     padding-top: 60px;
-    padding-bottom: 56px;
+    padding-bottom: 60px;
     flex-direction: column;
     row-gap: 56px;
   }
 }
-
 
 /* .about__article */
 
 .about__article {
   flex-basis: 50%;
 }
-
 
 /* .about__article-header */
 
@@ -72,9 +69,10 @@
 @media screen and (max-width: 520px) {
   .about__article-header {
     padding-bottom: 16px;
+    font-size: 18px;
+    line-height: 1.22;
   }
 }
-
 
 /* .about__article-text */
 
@@ -98,7 +96,6 @@
     line-height: 1.45;
   }
 }
-
 
 /* .about__timeline */
 
@@ -136,12 +133,10 @@
 }
 
 @media screen and (max-width: 520px) {
-  .about__timeline {
+  .about__timeline-task {
     padding-top: 10px;
-    padding-bottom: 11px;
   }
 }
-
 
 /* .about__timeline-duration */
 
