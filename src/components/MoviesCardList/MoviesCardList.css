@@ -49,14 +49,18 @@
   padding: 50px 0 0;
 }
 
+.movies-card-list__controls_saved-movies {
+  padding-top: 132px;
+}
+
 @media screen and (max-width: 917px) {
   .movies-card-list__controls {
     padding-top: 34px;
   }
-}
 
-.movies-card-list__controls_saved-movies {
-  padding-top: 132px;
+  .movies-card-list__controls_saved-movies {
+    padding-top: 68px;
+  }
 }
 
 /* .movies-card-list__more-button */
