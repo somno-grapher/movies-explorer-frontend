@@ -20,7 +20,6 @@
   }
 }
 
-
 /* .promo__title */
 
 .promo__title {
@@ -45,6 +44,7 @@
   .promo__title {
     margin-bottom: 60px;
     font-size: 31px;
+    line-height: 1.26;
   }
 }
 

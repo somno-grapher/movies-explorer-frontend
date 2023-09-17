@@ -159,12 +159,6 @@
   opacity: .7;
 }
 
-@media screen and (max-width: 917px) {
-  .navigation__account {
-    /* display: none; */
-  }
-}
-
 .navigation__account-title {
   color: #fff;
 }
@@ -179,7 +173,6 @@
   background-position: center;
   background-size: 11px;
 }
-
 
 .navigation__close-button {
   display: none;
