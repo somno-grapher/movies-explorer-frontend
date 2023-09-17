@@ -1,5 +1,5 @@
 .logo {
-  display: inline;
+  display: flex;
   transition: .3s;
   cursor: pointer;
 }
