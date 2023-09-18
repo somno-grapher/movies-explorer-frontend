@@ -57,8 +57,8 @@ function Header({
             onClose={closeNavigation}
           />
           <button
-            type="button"
             className="header__hamburger"
+            type="button"
             onClick={openNavigation}
           />
         </>

@@ -26,6 +26,7 @@ function NotFound() {
         </main>
         <button
           className="not-found__go-back-button"
+          type="button"
           onClick={goBack}
         >
           Назад
