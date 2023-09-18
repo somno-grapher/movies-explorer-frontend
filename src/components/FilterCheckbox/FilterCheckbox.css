@@ -1,6 +1,10 @@
-
-.filter-checkbox{
+.filter-checkbox {
   display: flex;
+  transition: .3s;
+}
+
+.filter-checkbox:hover {
+opacity: .8;
 }
 
 .filter-checkbox__label {
