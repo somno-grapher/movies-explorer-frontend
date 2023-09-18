@@ -7,7 +7,7 @@
   align-items: center;
 }
 
-@media screen and (max-width: 917px) {
+@media screen and (max-width: 768px) {
   .search-form {
     padding-top: 86px;
     padding-bottom: 62px;

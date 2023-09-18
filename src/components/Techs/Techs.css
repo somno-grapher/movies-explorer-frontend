@@ -7,7 +7,7 @@
   background-color: #272727;
 }
 
-@media screen and (max-width: 917px) {
+@media screen and (max-width: 768px) {
   .techs {
     padding: 90px 50px;
   }
@@ -33,7 +33,7 @@
   letter-spacing: -.04em;
 }
 
-@media screen and (max-width: 917px) {
+@media screen and (max-width: 768px) {
   .techs__header {
     padding-top: 80px;
     padding-bottom: 22px;
@@ -64,7 +64,7 @@
   letter-spacing: -.04em;
 }
 
-@media screen and (max-width: 917px) {
+@media screen and (max-width: 768px) {
   .techs__text {
     padding-bottom: 83px;
     font-size: 12px;
@@ -99,7 +99,7 @@
   letter-spacing: -.04em;
 }
 
-@media screen and (max-width: 917px) {
+@media screen and (max-width: 768px) {
   .techs__list {
     box-sizing: border-box;
     padding-right: 10px;
@@ -121,7 +121,7 @@
   border-radius: 10px;
 }
 
-@media screen and (max-width: 917px) {
+@media screen and (max-width: 768px) {
   .techs__list-item {
     min-height: 57px;
   }

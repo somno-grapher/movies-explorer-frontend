@@ -131,7 +131,7 @@
   padding: 14px 14px 0;
 }
 
-@media screen and (max-width: 917px) {
+@media screen and (max-width: 768px) {
   .movies-card__info {
     padding-top: 25px;
     padding-left: 0;

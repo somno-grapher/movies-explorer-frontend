@@ -93,7 +93,7 @@
   text-align: center;
 }
 
-@media screen and (max-width:917px) {
+@media screen and (max-width:768px) {
   .dialog__title_styling_profile {
     padding-bottom: 98px;
   }
@@ -138,7 +138,7 @@
   min-height: 212px;
 }
 
-@media screen and (max-width:917px) {
+@media screen and (max-width:768px) {
   .dialog__inputs-container_styling_profile {
     min-height: 204px;
   }

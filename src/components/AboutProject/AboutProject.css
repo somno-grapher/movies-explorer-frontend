@@ -6,7 +6,7 @@
   padding: 110px 70px;
 }
 
-@media screen and (max-width: 917px) {
+@media screen and (max-width: 768px) {
   .about {
     padding: 90px 50px;
   }
@@ -27,7 +27,7 @@
   column-gap: 40px;
 }
 
-@media screen and (max-width: 917px) {
+@media screen and (max-width: 768px) {
   .about__description {
     column-gap: 30px;
     padding-bottom: 93px;
@@ -60,7 +60,7 @@
   letter-spacing: -.04em;
 }
 
-@media screen and (max-width: 917px) {
+@media screen and (max-width: 768px) {
   .about__article-header {
     padding-bottom: 22px;
   }
@@ -83,7 +83,7 @@
   line-height: 1.43;
 }
 
-@media screen and (max-width: 917px) {
+@media screen and (max-width: 768px) {
   .about__article-text {
     font-size: 12px;
     line-height: 1.5;

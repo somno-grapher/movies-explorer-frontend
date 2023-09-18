@@ -14,7 +14,7 @@
   transition: .3s;
 }
 
-@media screen and (max-width: 917px) {
+@media screen and (max-width: 768px) {
   .portfolio-link {
     font-size: 28px;
     line-height: 1.79;
@@ -41,7 +41,7 @@
   padding: 6px 6px 0px
 }
 
-@media screen and (max-width: 917px) {
+@media screen and (max-width: 768px) {
   .portfolio-link-image {
     width: 16px;
   }
