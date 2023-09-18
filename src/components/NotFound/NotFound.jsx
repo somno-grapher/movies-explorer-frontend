@@ -20,8 +20,10 @@ function NotFound() {
     <div className="not-found">
       {/* container is used for go-back-button positioning on wide screens */}
       <div className="not-found__container">
-        <h1 className="not-found__title">404</h1>
-        <p className="not-found__text">Страница не найдена</p>
+        <main className="not-found__main">
+          <h1 className="not-found__title">404</h1>
+          <p className="not-found__text">Страница не найдена</p>
+        </main>
         <button
           className="not-found__go-back-button"
           onClick={goBack}
