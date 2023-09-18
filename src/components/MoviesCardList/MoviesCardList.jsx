@@ -18,7 +18,7 @@ function MoviesCardList() {
   const moviesContext = useContext(MoviesContext);
 
   return (
-    <main className="movies-card-list">
+    <section className="movies-card-list">
       {isLoading
         ?
         <Preloader />
@@ -44,7 +44,7 @@ function MoviesCardList() {
           </form>
         </>
       }
-    </main>
+    </section>
   );
 }
 
