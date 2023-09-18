@@ -7,9 +7,6 @@ import DialogStylingContext from '../../contexts/dialogStylingContext.js'
 import DialogInput from '../DialogInput/DialogInput.jsx';
 import Logo from '../Logo/Logo.jsx';
 
-// image import
-import logoPath from '../../images/logo/logo.svg';
-
 // CSS import
 import './Dialog.css';
 
