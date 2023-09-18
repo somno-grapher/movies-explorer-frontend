@@ -35,7 +35,7 @@ function Header({
       <Logo />
 
       {!isLoggedIn && (
-        <div className="header__unauthorized">
+        <nav className="header__unauthorized">
           <Link
             className="header__item header__item_type_regular"
             to="/signup"
@@ -48,7 +48,7 @@ function Header({
           >
             Войти
           </Link>
-        </div>)}
+        </nav>)}
 
       {isLoggedIn &&
         <>
