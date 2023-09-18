@@ -58,11 +58,11 @@ export default function Dialog({
         }
 
         {/* title */}
-        <h2 className={`dialog__title
+        <h1 className={`dialog__title
         dialog__title_styling_${styling}`
         }>
           {title}
-        </h2>
+        </h1>
 
         {/* form */}
         <form className="dialog__form"
