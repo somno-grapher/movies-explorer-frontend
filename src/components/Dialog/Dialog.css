@@ -189,6 +189,12 @@
   opacity: .8;
 }
 
+@media screen and (max-width:520px) {
+  .dialog__edit-button {
+    font-size: 12px;
+  }
+}
+
 /* .dialog__submit-button */
 
 .dialog__submit-button {
