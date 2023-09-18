@@ -36,6 +36,8 @@ export default function Login() {
             placeholder: "Введите пароль",
             validationAttributes: {
               type: "password",
+              minLength: 8,
+              maxLength: 30,
               required: true,
             }
           }

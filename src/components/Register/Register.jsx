@@ -26,6 +26,8 @@ function Register() {
             placeholder: "Введите имя",
             validationAttributes: {
               type: "text",
+              minLength: 2,
+              maxLength: 30,
               required: true,
             }
           },
@@ -44,6 +46,8 @@ function Register() {
             placeholder: "Введите пароль",
             validationAttributes: {
               type: "password",
+              minLength: 8,
+              maxLength: 30,
               required: true,
             }
           }

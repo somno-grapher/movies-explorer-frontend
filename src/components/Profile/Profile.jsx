@@ -28,6 +28,8 @@ export default function Login() {
             placeholder: "Введите имя",
             validationAttributes: {
               type: "text",
+              minLength: 2,
+              maxLength: 30,
               required: true,
               value: userName
             },
