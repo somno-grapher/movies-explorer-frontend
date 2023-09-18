@@ -34,7 +34,7 @@ function Navigation({
             to="/saved-movies"
             onClick={onClose}
           >
-            Сохраненные фильмы
+            Сохранённые фильмы
           </NavLink>
         </nav>
         <Link
