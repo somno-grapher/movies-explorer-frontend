@@ -1,4 +1,8 @@
 
+.filter-checkbox{
+  display: flex;
+}
+
 .filter-checkbox__label {
   background-color: #ebebeb;
   min-width: 34px;

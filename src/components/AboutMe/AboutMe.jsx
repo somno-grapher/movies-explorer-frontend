@@ -29,7 +29,11 @@ function AboutMe() {
             Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена
             и дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015 года работал в компании «СКБ Контур». После того, как прошёл курс по веб-разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.
           </p>
-          <a href="https://github.com/somno-grapher" className="about-me__github">Github</a>
+          <a href="https://github.com/somno-grapher" className="about-me__github"
+            target="_blank"
+            rel="noreferrer">
+            Github
+          </a>
         </div>
         <img src={myPhotoPath} alt="Мое фото" className="about-me__photo" />
       </article>
