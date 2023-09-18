@@ -1,3 +1,5 @@
+/* TODO enhance rules for desktop resolution */
+
 /* .not-found */
 
 .not-found {
@@ -22,7 +24,11 @@
 
 @media screen and (max-width: 520px) {
   .not-found__container {
+    height: 100%;
     position: static;
+    margin-top: 45px;
+    margin-bottom: 30px;
+    justify-content: center;
   }
 }
 
@@ -30,7 +36,7 @@
 
 .not-found__title {
   margin: 0;
-  padding: 0;
+  padding: 0 0 8px;
   color: #fff;
   font-size: 140px;
   font-weight: 400;
@@ -39,6 +45,7 @@
 @media screen and (max-width: 520px) {
   .not-found__title {
     font-size: 80px;
+    margin-top: auto;
   }
 }
 
@@ -54,6 +61,7 @@
 @media screen and (max-width: 520px) {
   .not-found__text {
     font-size: 12px;
+    margin-bottom: auto;
   }
 }
 
@@ -71,7 +79,7 @@
 
 @media screen and (max-width: 520px) {
   .not-found__go-back-button {
-    bottom: 30px;
+    position: static;
     font-size: 12px;
   }
 }
