@@ -46,6 +46,11 @@
   width: 100%;
   border-bottom: 1px solid #424242;
   content: '';
+  transition: .3s;
+}
+
+.search-form__upper-container:focus-within::after {
+  border-color: #4285f4;
 }
 
 @media screen and (max-width: 520px) {
@@ -90,6 +95,10 @@
   background-color: transparent;
   font-weight: 500;
   color: #fff;
+}
+
+.search-form__input:focus {
+  outline: none;
 }
 
 @media screen and (max-width: 520px) {

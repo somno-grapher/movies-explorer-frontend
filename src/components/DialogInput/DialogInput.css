@@ -41,6 +41,10 @@
   font-weight: 400;
 }
 
+.dialog-input__field:focus {
+  outline: none;
+}
+
 .dialog-input__field_styling_entry {
   font-size: 14px;
 }
