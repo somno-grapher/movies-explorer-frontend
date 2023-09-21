@@ -1,0 +1,55 @@
+/* .portfolio-link  */
+
+.portfolio-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 88px;
+  font-size: 30px;
+  line-height: 1.67;
+  font-weight: 400;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: -.04em;
+  transition: .3s;
+}
+
+@media screen and (max-width: 768px) {
+  .portfolio-link {
+    font-size: 28px;
+    line-height: 1.79;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .portfolio-link {
+    min-height: 67px;
+    font-size: 18px;
+    line-height: 1.26;
+  }
+}
+
+.portfolio-link:hover {
+  opacity: .7;
+}
+
+/* .portfolio-link-image */
+
+.portfolio-link-image {
+  width: 19px;
+  object-fit: contain;
+  padding: 6px 6px 0px
+}
+
+@media screen and (max-width: 768px) {
+  .portfolio-link-image {
+    width: 16px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .portfolio-link-image {
+    width: 11px;
+    padding: 0px 4px 0px;
+  }
+}

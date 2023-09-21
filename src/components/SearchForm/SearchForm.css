@@ -1,0 +1,148 @@
+.search-form {
+  padding-top: 70px;
+  padding-bottom: 49px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .search-form {
+    padding-top: 86px;
+    padding-bottom: 62px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .search-form {
+    box-sizing: border-box;
+    padding-top: 92px;
+    padding-bottom: 50px;
+    padding-right: 4px;
+    padding-left: 4px;
+  }
+}
+
+.search-form__upper-container {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 46px;
+  position: relative;
+}
+
+@media screen and (max-width: 520px) {
+  .search-form__upper-container {
+    padding-bottom: 53px;
+  }
+}
+
+.search-form__upper-container::after {
+  position: absolute;
+  left: 0;
+  bottom: 30px;
+  width: 100%;
+  border-bottom: 1px solid #424242;
+  content: '';
+  transition: .3s;
+}
+
+.search-form__upper-container:focus-within::after {
+  border-color: #4285f4;
+}
+
+@media screen and (max-width: 520px) {
+  .search-form__upper-container::after {
+    bottom: 43px;
+  }
+}
+
+.search-form__icon {
+  padding-left: 3px;
+  width: 34px;
+  height: 34px;
+}
+
+@media screen and (max-width: 520px) {
+  .search-form__icon {
+    display: none;
+  }
+}
+
+.search-form__input-label {
+  width: 100%;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 520px) {
+  .search-form__input-label {
+    margin-left: 0;
+  }
+}
+
+.search-form__input {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  text-align: center;
+  border: none;
+  font-size: 28px;
+  line-height: 1.21;
+  background-color: transparent;
+  font-weight: 500;
+  color: #fff;
+}
+
+.search-form__input:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 520px) {
+  .search-form__input {
+    text-align: left;
+    font-size: 18px;
+  }
+}
+
+.search-form__input::placeholder {
+  color: #8b8b8b;
+}
+
+.search-form__submit-button {
+  min-width: 34px;
+  height: 34px;
+  background-image: url('../../images/icons/submit-arrow.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+  transition: .3s;
+}
+
+.search-form__submit-button:hover {
+  opacity: .8;
+}
+
+.search-form__checkbox-area {
+  display: flex;
+  column-gap: 12px;
+  align-items: center;
+  color: #fff;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.29;
+}
+
+@media screen and (max-width: 520px) {
+  .search-form__checkbox-area {
+    font-size: 11px;
+    line-height: 1.64;
+  }
+}

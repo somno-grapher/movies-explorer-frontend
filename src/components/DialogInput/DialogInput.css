@@ -1,0 +1,110 @@
+/* .dialog-input */
+
+.dialog-input {
+  display: grid;
+  line-height: 1.21;
+}
+
+.dialog-input_styling_entry {
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(3, auto);
+}
+
+.dialog-input_styling_profile {
+  grid-template-columns: 60px auto;
+  grid-template-rows: repeat(2, auto);
+}
+
+/* .dialog-input__label */
+
+.dialog-input__label_styling_entry {
+  padding-bottom: 5px;
+  font-size: 10px;
+  color: #8b8b8b;
+}
+
+.dialog-input__label_styling_profile {
+  flex-basis: 141px;
+  font-size: 11px;
+  color: #fff;
+}
+
+/* .dialog-input__field */
+
+.dialog-input__field {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  font-weight: 400;
+}
+
+.dialog-input__field:focus {
+  outline: none;
+}
+
+.dialog-input__field_styling_entry {
+  font-size: 14px;
+}
+
+.dialog-input__field_styling_profile {
+  min-height: 14px;
+  font-size: 11px;
+  flex-basis: 100%;
+  text-align: right;
+}
+
+.dialog-input__field_invalid {
+  color: #ee3465;
+}
+
+.dialog-input__field::placeholder {
+  color: #8b8b8b;
+  opacity: 1;
+}
+
+/* .dialog-input__error */
+
+.dialog-input__error {
+  position: relative;
+  min-height: 19px;
+  margin: 0;
+  padding: 0;
+  color: #ee3465;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.25;
+  visibility: hidden;
+}
+
+.dialog-input__error_styling_entry {
+  margin-top: 10px;
+  padding-top: 6px;
+}
+
+.dialog-input__error_styling_profile {
+  grid-column: 1/3;
+  margin-top: 15px;
+  padding-top: 1px;
+}
+
+.dialog-input__error::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  border-top: 1px solid #424242;
+  content: '';
+  transition: .3s;
+  visibility: visible;
+}
+
+.dialog-input__field:focus+.dialog-input__error::before {
+  border-color: #4285f4;
+}
+
+.dialog__input__error_visible {
+  visibility: visible;
+}

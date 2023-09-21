@@ -1,0 +1,42 @@
+.filter-checkbox {
+  display: flex;
+  transition: .3s;
+}
+
+.filter-checkbox:hover {
+opacity: .8;
+}
+
+.filter-checkbox__label {
+  background-color: #ebebeb;
+  min-width: 34px;
+  height: 14px;
+  border-radius: 7px;
+  cursor: pointer;
+  position: relative;
+  transition: 0.2s;
+}
+
+.filter-checkbox__label::before {
+  position: absolute;
+  content: '';
+  background-color: #f5f5f5;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  margin: 2px;
+  transition: 0.2s;
+}
+
+.filter-checkbox__input:checked+.filter-checkbox__label {
+  background-color: #2BE080;
+}
+
+.filter-checkbox__input:checked+.filter-checkbox__label::before {
+  transform: translateX(20px);
+  background-color: #fff;
+}
+
+.filter-checkbox__input {
+  display: none;
+}

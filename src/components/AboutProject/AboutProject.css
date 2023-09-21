@@ -1,0 +1,165 @@
+/* .about */
+
+.about {
+  display: flex;
+  flex-direction: column;
+  padding: 110px 70px;
+}
+
+@media screen and (max-width: 768px) {
+  .about {
+    padding: 90px 50px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .about {
+    padding: 70px 18px;
+  }
+}
+
+/* .about__description */
+
+.about__description {
+  padding-top: 70px;
+  padding-bottom: 110px;
+  display: flex;
+  column-gap: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .about__description {
+    column-gap: 30px;
+    padding-bottom: 93px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .about__description {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    flex-direction: column;
+    row-gap: 56px;
+  }
+}
+
+/* .about__article */
+
+.about__article {
+  flex-basis: 50%;
+}
+
+/* .about__article-header */
+
+.about__article-header {
+  margin: 0;
+  padding: 0 0 26px;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: -.04em;
+}
+
+@media screen and (max-width: 768px) {
+  .about__article-header {
+    padding-bottom: 22px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .about__article-header {
+    padding-bottom: 16px;
+    font-size: 18px;
+    line-height: 1.22;
+  }
+}
+
+/* .about__article-text */
+
+.about__article-text {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.43;
+}
+
+@media screen and (max-width: 768px) {
+  .about__article-text {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .about__article-text {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+}
+
+/* .about__timeline */
+
+.about__timeline {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.25;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 520px) {
+  .about__timeline {
+    grid-template-columns: 100fr 184fr;
+    font-size: 11px;
+    line-height: 1.18;
+  }
+}
+
+
+/* .about__timeline-task */
+
+.about__timeline-task {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 14px 0 0;
+  background-color: #202020;
+  color: #8b8b8b;
+}
+
+@media screen and (max-width: 520px) {
+  .about__timeline-task {
+    padding-top: 10px;
+  }
+}
+
+/* .about__timeline-duration */
+
+.about__timeline-duration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 9px 0;
+  list-style-type: none;
+  text-align: center;
+  background-color: #3ddc84;
+  color: #000;
+}
+
+.about__timeline-duration:nth-of-type(2) {
+  background-color: #303030;
+  color: #fff;
+}
+
+@media screen and (max-width: 520px) {
+  .about__timeline-duration {
+    padding-top: 11px;
+    padding-bottom: 11px;
+  }
+}

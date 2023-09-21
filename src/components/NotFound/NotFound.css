@@ -1,0 +1,102 @@
+/* TODO simplify rules */
+
+/* .not-found */
+
+.not-found {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 400;
+  line-height: 1.21;
+}
+
+/* .not-found__container */
+
+.not-found__container {
+  margin-top: auto;
+  margin-bottom: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (max-width: 520px) {
+  .not-found__container {
+    height: 100%;
+    position: static;
+    margin-top: 45px;
+    margin-bottom: 30px;
+    justify-content: center;
+  }
+}
+
+/* .not-found__main */
+
+.not-found__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (max-width: 520px) {
+  .not-found__main {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+
+/* .not-found__title */
+
+.not-found__title {
+  margin: 0;
+  padding: 0 0 8px;
+  color: #fff;
+  font-size: 140px;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 520px) {
+  .not-found__title {
+    font-size: 80px;
+  }
+}
+
+/* .not-found__text */
+
+.not-found__text {
+  margin: 3px 0 0;
+  padding: 0;
+  color: #fff;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 520px) {
+  .not-found__text {
+    font-size: 12px;
+  }
+}
+
+/* .not-found__go-back-button */
+
+.not-found__go-back-button {
+  position: relative;
+  top: 184px;
+  border: none;
+  background-color: transparent;
+  color: #4285f4;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 520px) {
+  .not-found__go-back-button {
+    position: static;
+    font-size: 12px;
+  }
+}
+
+.not-found__go-back-button:hover {
+  opacity: .8;
+}

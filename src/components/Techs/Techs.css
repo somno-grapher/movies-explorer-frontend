@@ -1,0 +1,128 @@
+/* .techs */
+
+.techs {
+  display: flex;
+  flex-direction: column;
+  padding: 100px 70px;
+  background-color: #272727;
+}
+
+@media screen and (max-width: 768px) {
+  .techs {
+    padding: 90px 50px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .techs {
+    padding: 70px 18px;
+  }
+}
+
+/* .techs__header */
+
+.techs__header {
+  max-width: 600px;
+  align-self: center;
+  text-align: center;
+  margin: 0;
+  padding: 90px 0 26px;
+  font-size: 50px;
+  line-height: 1.16;
+  font-weight: 400;
+  letter-spacing: -.04em;
+}
+
+@media screen and (max-width: 768px) {
+  .techs__header {
+    padding-top: 80px;
+    padding-bottom: 22px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .techs__header {
+    max-width: 292px;
+    padding-top: 60px;
+    padding-bottom: 24px;
+    font-size: 30px;
+    line-height: 1.2;
+  }
+}
+
+/* .techs__text */
+
+.techs__text {
+  max-width: 460px;
+  align-self: center;
+  text-align: center;
+  margin: 0;
+  padding: 0 0 100px;
+  font-size: 14px;
+  line-height: 1.43;
+  font-weight: 400;
+  letter-spacing: -.04em;
+}
+
+@media screen and (max-width: 768px) {
+  .techs__text {
+    padding-bottom: 83px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .techs__text {
+    max-width: 292px;
+    padding-bottom: 50px;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+}
+
+/* .techs__list */
+
+.techs__list {
+  align-self: center;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 90px);
+  width: 100%;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  font-size: 14px;
+  line-height: 1.43;
+  font-weight: 400;
+  letter-spacing: -.04em;
+}
+
+@media screen and (max-width: 768px) {
+  .techs__list {
+    box-sizing: border-box;
+    padding-right: 10px;
+    padding-left: 10px;
+    grid-template-columns: repeat(auto-fit, 84px);
+    font-size: 12px;
+    line-height: 1.25;
+  }
+}
+
+/* .techs__list-item */
+
+.techs__list-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60px;
+  background-color: #303030;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .techs__list-item {
+    min-height: 57px;
+  }
+}

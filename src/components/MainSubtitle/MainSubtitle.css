@@ -1,0 +1,17 @@
+.main-subtitle {
+  margin: 0;
+  padding: 0 0 24px;
+  position: relative;
+  font-size: 22px;
+  line-height: 1.23;
+  font-weight: 400;
+  letter-spacing: -.04em;
+  border-bottom: 1px solid #dadada;
+}
+
+@media screen and (max-width: 520px) {
+  .main-subtitle {
+    padding-bottom: 28px;
+    font-size: 18px;
+  }
+}
