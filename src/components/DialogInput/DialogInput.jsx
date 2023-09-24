@@ -19,10 +19,11 @@ export default function DialogInput({
   // control input
 
   const [value, setValue] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   function handleChange(e) {
-    const value = e.target.value;
-    setValue(value);
+    setValue(e.target.value);
+    setErrorMessage(e.target.validationMessage);
   }
 
   // utils
@@ -56,8 +57,7 @@ export default function DialogInput({
       <span className={`dialog-input__error
       dialog-input__error_styling_${styling}
       ${id}-error`}>
-        {/* TODO: delete */}
-        Error message
+        {errorMessage}
       </span>
 
     </div>
