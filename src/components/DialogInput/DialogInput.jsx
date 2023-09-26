@@ -1,5 +1,12 @@
 // react vendor import
-import React, { useState, useContext } from "react";
+import React,
+{
+  useContext,
+  useEffect,
+  useState,
+  useRef
+}
+  from "react";
 
 // react project import
 import DialogStylingContext from '../../contexts/dialogStylingContext.js'
@@ -12,7 +19,7 @@ export default function DialogInput({
   id,
   label,
   placeholder,
-  initialValue,
+  initialValue = "",
   validationAttributes,
   isDisabled
 }) {
@@ -22,16 +29,35 @@ export default function DialogInput({
   const [value, setValue] = useState(initialValue);
   const [errorMessage, setErrorMessage] = useState('');
   const [isValid, setIsValid] = useState(false);
+  const [isOnChangeTriggered, setIsOnChangeTriggered] = useState(false);
+
+  const inputRef = useRef();
 
   function handleChange(e) {
-    const inputField = e.target;
-    setValue(inputField.value);
-    setErrorMessage(inputField.validationMessage);
-    setIsValid(inputField.validity.valid);
+    const input = e.target;
+    setValue(input.value);
+    setErrorMessage(input.validationMessage);
+    setIsValid(input.validity.valid);
+    setIsOnChangeTriggered(true);
+  }
+
+  function styleAsInvalid() {
+    if (!isValid && (isOnChangeTriggered || value !== "")) {
+      return true
+    } else {
+      return false
+    }
   }
 
   // utils
   const styling = useContext(DialogStylingContext);
+
+  useEffect(() => {
+    setErrorMessage(inputRef.current.validationMessage);
+    setIsValid(inputRef.current.validity.valid);
+  },
+    []);
+
 
   // 2B rendered
   return (
@@ -48,7 +74,8 @@ export default function DialogInput({
       <input
         className={`dialog-input__field
           dialog-input__field_styling_${styling}
-          ${!isValid && 'dialog-input__field_invalid'}`}
+          ${styleAsInvalid() && 'dialog-input__field_invalid'}`}
+        ref={inputRef}
         name={id}
         id={id}
         placeholder={placeholder}
@@ -61,7 +88,7 @@ export default function DialogInput({
       {/* error */}
       <span className={`dialog-input__error
       dialog-input__error_styling_${styling}
-      ${!isValid && 'dialog-input__error_visible'}
+      ${styleAsInvalid() && 'dialog-input__error_visible'}
       ${id}-error`}>
         {errorMessage}
       </span>
