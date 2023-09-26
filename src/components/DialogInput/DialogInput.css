@@ -76,6 +76,7 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 1.25;
+  visibility: hidden;
 }
 
 .dialog-input__error_styling_entry {
@@ -87,6 +88,10 @@
   grid-column: 1/3;
   margin-top: 15px;
   padding-top: 1px;
+}
+
+.dialog-input__error_visible {
+  visibility: visible;
 }
 
 .dialog-input__error::before {

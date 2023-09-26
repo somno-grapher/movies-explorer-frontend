@@ -61,6 +61,7 @@ export default function DialogInput({
       {/* error */}
       <span className={`dialog-input__error
       dialog-input__error_styling_${styling}
+      ${!isValid && 'dialog-input__error_visible'}
       ${id}-error`}>
         {errorMessage}
       </span>
