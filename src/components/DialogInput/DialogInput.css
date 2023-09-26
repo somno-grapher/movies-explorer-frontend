@@ -76,7 +76,6 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 1.25;
-  /* visibility: hidden; */
 }
 
 .dialog-input__error_styling_entry {
@@ -103,8 +102,4 @@
 
 .dialog-input__field:focus+.dialog-input__error::before {
   border-color: #4285f4;
-}
-
-.dialog__input__error_visible {
-  visibility: visible;
 }

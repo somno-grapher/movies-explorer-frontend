@@ -26,12 +26,12 @@ export default function Login() {
             id: "register-name",
             label: "Имя",
             placeholder: "Введите имя",
+            initialValue: userName,
             validationAttributes: {
               type: "text",
               minLength: 2,
               maxLength: 30,
               required: true,
-              value: userName
             },
             isDisabled: {
               disabled: true
@@ -41,10 +41,10 @@ export default function Login() {
             id: "register-email",
             label: "E-mail",
             placeholder: "Введите e-mail",
+            initialValue: "arbitrary.email",
             validationAttributes: {
               type: "email",
               required: true,
-              value: "arbitrary.email"
             }
             ,
             isDisabled: {

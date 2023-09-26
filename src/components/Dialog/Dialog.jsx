@@ -80,6 +80,7 @@ export default function Dialog({
                   id={input.id}
                   label={input.label}
                   placeholder={input.placeholder}
+                  initialValue={input.initialValue}
                   validationAttributes={input.validationAttributes}
                   isDisabled={input.isDisabled}
                 />

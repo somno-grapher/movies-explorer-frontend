@@ -12,18 +12,22 @@ export default function DialogInput({
   id,
   label,
   placeholder,
+  initialValue,
   validationAttributes,
   isDisabled
 }) {
 
   // control input
 
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(initialValue);
   const [errorMessage, setErrorMessage] = useState('');
+  const [isValid, setIsValid] = useState(false);
 
   function handleChange(e) {
-    setValue(e.target.value);
-    setErrorMessage(e.target.validationMessage);
+    const inputField = e.target;
+    setValue(inputField.value);
+    setErrorMessage(inputField.validationMessage);
+    setIsValid(inputField.validity.valid);
   }
 
   // utils
@@ -43,14 +47,15 @@ export default function DialogInput({
       {/* field */}
       <input
         className={`dialog-input__field
-          dialog-input__field_styling_${styling}`}
+          dialog-input__field_styling_${styling}
+          ${!isValid && 'dialog-input__field_invalid'}`}
         name={id}
         id={id}
         placeholder={placeholder}
-        value={value}
         onChange={handleChange}
         {...validationAttributes}
         {...isDisabled}
+        value={value}
       />
 
       {/* error */}
