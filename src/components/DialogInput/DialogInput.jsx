@@ -21,7 +21,7 @@ export default function DialogInput({
   placeholder,
   initialValue = "",
   validationAttributes,
-  isDisabled
+  disabledAttribute,
 }) {
 
   // control input
@@ -42,12 +42,17 @@ export default function DialogInput({
   }
 
   function styleAsInvalid() {
-    if (!isValid && (isOnChangeTriggered || value !== "")) {
+    if (!isValid
+      && (isOnChangeTriggered || value !== "")
+      && !disabledAttribute.disabled
+    ) {
       return true
     } else {
       return false
     }
   }
+
+  const isInvalidStyle = styleAsInvalid();
 
   // utils
   const styling = useContext(DialogStylingContext);
@@ -57,6 +62,11 @@ export default function DialogInput({
     setIsValid(inputRef.current.validity.valid);
   },
     []);
+
+  useEffect(() => {
+    setErrorMessage(inputRef.current.validationMessage);
+  },
+    [disabledAttribute]);
 
 
   // 2B rendered
@@ -74,21 +84,21 @@ export default function DialogInput({
       <input
         className={`dialog-input__field
           dialog-input__field_styling_${styling}
-          ${styleAsInvalid() && 'dialog-input__field_invalid'}`}
+          ${isInvalidStyle && 'dialog-input__field_invalid'}`}
         ref={inputRef}
         name={id}
         id={id}
         placeholder={placeholder}
         onChange={handleChange}
         {...validationAttributes}
-        {...isDisabled}
+        {...disabledAttribute}
         value={value}
       />
 
       {/* error */}
       <span className={`dialog-input__error
       dialog-input__error_styling_${styling}
-      ${styleAsInvalid() && 'dialog-input__error_visible'}
+      ${isInvalidStyle && 'dialog-input__error_visible'}
       ${id}-error`}>
         {errorMessage}
       </span>

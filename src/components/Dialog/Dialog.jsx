@@ -19,7 +19,7 @@ export default function Dialog({
   linkTitle,
   linkPath,
   onSubmit,
-  inputs
+  inputs,
 }) {
 
   // utils
@@ -82,7 +82,7 @@ export default function Dialog({
                   placeholder={input.placeholder}
                   initialValue={input.initialValue}
                   validationAttributes={input.validationAttributes}
-                  isDisabled={input.isDisabled}
+                  disabledAttribute={!isEditMode && { disabled: true }}
                 />
               )
             })}

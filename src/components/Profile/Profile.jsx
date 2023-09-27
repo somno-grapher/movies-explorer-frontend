@@ -7,7 +7,7 @@ import DialogStylingContext from '../../contexts/dialogStylingContext.js'
 
 
 // main function
-export default function Login() {
+export default function Profile() {
 
   // TODO update
   const userName = "Жак Ив"
@@ -33,9 +33,6 @@ export default function Login() {
               maxLength: 30,
               required: true,
             },
-            isDisabled: {
-              disabled: true
-            }
           },
           {
             id: "register-email",
@@ -45,16 +42,12 @@ export default function Login() {
             validationAttributes: {
               type: "email",
               required: true,
-            }
-            ,
-            isDisabled: {
-              disabled: true
-            }
+            },
           }
         ]}
       >
       </Dialog>
-    </DialogStylingContext.Provider>
+    </DialogStylingContext.Provider >
   );
 
 }
