@@ -14,42 +14,43 @@ import DialogStylingContext from '../../contexts/dialogStylingContext.js'
 // CSS import
 import './DialogInput.css';
 
+// main function
 export default function DialogInput({
-  // TODO check if name and id are needed
+  index,
+  // TODO check if name and id is needed
   id,
   label,
   placeholder,
   initialValue = "",
   validationAttributes,
   disabledAttribute,
+  validateFormInput
 }) {
 
-  // control input
-
+  // states
   const [value, setValue] = useState(initialValue);
   const [errorMessage, setErrorMessage] = useState('');
   const [isValid, setIsValid] = useState(false);
   const [isOnChangeTriggered, setIsOnChangeTriggered] = useState(false);
 
+  // refs
   const inputRef = useRef();
 
+  // functions
   function handleChange(e) {
     const input = e.target;
     setValue(input.value);
     setErrorMessage(input.validationMessage);
     setIsValid(input.validity.valid);
     setIsOnChangeTriggered(true);
+    validateFormInput(index, input.validity.valid);
   }
 
   function styleAsInvalid() {
-    if (!isValid
+    return (!isValid
       && (isOnChangeTriggered || value !== "")
       && !disabledAttribute.disabled
-    ) {
-      return true
-    } else {
-      return false
-    }
+    ) ? true : false
   }
 
   const isInvalidStyle = styleAsInvalid();
@@ -58,8 +59,10 @@ export default function DialogInput({
   const styling = useContext(DialogStylingContext);
 
   useEffect(() => {
-    setErrorMessage(inputRef.current.validationMessage);
-    setIsValid(inputRef.current.validity.valid);
+    const input = inputRef.current;
+    setErrorMessage(input.validationMessage);
+    setIsValid(input.validity.valid);
+    validateFormInput(index, input.validity.valid);
   },
     []);
 
@@ -67,7 +70,6 @@ export default function DialogInput({
     setErrorMessage(inputRef.current.validationMessage);
   },
     [disabledAttribute]);
-
 
   // 2B rendered
   return (

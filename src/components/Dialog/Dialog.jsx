@@ -1,5 +1,5 @@
 // react vendor import
-import React, { useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from 'react-router-dom';
 
 // react project import
@@ -27,12 +27,35 @@ export default function Dialog({
   const styling = useContext(DialogStylingContext);
 
   const [isEditMode, setIsEditMode] = useState(() => {
-    if (styling === "profile") {
-      return false
-    } else {
-      return true
-    };
+    return styling === "profile" ? false : true;
   });
+
+  const [isValid, setIsValid] = useState(false);
+
+  const [inputsValidity, setInputsValidity] = useState(() => {
+    return inputs.map(() => {
+      return false;
+    })
+  });
+
+  function validateInput(inputIndex, isInputValid) {
+    setInputsValidity((prevInputsValidity) => {
+      prevInputsValidity[inputIndex] = isInputValid;
+      return [...prevInputsValidity];
+    });
+  }
+
+  function validateForm() {
+    setIsValid(!inputsValidity.some((inputValidity) => {
+      return inputValidity === false
+    }))
+  }
+
+  // TODO think about how to prevent double rendering on inputsValidity change
+  useEffect(() => {
+    validateForm();
+  },
+    [inputsValidity]);
 
   const isLogoDisplayed = styling !== "profile"
     ? true
@@ -68,8 +91,7 @@ export default function Dialog({
         <form className="dialog__form"
           // TODO: check the purpose
           name={`${name}-form`}
-          // TODO: provide js validation
-          // noValidate
+          noValidate
           onSubmit={onSubmit}>
           <div className={`dialog__inputs-container
           dialog__inputs-container_styling_${styling}`}>
@@ -77,12 +99,14 @@ export default function Dialog({
               return (
                 <DialogInput
                   key={i}
+                  index={i}
                   id={input.id}
                   label={input.label}
                   placeholder={input.placeholder}
                   initialValue={input.initialValue}
                   validationAttributes={input.validationAttributes}
                   disabledAttribute={!isEditMode && { disabled: true }}
+                  validateFormInput={validateInput}
                 />
               )
             })}
@@ -101,7 +125,9 @@ export default function Dialog({
               </button>
             }
             {isEditMode &&
-              <button className="dialog__submit-button"
+              <button
+                className={`dialog__submit-button
+                ${!isValid && 'dialog__submit-button_disabled'}`}
                 type="submit"
               >
                 {buttonText}

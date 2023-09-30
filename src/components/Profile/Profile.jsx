@@ -10,7 +10,7 @@ import DialogStylingContext from '../../contexts/dialogStylingContext.js'
 export default function Profile() {
 
   // TODO update
-  const userName = "Жак Ив"
+  const userName = "Жак Ив Кусто"
   const title = "Привет, " + userName + "!";
 
   // 2B rendered
@@ -38,7 +38,7 @@ export default function Profile() {
             id: "register-email",
             label: "E-mail",
             placeholder: "Введите e-mail",
-            initialValue: "arbitrary.email",
+            initialValue: "arbitrary@email",
             validationAttributes: {
               type: "email",
               required: true,

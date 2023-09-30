@@ -9,11 +9,11 @@ import App from './components/App/App';
 
 const root = ReactDOM.createRoot(document.querySelector('.root'));
 root.render(
-  <React.StrictMode>
-    {/* <HashRouter> */}
-      <BrowserRouter>
-      <App />
-      </BrowserRouter>
-    {/* </HashRouter> */}
-  </React.StrictMode>
+  // <React.StrictMode>
+  // {/* <HashRouter> */}
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+  // {/* </HashRouter> */}
+  // </React.StrictMode>
 );
