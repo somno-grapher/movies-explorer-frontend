@@ -28,7 +28,7 @@ export default function Login() {
             validationAttributes: {
               type: "email",
               required: true,
-            }
+            },
           },
           {
             id: "register-password",
@@ -39,7 +39,7 @@ export default function Login() {
               minLength: 2,
               maxLength: 30,
               required: true,
-            }
+            },
           }
         ]}
       >

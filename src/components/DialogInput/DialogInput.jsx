@@ -24,7 +24,9 @@ export default function DialogInput({
   initialValue = "",
   validationAttributes,
   disabledAttribute,
-  validateFormInput
+  assignFormInputStatus,
+  setInputsValidity,
+  setInputsUpdateStatus,
 }) {
   // contexts
   const styling = useContext(DialogStylingContext);
@@ -35,27 +37,34 @@ export default function DialogInput({
   const [isValid, setIsValid] = useState(false);
   const [isOnChangeTriggered, setIsOnChangeTriggered] = useState(false);
   const [isInvalidStyle, setIsInvalidStyle] = useState(true);
+  const [isUpdated, setIsUpdated] = useState(false);
 
   // refs
   const inputRef = useRef();
 
   // functions
   function handleChange(e) {
+    // TODO think about excluding repeated code
     const input = e.target;
     setValue(input.value);
+    setIsUpdated(input.value !== initialValue ? true : false);
     setErrorMessage(input.validationMessage);
-    setIsValid(input.validity.valid);
     setIsOnChangeTriggered(true);
-    validateFormInput(index, input.validity.valid);
+    setIsValid(input.validity.valid);
+    assignFormInputStatus(index, input.validity.valid, setInputsValidity);
+    assignFormInputStatus(index, input.value !== initialValue ? true : false, setInputsUpdateStatus);
+    console.log(input.value !== initialValue ? true : false)
   }
 
   // effects
 
   useEffect(() => {
+    // TODO think about excluding repeated code
     const input = inputRef.current;
     setErrorMessage(input.validationMessage);
     setIsValid(input.validity.valid);
-    validateFormInput(index, input.validity.valid);
+    assignFormInputStatus(index, input.validity.valid, setInputsValidity);
+    assignFormInputStatus(index, input.value !== initialValue ? true : false, setInputsUpdateStatus);
   },
     []);
 

@@ -36,13 +36,13 @@ export default function Dialog({
     return styling === "profile" ? false : true;
   });
 
-  const [inputsValidity, setInputsValidity] = useState(() => {
-    return inputs.map(() => {
-      return false;
-    })
-  });
+  const [inputsValidity, setInputsValidity] = useState(createInputsInitialStates());
 
   const [isValid, setIsValid] = useState(false);
+
+  const [inputsUpdateStatus, setInputsUpdateStatus] = useState(createInputsInitialStates());
+
+  const [isUpdated, setIsUpdated] = useState(false);
 
   // consts
   // TODO think about useMemo
@@ -51,18 +51,31 @@ export default function Dialog({
     : false;
 
   // functions
-
-  function validateInput(inputIndex, isInputValid) {
-    setInputsValidity((prevInputsValidity) => {
-      prevInputsValidity[inputIndex] = isInputValid;
-      return [...prevInputsValidity];
-    });
-  }
+  // TODO think about useCallback
 
   function validateForm() {
     setIsValid(!inputsValidity.some((inputValidity) => {
       return inputValidity === false
     }))
+  }
+
+  function checkUpdate() {
+    setIsUpdated(inputsUpdateStatus.some((inputUpdateStatus) => {
+      return inputUpdateStatus === true
+    }))
+  }
+
+  const assignInputStatus = (inputIndex, inputStatus, setInputStatus) => {
+    setInputStatus((prevInputsStatus) => {
+      prevInputsStatus[inputIndex] = inputStatus;
+      return [...prevInputsStatus];
+    });
+  }
+
+  function createInputsInitialStates() {
+    return inputs.map(() => {
+      return false;
+    })
   }
 
   // effects
@@ -72,6 +85,11 @@ export default function Dialog({
     validateForm();
   },
     [inputsValidity]);
+
+  useEffect(() => {
+    checkUpdate();
+  },
+    [inputsUpdateStatus]);
 
   // 2B rendered
   return (
@@ -118,7 +136,9 @@ export default function Dialog({
                   initialValue={input.initialValue}
                   validationAttributes={input.validationAttributes}
                   disabledAttribute={!isEditMode && { disabled: true }}
-                  validateFormInput={validateInput}
+                  assignFormInputStatus={assignInputStatus}
+                  setInputsValidity={setInputsValidity}
+                  setInputsUpdateStatus={setInputsUpdateStatus}
                 />
               )
             })}
@@ -139,7 +159,7 @@ export default function Dialog({
             {isEditMode &&
               <button
                 className={`dialog__submit-button
-                ${!isValid && 'dialog__submit-button_disabled'}`}
+                ${(!isValid || (styling === "profile" && !isUpdated)) && 'dialog__submit-button_disabled'}`}
                 type="submit"
               >
                 {buttonText}
