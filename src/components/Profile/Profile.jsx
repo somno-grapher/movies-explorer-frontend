@@ -38,7 +38,7 @@ export default function Profile() {
             id: "register-email",
             label: "E-mail",
             placeholder: "Введите e-mail",
-            initialValue: "arbitrary@email",
+            initialValue: "arbitraryemail",
             validationAttributes: {
               type: "email",
               required: true,

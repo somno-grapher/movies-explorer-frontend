@@ -26,12 +26,15 @@ export default function DialogInput({
   disabledAttribute,
   validateFormInput
 }) {
+  // contexts
+  const styling = useContext(DialogStylingContext);
 
   // states
   const [value, setValue] = useState(initialValue);
   const [errorMessage, setErrorMessage] = useState('');
   const [isValid, setIsValid] = useState(false);
   const [isOnChangeTriggered, setIsOnChangeTriggered] = useState(false);
+  const [isInvalidStyle, setIsInvalidStyle] = useState(true);
 
   // refs
   const inputRef = useRef();
@@ -46,17 +49,7 @@ export default function DialogInput({
     validateFormInput(index, input.validity.valid);
   }
 
-  function styleAsInvalid() {
-    return (!isValid
-      && (isOnChangeTriggered || value !== "")
-      && !disabledAttribute.disabled
-    ) ? true : false
-  }
-
-  const isInvalidStyle = styleAsInvalid();
-
-  // utils
-  const styling = useContext(DialogStylingContext);
+  // effects
 
   useEffect(() => {
     const input = inputRef.current;
@@ -70,6 +63,14 @@ export default function DialogInput({
     setErrorMessage(inputRef.current.validationMessage);
   },
     [disabledAttribute]);
+
+  useEffect(() => {
+    setIsInvalidStyle(!isValid
+      && (isOnChangeTriggered || value !== "")
+      && !disabledAttribute.disabled
+      ? true : false)
+  },
+    [isValid, isOnChangeTriggered, value, disabledAttribute]);
 
   // 2B rendered
   return (
@@ -107,5 +108,4 @@ export default function DialogInput({
 
     </div>
   );
-
 }
