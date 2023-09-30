@@ -4,7 +4,7 @@ import React,
   useContext,
   useEffect,
   useState,
-  useRef
+  useRef,
 }
   from "react";
 

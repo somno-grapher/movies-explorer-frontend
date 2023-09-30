@@ -1,5 +1,11 @@
 // react vendor import
-import React, { useEffect, useState, useContext } from "react";
+import React,
+{
+  useContext,
+  useEffect,
+  useState,
+}
+  from "react";
 import { Link } from 'react-router-dom';
 
 // react project import
@@ -21,22 +27,30 @@ export default function Dialog({
   onSubmit,
   inputs,
 }) {
-
-  // utils
-
+  // contexts
   const styling = useContext(DialogStylingContext);
+
+  // states
 
   const [isEditMode, setIsEditMode] = useState(() => {
     return styling === "profile" ? false : true;
   });
-
-  const [isValid, setIsValid] = useState(false);
 
   const [inputsValidity, setInputsValidity] = useState(() => {
     return inputs.map(() => {
       return false;
     })
   });
+
+  const [isValid, setIsValid] = useState(false);
+
+  // consts
+  // TODO think about useMemo
+  const isLogoDisplayed = styling !== "profile"
+    ? true
+    : false;
+
+  // functions
 
   function validateInput(inputIndex, isInputValid) {
     setInputsValidity((prevInputsValidity) => {
@@ -51,15 +65,13 @@ export default function Dialog({
     }))
   }
 
+  // effects
+
   // TODO think about how to prevent double rendering on inputsValidity change
   useEffect(() => {
     validateForm();
   },
     [inputsValidity]);
-
-  const isLogoDisplayed = styling !== "profile"
-    ? true
-    : false;
 
   // 2B rendered
   return (
