@@ -19,20 +19,19 @@ import CurrentUserContext from '../../contexts/CurrentUserContext.jsx';
 import './App.css';
 
 // main function
-function App() {
+export default function App() {
 
   // states
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
 
-  // main function
+  // 2B returned
   return (
     <CurrentUserContext.Provider value={currentUser}>
 
       {/* regular page */}
 
       <div className="app">
-
         <Routes>
 
           <Route
@@ -40,9 +39,7 @@ function App() {
             element={
               <>
                 {/* TODO: use <Outlet /> for DRY */}
-                <Header
-                  isLoggedIn={isLoggedIn}
-                />
+                <Header isLoggedIn={isLoggedIn} />
                 <ProtectedRouteElement
                   element={Main}
                 />
@@ -55,9 +52,7 @@ function App() {
             path="/movies"
             element={
               <>
-                <Header
-                  isLoggedIn={isLoggedIn}
-                />
+                <Header isLoggedIn={isLoggedIn} />
                 <ProtectedRouteElement
                   element={Movies}
                   isLoggedIn={isLoggedIn}
@@ -71,9 +66,7 @@ function App() {
             path="/saved-movies"
             element={
               <>
-                <Header
-                  isLoggedIn={isLoggedIn}
-                />
+                <Header isLoggedIn={isLoggedIn} />
                 <ProtectedRouteElement
                   element={SavedMovies}
                   isLoggedIn={isLoggedIn}
@@ -85,39 +78,31 @@ function App() {
 
           <Route
             path="/signin"
-            element={<Login
-            />}
+            element={<Login />}
           />
 
           <Route
             path="/signup"
-            element={<Register
-            />}
+            element={<Register />}
           />
 
           <Route
             path="/profile"
             element={
               <>
-                <Header
-                  isLoggedIn={isLoggedIn}
-                />
-                <Profile
-                />
+                <Header isLoggedIn={isLoggedIn} />
+                <Profile />
               </>
             }
           />
 
           <Route
             path="*"
-            element={
-              <NotFound />
-            }
+            element={<NotFound />}
           />
 
         </Routes>
       </div>
-
 
       {/* popups */}
 
@@ -131,5 +116,3 @@ function App() {
     </CurrentUserContext.Provider>
   );
 }
-
-export default App;
