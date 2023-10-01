@@ -21,13 +21,15 @@ export default function Profile() {
         buttonText="Сохранить"
         linkTitle="Выйти из аккаунта"
         linkPath="/"
+        // TODO make general structure for repeated inputs
         inputs={[
           {
-            id: "register-name",
+            id: "profile-name",
             label: "Имя",
             placeholder: "Введите имя",
             initialValue: userName,
             validationAttributes: {
+              // TODO enhance validation
               type: "text",
               minLength: 2,
               maxLength: 30,
@@ -35,7 +37,7 @@ export default function Profile() {
             },
           },
           {
-            id: "register-email",
+            id: "profile-email",
             label: "E-mail",
             placeholder: "Введите e-mail",
             initialValue: "arbitrary@email",

@@ -19,12 +19,14 @@ function Register() {
         linkTip="Уже зарегистрированы?"
         linkTitle="Войти"
         linkPath="/signin"
+        // TODO make general structure for repeated inputs
         inputs={[
           {
             id: "register-name",
             label: "Имя",
             placeholder: "Введите имя",
             validationAttributes: {
+              // TODO enhance validation
               type: "text",
               minLength: 2,
               maxLength: 30,
