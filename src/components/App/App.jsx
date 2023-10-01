@@ -12,19 +12,20 @@ import Register from '../Register/Register.jsx';
 import Login from '../Login/Login.jsx';
 import Profile from '../Profile/Profile.jsx';
 import NotFound from '../NotFound/NotFound.jsx';
-
-import CurrentUserContext from '../../contexts/CurrentUserContext';
-import ProtectedRouteElement from '../ProtectedRoute';
+import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute.jsx';
+import CurrentUserContext from '../../contexts/CurrentUserContext.jsx';
 
 // CSS import
 import './App.css';
 
-
+// main function
 function App() {
 
+  // states
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
 
+  // main function
   return (
     <CurrentUserContext.Provider value={currentUser}>
 

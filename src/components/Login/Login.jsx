@@ -3,7 +3,7 @@ import React from "react";
 
 // react project import
 import Dialog from '../Dialog/Dialog.jsx';
-import DialogStylingContext from '../../contexts/dialogStylingContext.js'
+import DialogStylingContext from '../../contexts/DialogStylingContext.jsx'
 
 
 // main function

@@ -9,7 +9,7 @@ import React,
 import { Link } from 'react-router-dom';
 
 // react project import
-import DialogStylingContext from '../../contexts/dialogStylingContext.js'
+import DialogStylingContext from '../../contexts/DialogStylingContext.jsx'
 import DialogInput from '../DialogInput/DialogInput.jsx';
 import Logo from '../Logo/Logo.jsx';
 

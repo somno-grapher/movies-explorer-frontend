@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 
 // react project import
-import MoviesContext from '../../contexts/moviesContext.js'
+import MoviesContext from '../../contexts/MoviesContext.jsx'
 
 // CSS import
 import './MoviesCard.css';

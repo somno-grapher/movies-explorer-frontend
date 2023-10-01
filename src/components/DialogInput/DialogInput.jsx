@@ -9,7 +9,7 @@ import React,
   from "react";
 
 // react project import
-import DialogStylingContext from '../../contexts/dialogStylingContext.js'
+import DialogStylingContext from '../../contexts/DialogStylingContext.jsx'
 
 // CSS import
 import './DialogInput.css';
@@ -46,7 +46,7 @@ export default function DialogInput({
 
   function isUpdated(currentValue, prevValue) {
     return currentValue !== prevValue ? true : false
-}
+  }
 
   function handleChange(e) {
     // TODO think about excluding repeated code

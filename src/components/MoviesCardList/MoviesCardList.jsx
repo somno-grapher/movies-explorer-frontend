@@ -5,7 +5,7 @@ import React, { useContext } from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard.jsx';
 import Preloader from '../Preloader/Preloader.jsx';
 import cardsData from './MoviesCardsData.js';
-import MoviesContext from '../../contexts/moviesContext.js'
+import MoviesContext from '../../contexts/MoviesContext.jsx'
 
 // CSS import
 import './MoviesCardList.css';

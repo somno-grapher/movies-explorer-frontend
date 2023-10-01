@@ -4,7 +4,7 @@ import React from 'react';
 // react project import
 import SearchForm from '../SearchForm/SearchForm.jsx';
 import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
-import MoviesContext from '../../contexts/moviesContext.js'
+import MoviesContext from '../../contexts/MoviesContext.jsx'
 
 // CSS import
 import './SavedMovies.css';
