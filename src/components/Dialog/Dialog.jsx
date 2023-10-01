@@ -17,6 +17,7 @@ import Logo from '../Logo/Logo.jsx';
 import './Dialog.css';
 
 // main function
+// TODO get rid of extra renders and calculations
 export default function Dialog({
   name,
   title,
@@ -76,6 +77,10 @@ export default function Dialog({
     return inputs.map(() => {
       return false;
     })
+  }
+
+  function isSubmitDisabled() {
+    return !isValid || (styling === "profile" && !isUpdated);
   }
 
   // effects
@@ -159,7 +164,7 @@ export default function Dialog({
             {isEditMode &&
               <button
                 className={`dialog__submit-button
-                ${(!isValid || (styling === "profile" && !isUpdated)) && 'dialog__submit-button_disabled'}`}
+                ${isSubmitDisabled() && 'dialog__submit-button_disabled'}`}
                 type="submit"
               >
                 {buttonText}

@@ -15,6 +15,7 @@ import DialogStylingContext from '../../contexts/dialogStylingContext.js'
 import './DialogInput.css';
 
 // main function
+// TODO get rid of extra renders and calculations
 export default function DialogInput({
   index,
   // TODO check if name and id is needed
@@ -37,23 +38,25 @@ export default function DialogInput({
   const [isValid, setIsValid] = useState(false);
   const [isOnChangeTriggered, setIsOnChangeTriggered] = useState(false);
   const [isInvalidStyle, setIsInvalidStyle] = useState(true);
-  const [isUpdated, setIsUpdated] = useState(false);
 
   // refs
   const inputRef = useRef();
 
   // functions
+
+  function isUpdated(currentValue, prevValue) {
+    return currentValue !== prevValue ? true : false
+}
+
   function handleChange(e) {
     // TODO think about excluding repeated code
     const input = e.target;
     setValue(input.value);
-    setIsUpdated(input.value !== initialValue ? true : false);
     setErrorMessage(input.validationMessage);
     setIsOnChangeTriggered(true);
     setIsValid(input.validity.valid);
     assignFormInputStatus(index, input.validity.valid, setInputsValidity);
-    assignFormInputStatus(index, input.value !== initialValue ? true : false, setInputsUpdateStatus);
-    console.log(input.value !== initialValue ? true : false)
+    assignFormInputStatus(index, isUpdated(input.value, initialValue), setInputsUpdateStatus);
   }
 
   // effects
@@ -64,7 +67,7 @@ export default function DialogInput({
     setErrorMessage(input.validationMessage);
     setIsValid(input.validity.valid);
     assignFormInputStatus(index, input.validity.valid, setInputsValidity);
-    assignFormInputStatus(index, input.value !== initialValue ? true : false, setInputsUpdateStatus);
+    assignFormInputStatus(index, isUpdated(input.value, initialValue), setInputsUpdateStatus);
   },
     []);
 
