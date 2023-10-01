@@ -22,7 +22,7 @@ export default function Profile() {
         linkTitle="Выйти из аккаунта"
         linkPath="/"
         // TODO make general structure for repeated inputs
-        inputs={[
+        inputsAttributes={[
           {
             id: "profile-name",
             label: "Имя",

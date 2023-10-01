@@ -3,6 +3,7 @@ import React,
 {
   useContext,
   useEffect,
+  useRef,
   useState,
 }
   from "react";
@@ -26,7 +27,7 @@ export default function Dialog({
   linkTitle,
   linkPath,
   onSubmit,
-  inputs,
+  inputsAttributes,
 }) {
   // contexts
   const styling = useContext(DialogStylingContext);
@@ -37,13 +38,17 @@ export default function Dialog({
     return styling === "profile" ? false : true;
   });
 
-  const [inputsValidity, setInputsValidity] = useState(createInputsInitialStates());
+  const [inputsValidity, setInputsValidity] = useState(createInputsInitialStates(false));
 
   const [isValid, setIsValid] = useState(false);
 
-  const [inputsUpdateStatus, setInputsUpdateStatus] = useState(createInputsInitialStates());
+  const [inputsUpdateStatus, setInputsUpdateStatus] = useState(createInputsInitialStates(false));
 
   const [isUpdated, setIsUpdated] = useState(false);
+
+  // useRef
+
+  const inputsValuesRef = useRef({});
 
   // consts
   // TODO think about useMemo
@@ -73,14 +78,26 @@ export default function Dialog({
     });
   }
 
-  function createInputsInitialStates() {
-    return inputs.map(() => {
-      return false;
+  function createInputsInitialStates(initialState) {
+    return inputsAttributes.map(() => {
+      return initialState;
     })
   }
 
   function isSubmitDisabled() {
     return !isValid || (styling === "profile" && !isUpdated);
+  }
+
+  function updateInputsValues(name, value) {
+    inputsValuesRef.current[name] = value;
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit(
+      inputsValuesRef.current,
+      // setFormValue
+    );
   }
 
   // effects
@@ -130,7 +147,7 @@ export default function Dialog({
           onSubmit={onSubmit}>
           <div className={`dialog__inputs-container
           dialog__inputs-container_styling_${styling}`}>
-            {inputs.map((input, i) => {
+            {inputsAttributes.map((input, i) => {
               return (
                 <DialogInput
                   key={i}
@@ -144,6 +161,7 @@ export default function Dialog({
                   assignFormInputStatus={assignInputStatus}
                   setInputsValidity={setInputsValidity}
                   setInputsUpdateStatus={setInputsUpdateStatus}
+                  updateFormInputsValues={updateInputsValues}
                 />
               )
             })}
@@ -166,6 +184,7 @@ export default function Dialog({
                 className={`dialog__submit-button
                 ${isSubmitDisabled() && 'dialog__submit-button_disabled'}`}
                 type="submit"
+                onClick={handleSubmit}
               >
                 {buttonText}
               </button>

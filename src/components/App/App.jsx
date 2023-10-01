@@ -15,15 +15,45 @@ import NotFound from '../NotFound/NotFound.jsx';
 import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute.jsx';
 import CurrentUserContext from '../../contexts/CurrentUserContext.jsx';
 
+// js import
+import MainApi from '../../utils/MainApi.js';
+import { MAIN_API_BASE_PATH } from '../../consts/server.js';
+
 // CSS import
 import './App.css';
 
 // main function
 export default function App() {
 
-  // states
+  // useState
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
+  const [dialogErrorMessage, setDialogErrorMessage] = useState('');
+  const [mainApi, setMainApi] = useState(new MainApi(MAIN_API_BASE_PATH));
+
+  // useNavigate
+  const navigate = useNavigate();
+
+  // functions
+
+  function handleRegister(
+    email,
+    password,
+    name,
+    // setFormValue
+  ) {
+    mainApi.register(email, password, name)
+      .then(() => {
+        // setFormValue({ email: '', password: '' });
+        navigate('/movies', { replace: true });
+        console.log('signup succesful');
+      })
+      .catch((err) => {
+        setDialogErrorMessage(err);
+        console.log(err);
+        alert(err);
+      });
+  }
 
   // 2B returned
   return (
@@ -83,9 +113,10 @@ export default function App() {
 
           <Route
             path="/signup"
-            element={<Register />}
+            element={<Register
+              onSubmit={handleRegister}
+            />}
           />
-
           <Route
             path="/profile"
             element={

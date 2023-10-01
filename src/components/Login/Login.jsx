@@ -20,7 +20,7 @@ export default function Login() {
         linkTip="Еще не зарегистрированы?"
         linkTitle="Регистрация"
         linkPath="/signup"
-        inputs={[
+        inputsAttributes={[
           {
             id: "register-email",
             label: "E-mail",

@@ -6,21 +6,29 @@ import Dialog from '../Dialog/Dialog.jsx';
 import DialogStylingContext from '../../contexts/DialogStylingContext.jsx'
 
 // main function
-function Register() {
+function Register({ onSubmit }) {
 
+  const handleSubmit = (inputsValues) => {
+    onSubmit(
+      inputsValues["register-email"],
+      inputsValues["register-password"],
+      inputsValues["register-name"],
+      // setFormValue
+    );
+  }
 
-
-  // to be rendered
+  // 2B rendered
   return (
-    <DialogStylingContext.Provider value='entry'>
+    <DialogStylingContext.Provider value="entry">
       <Dialog
         title="Добро пожаловать!"
         buttonText="Зарегистрироваться"
         linkTip="Уже зарегистрированы?"
         linkTitle="Войти"
         linkPath="/signin"
+        onSubmit={handleSubmit}
         // TODO make general structure for repeated inputs
-        inputs={[
+        inputsAttributes={[
           {
             id: "register-name",
             label: "Имя",
