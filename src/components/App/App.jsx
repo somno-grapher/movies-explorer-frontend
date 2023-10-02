@@ -46,12 +46,9 @@ export default function App() {
       .then(() => {
         // setFormValue({ email: '', password: '' });
         navigate('/movies', { replace: true });
-        console.log('signup succesful');
       })
       .catch((err) => {
-        setDialogErrorMessage(err);
-        console.log(err);
-        alert(err);
+        setDialogErrorMessage(err.message);
       });
   }
 
