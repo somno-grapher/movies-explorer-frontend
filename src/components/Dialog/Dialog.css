@@ -164,7 +164,7 @@
   font-weight: 400;
   text-align: center;
   color: #ee3465;
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 
 .dialog__error_visible {

@@ -40,15 +40,17 @@ export default function App() {
     email,
     password,
     name,
+    updateErrorMessage
     // setFormValue
   ) {
     mainApi.register(email, password, name)
       .then(() => {
         // setFormValue({ email: '', password: '' });
+        updateErrorMessage('');
         navigate('/movies', { replace: true });
       })
       .catch((err) => {
-        setDialogErrorMessage(err.message);
+        updateErrorMessage(err.message);
       });
   }
 

@@ -32,7 +32,7 @@ export default function Dialog({
   // contexts
   const styling = useContext(DialogStylingContext);
 
-  // states
+  // useState
 
   const [isEditMode, setIsEditMode] = useState(() => {
     return styling === "profile" ? false : true;
@@ -45,6 +45,8 @@ export default function Dialog({
   const [inputsUpdateStatus, setInputsUpdateStatus] = useState(createInputsInitialStates(false));
 
   const [isUpdated, setIsUpdated] = useState(false);
+
+  const [errorMessage, setErrorMessage] = useState('');
 
   // useRef
 
@@ -92,10 +94,13 @@ export default function Dialog({
     inputsValuesRef.current[name] = value;
   }
 
+  // TODO: change to fucntion declaration
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(
       inputsValuesRef.current,
+      setErrorMessage,
+      // function foo(x) { console.log(x) }
       // setFormValue
     );
   }
@@ -167,9 +172,8 @@ export default function Dialog({
             })}
           </div>
           <div className="dialog__lower-container">
-            <span className="dialog__error">
-              {/* TODO update */}
-              Ошибка
+            <span className={`dialog__error`}>
+              {errorMessage}
             </span>
             {!isEditMode &&
               <button className="dialog__edit-button"
@@ -184,6 +188,7 @@ export default function Dialog({
                 className={`dialog__submit-button
                 ${isSubmitDisabled() && 'dialog__submit-button_disabled'}`}
                 type="submit"
+                // TODO: change to onSubmit
                 onClick={handleSubmit}
               >
                 {buttonText}
