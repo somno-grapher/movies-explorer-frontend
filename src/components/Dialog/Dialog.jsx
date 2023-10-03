@@ -100,8 +100,6 @@ export default function Dialog({
     onSubmit(
       inputsValuesRef.current,
       setErrorMessage,
-      // function foo(x) { console.log(x) }
-      // setFormValue
     );
   }
 
@@ -149,7 +147,8 @@ export default function Dialog({
           // TODO: check the purpose
           name={`${name}-form`}
           noValidate
-          onSubmit={onSubmit}>
+          onSubmit={handleSubmit}
+        >
           <div className={`dialog__inputs-container
           dialog__inputs-container_styling_${styling}`}>
             {inputsAttributes.map((input, i) => {
@@ -188,8 +187,6 @@ export default function Dialog({
                 className={`dialog__submit-button
                 ${isSubmitDisabled() && 'dialog__submit-button_disabled'}`}
                 type="submit"
-                // TODO: change to onSubmit
-                onClick={handleSubmit}
               >
                 {buttonText}
               </button>

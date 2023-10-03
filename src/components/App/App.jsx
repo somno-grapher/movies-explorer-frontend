@@ -28,8 +28,7 @@ export default function App() {
   // useState
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
-  const [dialogErrorMessage, setDialogErrorMessage] = useState('');
-  const [mainApi, setMainApi] = useState(new MainApi(MAIN_API_BASE_PATH));
+  const [mainApi, setMainApi] = useState(new MainApi(MAIN_API_BASE_PATH)); //TODO: change to ref
 
   // useNavigate
   const navigate = useNavigate();
@@ -40,12 +39,11 @@ export default function App() {
     email,
     password,
     name,
-    updateErrorMessage
-    // setFormValue
+    updateErrorMessage,
+    
   ) {
     mainApi.register(email, password, name)
       .then(() => {
-        // setFormValue({ email: '', password: '' });
         updateErrorMessage('');
         navigate('/movies', { replace: true });
       })
