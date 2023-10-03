@@ -26,7 +26,7 @@ import './App.css';
 export default function App() {
 
   // useState
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [mainApi, setMainApi] = useState(new MainApi(MAIN_API_BASE_PATH)); //TODO: change to ref?
 
@@ -58,12 +58,12 @@ export default function App() {
     password,
     updateErrorMessage,
     updateIsOnStanby,
-    ) {
+  ) {
     mainApi.login(email, password)
       .then((responseObject) => {
         if (responseObject.token) {
           // api.setToken(jsonResponse.token);
-          // setIsLoggedIn(true);
+          setIsLoggedIn(true);
           // setEmail(email);
           updateIsOnStanby(false);
           navigate("/movies", { replace: true });
@@ -89,11 +89,8 @@ export default function App() {
             path="/"
             element={
               <>
-                {/* TODO: use <Outlet /> for DRY */}
                 <Header isLoggedIn={isLoggedIn} />
-                <ProtectedRouteElement
-                  element={Main}
-                />
+                <Main />
                 <Footer />
               </>
             }
@@ -103,6 +100,8 @@ export default function App() {
             path="/movies"
             element={
               <>
+                {/* TODO: use <Outlet /> for DRY */}
+                {/* TODO: here and forth protect the entire route, not a particular component */}
                 <Header isLoggedIn={isLoggedIn} />
                 <ProtectedRouteElement
                   element={Movies}
@@ -145,7 +144,10 @@ export default function App() {
             element={
               <>
                 <Header isLoggedIn={isLoggedIn} />
-                <Profile />
+                <ProtectedRouteElement
+                  element={Profile}
+                  isLoggedIn={isLoggedIn}
+                />
               </>
             }
           />

@@ -3,11 +3,9 @@ import { Navigate } from "react-router-dom";
 
 function ProtectedRouteElement({ element: Component, ...props }) {
   return (
-    // TODO: update
-    // props.isLoggedIn
-    true
+    props.isLoggedIn
       ? <Component {...props} />
-      : <Navigate to="/signin" replace />
+      : <Navigate to="/" replace />
   );
 }
 
