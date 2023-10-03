@@ -48,6 +48,8 @@ export default function Dialog({
 
   const [errorMessage, setErrorMessage] = useState('');
 
+  const [isOnStandby, setIsOnStandby] = useState(false);
+
   // useRef
 
   const inputsValuesRef = useRef({});
@@ -87,19 +89,23 @@ export default function Dialog({
   }
 
   function isSubmitDisabled() {
-    return !isValid || (styling === "profile" && !isUpdated);
+    return !isValid
+      || (styling === "profile" && !isUpdated)
+      || isOnStandby;
   }
 
   function updateInputsValues(name, value) {
     inputsValuesRef.current[name] = value;
   }
 
-  // TODO: change to fucntion declaration
+  // TODO: change to function declaration
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsOnStandby(true);
     onSubmit(
       inputsValuesRef.current,
       setErrorMessage,
+      setIsOnStandby
     );
   }
 
@@ -173,6 +179,7 @@ export default function Dialog({
           <div className="dialog__lower-container">
             <span className={`dialog__error`}>
               {errorMessage}
+              {/* TODO: remove errors message on typing? */}
             </span>
             {!isEditMode &&
               <button className="dialog__edit-button"

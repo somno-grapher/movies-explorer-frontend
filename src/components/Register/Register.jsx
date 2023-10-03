@@ -8,13 +8,17 @@ import DialogStylingContext from '../../contexts/DialogStylingContext.jsx'
 // main function
 function Register({ onSubmit }) {
 
-  const handleSubmit = (inputsValues, updateErrorMessage) => {
+  const handleSubmit = (
+    inputsValues,
+    updateErrorMessage,
+    updateIsOnStanby,
+  ) => {
     onSubmit(
       inputsValues["register-email"],
       inputsValues["register-password"],
       inputsValues["register-name"],
       updateErrorMessage,
-      // setFormValue
+      updateIsOnStanby,
     );
   }
 

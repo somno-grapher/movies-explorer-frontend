@@ -28,7 +28,7 @@ export default function App() {
   // useState
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
-  const [mainApi, setMainApi] = useState(new MainApi(MAIN_API_BASE_PATH)); //TODO: change to ref
+  const [mainApi, setMainApi] = useState(new MainApi(MAIN_API_BASE_PATH)); //TODO: change to ref?
 
   // useNavigate
   const navigate = useNavigate();
@@ -40,15 +40,15 @@ export default function App() {
     password,
     name,
     updateErrorMessage,
-    
+    updateIsOnStanby,
   ) {
     mainApi.register(email, password, name)
       .then(() => {
-        updateErrorMessage('');
         navigate('/movies', { replace: true });
       })
       .catch((err) => {
         updateErrorMessage(err.message);
+        updateIsOnStanby(false);
       });
   }
 
