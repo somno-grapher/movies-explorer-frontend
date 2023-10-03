@@ -31,5 +31,40 @@ class MainApi {
     return this._handleJsonResponse(jsonResponse);
   };
 
+  // async login(email, password) {
+  //   let jsonResponse;
+  //   try {
+  //     jsonResponse = await fetch(`${this._basePath}/signin`, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({ email, password })
+  //     });
+  //   } catch {
+  //     throw new Error(`Неполадки в сети.`)
+  //   }
+  //   this._handleJsonResponse(jsonResponse);
+  // };
+
+  login(email, password) {
+    return fetch(`${this._basePath}/signin`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
+    })
+      .then(this._handleJsonResponse)
+      .then((responseObject) => {
+        if (responseObject.token) {
+          // localStorage.setItem('jwt', responseObject.token);
+          console.log(responseObject.token);
+          return responseObject;
+        }
+      });
+  };
+
 }
+
 export default MainApi;

@@ -7,9 +7,25 @@ import DialogStylingContext from '../../contexts/DialogStylingContext.jsx'
 
 
 // main function
-export default function Login() {
+export default function Login({ onSubmit }) {
+  // consts
+  const emailId = 'login-email';
+  const passwordId = 'login-password';
 
+  // functions
 
+  function handleSubmit(
+    inputsValues,
+    updateErrorMessage,
+    updateIsOnStanby,
+  ) {
+    onSubmit(
+      inputsValues[emailId],
+      inputsValues[passwordId],
+      updateErrorMessage,
+      updateIsOnStanby,
+    );
+  }
 
   // 2B rendered
   return (
@@ -20,9 +36,10 @@ export default function Login() {
         linkTip="Еще не зарегистрированы?"
         linkTitle="Регистрация"
         linkPath="/signup"
+        onSubmit={handleSubmit}
         inputsAttributes={[
           {
-            id: "register-email",
+            id: emailId,
             label: "E-mail",
             placeholder: "Введите почту",
             validationAttributes: {
@@ -31,7 +48,7 @@ export default function Login() {
             },
           },
           {
-            id: "register-password",
+            id: passwordId,
             label: "Пароль",
             placeholder: "Введите пароль",
             validationAttributes: {

@@ -102,6 +102,7 @@ export default function Dialog({
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsOnStandby(true);
+    setErrorMessage('');
     onSubmit(
       inputsValuesRef.current,
       setErrorMessage,

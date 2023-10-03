@@ -44,11 +44,35 @@ export default function App() {
   ) {
     mainApi.register(email, password, name)
       .then(() => {
-        navigate('/movies', { replace: true });
+        // navigate('/movies', { replace: true });
+        updateIsOnStanby(false);
       })
       .catch((err) => {
         updateErrorMessage(err.message);
         updateIsOnStanby(false);
+      });
+  }
+
+  function handleLogin(
+    email,
+    password,
+    updateErrorMessage,
+    updateIsOnStanby,
+    ) {
+    mainApi.login(email, password)
+      .then((responseObject) => {
+        if (responseObject.token) {
+          // api.setToken(jsonResponse.token);
+          // setIsLoggedIn(true);
+          // setEmail(email);
+          updateIsOnStanby(false);
+          navigate("/movies", { replace: true });
+        }
+      })
+      .catch((err) => {
+        updateErrorMessage(err.message);
+        updateIsOnStanby(false);
+        console.log(err.message);
       });
   }
 
@@ -105,7 +129,9 @@ export default function App() {
 
           <Route
             path="/signin"
-            element={<Login />}
+            element={<Login
+              onSubmit={handleLogin}
+            />}
           />
 
           <Route

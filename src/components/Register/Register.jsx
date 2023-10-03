@@ -7,16 +7,22 @@ import DialogStylingContext from '../../contexts/DialogStylingContext.jsx'
 
 // main function
 function Register({ onSubmit }) {
+  // consts
+  const emailId = 'register-email';
+  const passwordId = 'register-password';
+  const nameId = 'register-name';
 
-  const handleSubmit = (
+  // functions
+
+  function handleSubmit(
     inputsValues,
     updateErrorMessage,
     updateIsOnStanby,
-  ) => {
+  ) {
     onSubmit(
-      inputsValues["register-email"],
-      inputsValues["register-password"],
-      inputsValues["register-name"],
+      inputsValues[emailId],
+      inputsValues[passwordId],
+      inputsValues[nameId],
       updateErrorMessage,
       updateIsOnStanby,
     );
@@ -35,7 +41,7 @@ function Register({ onSubmit }) {
         // TODO make general structure for repeated inputs
         inputsAttributes={[
           {
-            id: "register-name",
+            id: nameId,
             label: "Имя",
             placeholder: "Введите имя",
             validationAttributes: {
@@ -47,7 +53,7 @@ function Register({ onSubmit }) {
             }
           },
           {
-            id: "register-email",
+            id: emailId,
             label: "E-mail",
             placeholder: "Введите e-mail",
             validationAttributes: {
@@ -56,7 +62,7 @@ function Register({ onSubmit }) {
             }
           },
           {
-            id: "register-password",
+            id: passwordId,
             label: "Пароль",
             placeholder: "Введите пароль",
             validationAttributes: {
