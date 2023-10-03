@@ -28,6 +28,7 @@ export default function Dialog({
   linkPath,
   onSubmit,
   inputsAttributes,
+  onLinkClick,
 }) {
   // contexts
   const styling = useContext(DialogStylingContext);
@@ -209,9 +210,13 @@ export default function Dialog({
             <p className="dialog__link-tip">
               {linkTip}
             </p>
+            {/* TODO: create separate element for signout */}
             <Link className={`dialog__link
           dialog__link_styling_${styling}`}
-              to={linkPath}>
+              to={linkPath}
+              onClick={onLinkClick}
+            // TODO: provide replace
+            >
               {linkTitle}
             </Link>
           </nav>

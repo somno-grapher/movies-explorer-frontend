@@ -75,6 +75,14 @@ export default function App() {
       });
   }
 
+  function handleSignOut() {
+    // localStorage.removeItem('jwt');
+    // api.setToken('');
+    setIsLoggedIn(false);
+    // setEmail('');
+    navigate('/', { replace: true }); // overrided in Profile
+  }
+
   // 2B returned
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -146,6 +154,7 @@ export default function App() {
                 <ProtectedRouteElement
                   element={Profile}
                   isLoggedIn={isLoggedIn}
+                  onLinkClick={handleSignOut}
                 />
               </>
             }

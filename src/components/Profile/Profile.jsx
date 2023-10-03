@@ -7,7 +7,10 @@ import DialogStylingContext from '../../contexts/DialogStylingContext.jsx'
 
 
 // main function
-export default function Profile() {
+export default function Profile({
+  onSubmit,
+  onLinkClick
+}) {
 
   // TODO update
   const userName = "Жак Ив Кусто"
@@ -21,6 +24,7 @@ export default function Profile() {
         buttonText="Сохранить"
         linkTitle="Выйти из аккаунта"
         linkPath="/"
+        onLinkClick={onLinkClick}
         // TODO make general structure for repeated inputs
         inputsAttributes={[
           {

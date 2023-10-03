@@ -1,5 +1,7 @@
 // react vendor import
 import React from "react";
+import { useNavigate } from 'react-router-dom';
+
 
 // react project import
 import Dialog from '../Dialog/Dialog.jsx';
@@ -11,6 +13,9 @@ function Register({ onSubmit }) {
   const emailId = 'register-email';
   const passwordId = 'register-password';
   const nameId = 'register-name';
+
+  // useNavigate
+  const navigate = useNavigate();
 
   // functions
 
@@ -38,6 +43,7 @@ function Register({ onSubmit }) {
         linkTitle="Войти"
         linkPath="/signin"
         onSubmit={handleSubmit}
+        onLinkClick={() => { navigate('/signin', { replace: true }) }}
         // TODO make general structure for repeated inputs
         inputsAttributes={[
           {
