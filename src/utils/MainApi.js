@@ -14,6 +14,8 @@ class MainApi {
         errorMessage = 'При регистрации пользователя произошла ошибка.';
       } else if (requestType === 'login') {
         errorMessage = 'При авторизации произошла ошибка.';
+      } else if (requestType === 'tokenCheck') {
+        errorMessage = 'При проверке токена произошла ошибка.';
       }
       throw new Error(errorMessage);
     }
@@ -35,7 +37,7 @@ class MainApi {
         body: JSON.stringify({ email, password, name })
       });
     } catch {
-      throw new Error(`Проверьте соединение.`)
+      throw new Error(`Проверьте соединение.`);
     }
     return this._handleJsonResponse(jsonResponse, 'register');
   };
@@ -51,34 +53,32 @@ class MainApi {
         body: JSON.stringify({ email, password })
       });
     } catch {
-      throw new Error(`Проверьте соединение.`)
+      throw new Error(`Проверьте соединение.`);
     }
     const responseObject = await this._handleJsonResponse(jsonResponse, 'login');
     if (responseObject.token) {
-      // localStorage.setItem('jwt', responseObject.token);
+      localStorage.setItem('jwt', responseObject.token);
+      // TODO: delete
       console.log(responseObject.token);
       return responseObject;
     }
   };
 
-  // TODO: delete
-  // login(email, password) {
-  //   return fetch(`${this._basePath}/signin`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({ email, password })
-  //   })
-  //     .then(this._handleJsonResponse)
-  //     .then((responseObject) => {
-  //       if (responseObject.token) {
-  //         // localStorage.setItem('jwt', responseObject.token);
-  //         console.log(responseObject.token);
-  //         return responseObject;
-  //       }
-  //     });
-  // };
+  async checkToken(jwt) {
+    let jsonResponse;
+    try {
+      jsonResponse = await fetch(`${this._basePath}/users/me`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `${jwt}`
+        }
+      });
+    } catch {
+      throw new Error(`Проверьте соединение.`);
+    }
+    return this._handleJsonResponse(jsonResponse, 'tokenCheck');
+  }
 
 }
 

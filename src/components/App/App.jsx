@@ -76,12 +76,36 @@ export default function App() {
   }
 
   function handleSignOut() {
-    // localStorage.removeItem('jwt');
+    localStorage.removeItem('jwt');
     // api.setToken('');
     setIsLoggedIn(false);
     // setEmail('');
-    navigate('/', { replace: true }); // overrided in Profile
+    navigate('/', { replace: true }); // overridden in Profile
   }
+
+  function handleTokenCheck() {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      mainApi.checkToken(jwt)
+        .then((responseObject) => {
+          // const email = responseObject.email;
+          // setEmail(email);
+          // mainApi.setToken(jwt);
+          setIsLoggedIn(true);
+          navigate("/movies", { replace: true });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }
+
+  // useEffect
+
+  useEffect(() => {
+    handleTokenCheck();
+  },
+    []);
 
   // 2B returned
   return (
