@@ -1,5 +1,6 @@
 // react vendor import
 import React from 'react';
+// TODO: exclude
 import { useContext } from 'react';
 
 // react project import
@@ -13,17 +14,10 @@ import Portfolio from '../Portfolio/Portfolio.jsx';
 
 // CSS import
 import './Main.css';
-// import AboutMe from '../AboutMe/AboutMe';
 
-function Main({
-  cards,
-  handleAddPlaceClick,
-  handleEditAvatarClick,
-  handleEditProfileClick,
-  onCardClick,
-  onCardDelete,
-  onCardLike }) {
+function Main() {
 
+  // TODO: exclude
   const currentUser = useContext(CurrentUserContext);
 
   return (

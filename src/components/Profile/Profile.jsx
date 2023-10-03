@@ -9,18 +9,15 @@ import DialogStylingContext from '../../contexts/DialogStylingContext.jsx'
 // main function
 export default function Profile({
   onSubmit,
-  onLinkClick
+  onLinkClick,
+  user,
 }) {
-
-  // TODO update
-  const userName = "Жак Ив Кусто"
-  const title = "Привет, " + userName + "!";
 
   // 2B rendered
   return (
     <DialogStylingContext.Provider value='profile'>
       <Dialog
-        title={title}
+        title={"Привет, " + user.name + "!"}
         buttonText="Сохранить"
         linkTitle="Выйти из аккаунта"
         linkPath="/"
@@ -31,7 +28,7 @@ export default function Profile({
             id: "profile-name",
             label: "Имя",
             placeholder: "Введите имя",
-            initialValue: userName,
+            initialValue: user.name,
             validationAttributes: {
               // TODO enhance validation
               type: "text",
@@ -44,7 +41,7 @@ export default function Profile({
             id: "profile-email",
             label: "E-mail",
             placeholder: "Введите e-mail",
-            initialValue: "arbitrary@email",
+            initialValue: user.email,
             validationAttributes: {
               type: "email",
               required: true,

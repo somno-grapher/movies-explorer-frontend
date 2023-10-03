@@ -62,7 +62,7 @@ export default function App() {
     mainApi.login(email, password)
       .then((responseObject) => {
         if (responseObject.token) {
-          // api.setToken(jsonResponse.token);
+          mainApi.setToken(responseObject.token);
           setIsLoggedIn(true);
           // setEmail(email);
           updateIsOnStanby(false);
@@ -77,7 +77,7 @@ export default function App() {
 
   function handleSignOut() {
     localStorage.removeItem('jwt');
-    // api.setToken('');
+    mainApi.setToken('');
     setIsLoggedIn(false);
     // setEmail('');
     navigate('/', { replace: true }); // overridden in Profile
@@ -90,7 +90,13 @@ export default function App() {
         .then((responseObject) => {
           // const email = responseObject.email;
           // setEmail(email);
-          // mainApi.setToken(jwt);
+          setCurrentUser({
+            ...currentUser,
+            name: responseObject.name,
+            email: responseObject.email,
+          });
+          console.log(responseObject)
+          mainApi.setToken(jwt);
           setIsLoggedIn(true);
           navigate("/movies", { replace: true });
         })
@@ -106,6 +112,11 @@ export default function App() {
     handleTokenCheck();
   },
     []);
+
+  useEffect(() => {
+    console.log(currentUser);
+  },
+    [currentUser]);
 
   // 2B returned
   return (
@@ -179,6 +190,7 @@ export default function App() {
                   element={Profile}
                   isLoggedIn={isLoggedIn}
                   onLinkClick={handleSignOut}
+                  user={currentUser}
                 />
               </>
             }

@@ -1,15 +1,17 @@
 class MainApi {
   constructor(basePath) {
     this._basePath = basePath;
+    this._token = '';
   }
 
   _handleJsonResponse(jsonResponse, requestType) {
+    let errorMessage;
     if (jsonResponse.ok) {
       return jsonResponse.json()
         .catch(() => { throw new Error('Ошибка обработки ответа сервера.') });
     }
+    // TODO: tide up
     else if (jsonResponse.status === 400) {
-      var errorMessage;
       if (requestType === 'register') {
         errorMessage = 'При регистрации пользователя произошла ошибка.';
       } else if (requestType === 'login') {
@@ -19,7 +21,14 @@ class MainApi {
       }
       throw new Error(errorMessage);
     }
-    else if (jsonResponse.status === 401) { throw new Error(`Вы ввели неправильный логин или пароль.`); }
+    else if (jsonResponse.status === 401) {
+      if (requestType === 'login') {
+        errorMessage = 'Вы ввели неправильный логин или пароль.';
+      } else if (requestType === 'tokenCheck') {
+        errorMessage = 'При авторизации произошла ошибка. Токен некорректен';
+      }
+      throw new Error(errorMessage);
+    }
     else if (jsonResponse.status === 404) { throw new Error(`Страница по указанному маршруту не найдена.`); }
     else if (jsonResponse.status === 409) { throw new Error(`Пользователь с таким email уже существует.`); }
     else if (jsonResponse.status === 500) { throw new Error(`На сервере произошла ошибка.`); }
@@ -59,7 +68,7 @@ class MainApi {
     if (responseObject.token) {
       localStorage.setItem('jwt', responseObject.token);
       // TODO: delete
-      console.log(responseObject.token);
+      // console.log(responseObject.token);
       return responseObject;
     }
   };
@@ -71,13 +80,17 @@ class MainApi {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `${jwt}`
+          'Authorization': `Bearer ${jwt}` // Bearer is optional
         }
       });
     } catch {
       throw new Error(`Проверьте соединение.`);
     }
     return this._handleJsonResponse(jsonResponse, 'tokenCheck');
+  }
+
+  setToken(token) {
+    this._token = token;
   }
 
 }
