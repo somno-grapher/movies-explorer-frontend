@@ -72,7 +72,6 @@ export default function App() {
       .catch((err) => {
         updateErrorMessage(err.message);
         updateIsOnStanby(false);
-        console.log(err.message);
       });
   }
 
