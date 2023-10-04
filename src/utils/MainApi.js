@@ -84,6 +84,7 @@ class MainApi {
     } catch {
       throw new Error(`Проверьте соединение.`);
     }
+    this._token = jwt;
     return this._handleJsonResponse(jsonResponse, 'tokenCheck');
   }
 

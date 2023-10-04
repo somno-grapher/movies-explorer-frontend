@@ -59,20 +59,8 @@ export default function App() {
     updateErrorMessage,
     updateIsOnStanby,
   ) {
-    // updateIsOnStanby(true);
     mainApi.login(email, password)
-      .then((responseObject) => {
-        setCurrentUser({
-          ...currentUser,
-          name: responseObject.name,
-          email: responseObject.email,
-        });
-        console.log(responseObject)
-        // const jwt = localStorage.getItem('jwt');
-        // mainApi.setToken(jwt);
-        setIsLoggedIn(true);
-        navigate("/movies", { replace: true });
-      })
+      .then(onSuccessfulTokenCheck)
       .catch((err) => {
         updateErrorMessage(err.message);
       })
@@ -83,7 +71,11 @@ export default function App() {
     localStorage.removeItem('jwt');
     mainApi.setToken('');
     setIsLoggedIn(false);
-    // setEmail('');
+    setCurrentUser({
+      ...currentUser,
+      name: '',
+      email: '',
+    });
     navigate('/', { replace: true }); // overridden in Profile
   }
 
@@ -91,23 +83,21 @@ export default function App() {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       mainApi.checkToken(jwt)
-        .then((responseObject) => {
-          // const email = responseObject.email;
-          // setEmail(email);
-          setCurrentUser({
-            ...currentUser,
-            name: responseObject.name,
-            email: responseObject.email,
-          });
-          console.log(responseObject)
-          mainApi.setToken(jwt);
-          setIsLoggedIn(true);
-          navigate("/movies", { replace: true });
-        })
+        .then(onSuccessfulTokenCheck)
         .catch((err) => {
           console.log(err);
         });
     }
+  }
+
+  function onSuccessfulTokenCheck(responseObject) {
+    setCurrentUser({
+      ...currentUser,
+      name: responseObject.name,
+      email: responseObject.email,
+    });
+    setIsLoggedIn(true);
+    navigate("/movies", { replace: true });
   }
 
   // useEffect
