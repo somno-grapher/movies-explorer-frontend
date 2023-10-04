@@ -113,11 +113,6 @@ export default function App() {
   },
     []);
 
-  useEffect(() => {
-    console.log(currentUser);
-  },
-    [currentUser]);
-
   // 2B returned
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -190,7 +185,6 @@ export default function App() {
                   element={Profile}
                   isLoggedIn={isLoggedIn}
                   onLinkClick={handleSignOut}
-                  user={currentUser}
                 />
               </>
             }

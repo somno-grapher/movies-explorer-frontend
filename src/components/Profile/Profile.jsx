@@ -1,17 +1,18 @@
 // react vendor import
-import React from "react";
+import React, { useContext } from "react";
 
 // react project import
 import Dialog from '../Dialog/Dialog.jsx';
 import DialogStylingContext from '../../contexts/DialogStylingContext.jsx'
-
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 // main function
 export default function Profile({
   onSubmit,
   onLinkClick,
-  user,
 }) {
+  // contexts
+  const user = useContext(CurrentUserContext);
 
   // 2B rendered
   return (
