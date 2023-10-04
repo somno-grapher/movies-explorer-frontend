@@ -93,6 +93,29 @@ class MainApi {
     this._token = token;
   }
 
+  async updateUserInfo({ name, email }) {
+    let jsonResponse;
+    try {
+      jsonResponse = await fetch(
+        `${this._basePath}/users/me`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${this._token}` // Bearer is optional
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email
+          })
+        },
+      )
+    } catch {
+      throw new Error(`Проверьте соединение.`);
+    }
+    return this._handleJsonResponse(jsonResponse, 'userUpdate');
+  }
+
 }
 
 export default MainApi;

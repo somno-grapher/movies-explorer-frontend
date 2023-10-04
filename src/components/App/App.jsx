@@ -47,7 +47,7 @@ export default function App() {
       .catch((err) => {
         updateErrorMessage(err.message);
       })
-      .finally(() => { updateIsOnStanby(false); });;
+      .finally(() => { updateIsOnStanby(false); });
   }
 
   function handleLogin(
@@ -95,6 +95,27 @@ export default function App() {
       email: '',
     });
     navigate('/', { replace: true }); // overridden in Profile
+  }
+
+  function handleUpdateUser(
+    { name, email },
+    updateErrorMessage,
+    updateIsOnStanby,
+  ) {
+    mainApi.updateUserInfo({ name, email })
+      .then((responseObject) => {
+        setCurrentUser({
+          ...currentUser,
+          name: responseObject.name,
+          email: responseObject.email,
+        });
+      })
+      .catch((err) => {
+        updateErrorMessage(err.message);
+      })
+      .finally(() => {
+        updateIsOnStanby(false);
+      });
   }
 
   // useEffect
@@ -176,6 +197,7 @@ export default function App() {
                   element={Profile}
                   isLoggedIn={isLoggedIn}
                   onLinkClick={handleSignOut}
+                  onSubmit={handleUpdateUser}
                 />
               </>
             }

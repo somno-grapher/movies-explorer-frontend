@@ -11,8 +11,29 @@ export default function Profile({
   onSubmit,
   onLinkClick,
 }) {
+  // consts
+  const nameId = 'profile-name';
+  const emailId = 'profile-email';
+
   // contexts
   const user = useContext(CurrentUserContext);
+
+  // functions
+
+  function handleSubmit(
+    inputsValues,
+    updateErrorMessage,
+    updateIsOnStanby,
+  ) {
+    onSubmit(
+      {
+        name: inputsValues[nameId],
+        email: inputsValues[emailId],
+      },
+      updateErrorMessage,
+      updateIsOnStanby,
+    );
+  }
 
   // 2B rendered
   return (
@@ -23,6 +44,7 @@ export default function Profile({
         linkTitle="Выйти из аккаунта"
         linkPath="/"
         onLinkClick={onLinkClick}
+        onSubmit={handleSubmit}
         // TODO make general structure for repeated inputs
         inputsAttributes={[
           {
