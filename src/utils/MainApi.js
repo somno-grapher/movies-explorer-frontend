@@ -67,9 +67,7 @@ class MainApi {
     const responseObject = await this._handleJsonResponse(jsonResponse, 'login');
     if (responseObject.token) {
       localStorage.setItem('jwt', responseObject.token);
-      // TODO: delete
-      // console.log(responseObject.token);
-      return responseObject;
+      return this.checkToken(responseObject.token);
     }
   };
 

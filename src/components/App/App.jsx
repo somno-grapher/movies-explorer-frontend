@@ -59,21 +59,24 @@ export default function App() {
     updateErrorMessage,
     updateIsOnStanby,
   ) {
+    // updateIsOnStanby(true);
     mainApi.login(email, password)
       .then((responseObject) => {
-        if (responseObject.token) {
-          // mainApi.setToken(responseObject.token);
-          // setIsLoggedIn(true);
-          // setEmail(email);
-          updateIsOnStanby(false);
-          // navigate("/movies", { replace: true });
-        }
+        setCurrentUser({
+          ...currentUser,
+          name: responseObject.name,
+          email: responseObject.email,
+        });
+        console.log(responseObject)
+        // const jwt = localStorage.getItem('jwt');
+        // mainApi.setToken(jwt);
+        setIsLoggedIn(true);
+        navigate("/movies", { replace: true });
       })
-      .then(handleTokenCheck)
       .catch((err) => {
         updateErrorMessage(err.message);
-        updateIsOnStanby(false);
-      });
+      })
+      .finally(() => { updateIsOnStanby(false); });
   }
 
   function handleSignOut() {

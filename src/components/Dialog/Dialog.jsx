@@ -100,10 +100,10 @@ export default function Dialog({
   }
 
   // TODO: change to function declaration
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsOnStandby(true);
     setErrorMessage('');
+    await setIsOnStandby(true); // await for changing state takes place
     onSubmit(
       inputsValuesRef.current,
       setErrorMessage,
