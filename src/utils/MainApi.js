@@ -18,6 +18,8 @@ class MainApi {
         errorMessage = 'При авторизации произошла ошибка.';
       } else if (requestType === 'tokenCheck') {
         errorMessage = 'При проверке токена произошла ошибка.';
+      } else if (requestType === 'userUpdate') {
+        errorMessage = 'При обновлении профиля произошла ошибка.';
       }
       throw new Error(errorMessage);
     }
