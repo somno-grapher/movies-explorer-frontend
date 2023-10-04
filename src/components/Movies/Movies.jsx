@@ -10,11 +10,13 @@ import MoviesContext from '../../contexts/MoviesContext.jsx'
 // CSS import
 import './Movies.css';
 
-function Movies() {
+function Movies({ onSubmit }) {
   return (
     <MoviesContext.Provider value="movies">
       <main className="movies">
-        <SearchForm />
+        <SearchForm
+          onSubmit={onSubmit}
+        />
         <MoviesCardList />
       </main>
     </MoviesContext.Provider>

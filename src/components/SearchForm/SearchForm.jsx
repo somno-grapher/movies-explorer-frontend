@@ -12,12 +12,7 @@ import './SearchForm.css';
 import searchIconPath from '../../images/icons/magnifier.svg';
 
 function SearchForm({
-  isOpen,
-  // name,
-  onClose,
   onSubmit,
-  title,
-  children
 }) {
 
   const [input, setInput] = useState('');
@@ -26,14 +21,19 @@ function SearchForm({
     setInput(e.target.value);
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    onSubmit();
+  }
+
   return (
 
     <form
       name={`search-form`}
       className="search-form"
       // TODO provide js validation
-      // noValidate
-      onSubmit={onSubmit}
+      noValidate
+      onSubmit={handleSubmit}
     >
       <div className="search-form__upper-container">
 
@@ -53,8 +53,6 @@ function SearchForm({
             placeholder="Фильм"
             id="search-movie-input"
             className="search-form__input"
-            // minLength="2"
-            // maxLength="40"
             required />
           <span className="search-movie-input-error"></span>
         </label>

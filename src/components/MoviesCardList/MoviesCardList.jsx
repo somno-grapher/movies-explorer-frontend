@@ -25,9 +25,10 @@ function MoviesCardList() {
         :
         <>
           <ul className="movies-card-list__grid">
-            {cardsData.map((cardData) => {
+            {cardsData.map((cardData, i) => {
               return (
                 <MoviesCard
+                  key={i}
                   cardData={cardData}
                 />
               )
