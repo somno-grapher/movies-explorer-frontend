@@ -101,6 +101,7 @@ export default function App() {
     { name, email },
     updateErrorMessage,
     updateIsOnStanby,
+    updateIsEditMode,
   ) {
     mainApi.updateUserInfo({ name, email })
       .then((responseObject) => {
@@ -109,6 +110,7 @@ export default function App() {
           name: responseObject.name,
           email: responseObject.email,
         });
+        updateIsEditMode(false);
       })
       .catch((err) => {
         updateErrorMessage(err.message);

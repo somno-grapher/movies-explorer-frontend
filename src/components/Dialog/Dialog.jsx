@@ -34,21 +34,14 @@ export default function Dialog({
   const styling = useContext(DialogStylingContext);
 
   // useState
-
   const [isEditMode, setIsEditMode] = useState(() => {
     return styling === "profile" ? false : true;
   });
-
   const [inputsValidity, setInputsValidity] = useState(createInputsInitialStates(false));
-
   const [isValid, setIsValid] = useState(false);
-
   const [inputsUpdateStatus, setInputsUpdateStatus] = useState(createInputsInitialStates(false));
-
   const [isUpdated, setIsUpdated] = useState(false);
-
   const [errorMessage, setErrorMessage] = useState('');
-
   const [isOnStandby, setIsOnStandby] = useState(false);
 
   // useRef
@@ -107,7 +100,8 @@ export default function Dialog({
     onSubmit(
       inputsValuesRef.current,
       setErrorMessage,
-      setIsOnStandby
+      setIsOnStandby,
+      setIsEditMode
     );
   }
 

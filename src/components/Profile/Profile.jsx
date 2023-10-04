@@ -24,6 +24,7 @@ export default function Profile({
     inputsValues,
     updateErrorMessage,
     updateIsOnStanby,
+    updateIsEditMode
   ) {
     onSubmit(
       {
@@ -32,6 +33,7 @@ export default function Profile({
       },
       updateErrorMessage,
       updateIsOnStanby,
+      updateIsEditMode
     );
   }
 
