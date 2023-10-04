@@ -62,13 +62,14 @@ export default function App() {
     mainApi.login(email, password)
       .then((responseObject) => {
         if (responseObject.token) {
-          mainApi.setToken(responseObject.token);
-          setIsLoggedIn(true);
+          // mainApi.setToken(responseObject.token);
+          // setIsLoggedIn(true);
           // setEmail(email);
           updateIsOnStanby(false);
-          navigate("/movies", { replace: true });
+          // navigate("/movies", { replace: true });
         }
       })
+      .then(handleTokenCheck)
       .catch((err) => {
         updateErrorMessage(err.message);
         updateIsOnStanby(false);
