@@ -43,14 +43,11 @@ export default function App() {
     updateIsOnStanby,
   ) {
     mainApi.register(email, password, name)
-      .then(() => {
-        // navigate('/movies', { replace: true });
-        updateIsOnStanby(false);
-      })
+      .then(onSuccessfulTokenCheck)
       .catch((err) => {
         updateErrorMessage(err.message);
-        updateIsOnStanby(false);
-      });
+      })
+      .finally(() => { updateIsOnStanby(false); });;
   }
 
   function handleLogin(
@@ -65,18 +62,6 @@ export default function App() {
         updateErrorMessage(err.message);
       })
       .finally(() => { updateIsOnStanby(false); });
-  }
-
-  function handleSignOut() {
-    localStorage.removeItem('jwt');
-    mainApi.setToken('');
-    setIsLoggedIn(false);
-    setCurrentUser({
-      ...currentUser,
-      name: '',
-      email: '',
-    });
-    navigate('/', { replace: true }); // overridden in Profile
   }
 
   function handleTokenCheck() {
@@ -98,6 +83,18 @@ export default function App() {
     });
     setIsLoggedIn(true);
     navigate("/movies", { replace: true });
+  }
+
+  function handleSignOut() {
+    localStorage.removeItem('jwt');
+    mainApi.setToken('');
+    setIsLoggedIn(false);
+    setCurrentUser({
+      ...currentUser,
+      name: '',
+      email: '',
+    });
+    navigate('/', { replace: true }); // overridden in Profile
   }
 
   // useEffect

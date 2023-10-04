@@ -48,7 +48,8 @@ class MainApi {
     } catch {
       throw new Error(`Проверьте соединение.`);
     }
-    return this._handleJsonResponse(jsonResponse, 'register');
+    await this._handleJsonResponse(jsonResponse, 'register');
+    return this.login(email, password);
   };
 
   async login(email, password) {
