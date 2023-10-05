@@ -13,7 +13,7 @@ class MoviesApi {
   }
 
   async getMovies() {
-    const jsonResponse = await fetch('https://api.nomoreparties.co/beatfilm-movies', {
+    const jsonResponse = await fetch(`${this._basePath}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

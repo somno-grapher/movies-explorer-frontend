@@ -14,8 +14,10 @@ import searchIconPath from '../../images/icons/magnifier.svg';
 function SearchForm({
   onSubmit,
 }) {
-
+  // useState
   const [input, setInput] = useState('');
+
+  // functions
 
   function handleInputChange(e) {
     setInput(e.target.value);
@@ -26,6 +28,7 @@ function SearchForm({
     onSubmit();
   }
 
+  // 2B rendered
   return (
 
     <form
