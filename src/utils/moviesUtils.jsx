@@ -1,4 +1,4 @@
-function onMoviesRequest(api, updateErrorMessage) {
+function onMoviesRequest(api, updateErrorMessage, updateIsOnStanby) {
   api.getMovies()
     .then((responseObject) => {
       console.log(responseObject);
@@ -7,7 +7,8 @@ function onMoviesRequest(api, updateErrorMessage) {
     .catch(() => {
       console.log('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
       // updateErrorMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
-    });
+    })
+    .finally(() => { updateIsOnStanby(false); });
 }
 
 export { onMoviesRequest };

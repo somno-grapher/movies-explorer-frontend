@@ -20,11 +20,13 @@ function Movies() {
 
   // useState
   const [moviesApi, setMoviesApi] = useState(new MoviesApi(MOVIES_API_BASE_PATH)); //TODO: change to ref?
+  const [isOnStandby, setIsOnStandby] = useState(false);
 
   // functions
 
-  function handleMoviesRequest() {
-    onMoviesRequest(moviesApi);
+  async function handleMoviesRequest() {
+    await setIsOnStandby(true); // await for changing state takes place
+    onMoviesRequest(moviesApi, {}, setIsOnStandby);
   }
 
   // 2B rendered
@@ -34,8 +36,7 @@ function Movies() {
         <SearchForm
           onSubmit={handleMoviesRequest}
         />
-        <Preloader />
-        <MoviesCardList />
+        {isOnStandby ? (<Preloader />) : (<MoviesCardList />)}
       </main>
     </MoviesContext.Provider>
   );
