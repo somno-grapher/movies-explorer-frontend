@@ -3,24 +3,23 @@ import React, { useContext } from 'react';
 
 // react project import
 import MoviesCard from '../MoviesCard/MoviesCard.jsx';
-import cardsData from './MoviesCardsData.js';
 import MoviesContext from '../../contexts/MoviesContext.jsx'
 
 // CSS import
 import './MoviesCardList.css';
 
-function MoviesCardList() {
+function MoviesCardList({ movies }) {
 
   const moviesContext = useContext(MoviesContext);
 
   return (
     <section className="movies-card-list">
       <ul className="movies-card-list__grid">
-        {cardsData.map((cardData, i) => {
+        {movies.map((movie) => {
           return (
             <MoviesCard
-              key={i}
-              cardData={cardData}
+              key={movie.id}
+              movie={movie}
             />
           )
         })}

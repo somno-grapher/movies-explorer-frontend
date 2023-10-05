@@ -1,5 +1,5 @@
 // react vendor import
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // react project import
 import SearchForm from '../SearchForm/SearchForm.jsx';
@@ -10,7 +10,7 @@ import { onMoviesRequest } from '../../utils/moviesUtils.jsx';
 
 // js import
 import MoviesApi from '../../utils/MoviesApi.js';
-import { MOVIES_API_BASE_PATH } from '../../consts/server.js';
+import { MOVIES_API_BASE_PATH } from '../../consts/consts.js';
 
 // CSS import
 import './Movies.css';
@@ -21,12 +21,15 @@ function Movies() {
   // useState
   const [moviesApi, setMoviesApi] = useState(new MoviesApi(MOVIES_API_BASE_PATH)); //TODO: change to ref?
   const [isOnStandby, setIsOnStandby] = useState(false);
+  const [movies, setMovies] = useState([]);
+
+  // useEffect
 
   // functions
 
-  async function handleMoviesRequest() {
-    await setIsOnStandby(true); // await for changing state takes place
-    onMoviesRequest(moviesApi, {}, setIsOnStandby);
+  function handleMoviesRequest() {
+    setIsOnStandby(true);
+    onMoviesRequest(moviesApi, {}, setIsOnStandby, setMovies);
   }
 
   // 2B rendered
@@ -36,7 +39,12 @@ function Movies() {
         <SearchForm
           onSubmit={handleMoviesRequest}
         />
-        {isOnStandby ? (<Preloader />) : (<MoviesCardList />)}
+        {isOnStandby && (<Preloader />)}
+        {(!isOnStandby && movies)
+          && (<MoviesCardList
+            movies={movies}
+          />)
+        }
       </main>
     </MoviesContext.Provider>
   );

@@ -8,7 +8,7 @@ import MoviesContext from '../../contexts/MoviesContext.jsx'
 import './MoviesCard.css';
 
 function MoviesCard({
-  cardData
+  movie
 }) {
 
   const moviesContext = useContext(MoviesContext);
@@ -47,8 +47,8 @@ function MoviesCard({
       <div className='movies-card__image-container'>
         <img
           className="movies-card__image"
-          src={`https://api.nomoreparties.co${cardData.image.url}`}
-          alt={cardData.nameRU}
+          src={`https://api.nomoreparties.co${movie.image.url}`}
+          alt={movie.nameRU}
         //  onClick={handleCardClick}
         />
       </div>
@@ -56,10 +56,10 @@ function MoviesCard({
       {/* info */}
       <div className="movies-card__info">
         <h2 className="movies-card__title">
-          {cardData.nameRU}
+          {movie.nameRU}
         </h2>
         <p className="movies-card__duration">
-          {cardData.duration}
+          {movie.duration}
         </p>
       </div>
 

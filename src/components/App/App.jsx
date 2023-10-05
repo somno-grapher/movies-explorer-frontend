@@ -17,7 +17,7 @@ import CurrentUserContext from '../../contexts/CurrentUserContext.jsx';
 
 // js import
 import MainApi from '../../utils/MainApi.js';
-import { MAIN_API_BASE_PATH} from '../../consts/server.js';
+import { MAIN_API_BASE_PATH } from '../../consts/consts.js';
 
 // CSS import
 import './App.css';
