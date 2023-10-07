@@ -2,8 +2,6 @@ function onMoviesRequest(
   { moviesApi,
     updateErrorMessage,
     setIsOnStandby,
-    setMovies,
-    movies,
     moviesToShow,
     setMoviesToShow }
 ) {
@@ -14,7 +12,6 @@ function onMoviesRequest(
     moviesApi.getMovies()
       .then((responseObject) => {
         localStorage.setItem('movies', JSON.stringify(responseObject));
-        setMovies([...responseObject]);
         setMoviesToShow([...responseObject].slice(0, 12));
       })
       .catch(() => {
@@ -23,12 +20,6 @@ function onMoviesRequest(
       })
       .finally(() => { setIsOnStandby(false); });
   }
-}
-
-function setMoviesOnMount() {
-  return localStorage.getItem('movies')
-    ? JSON.parse(localStorage.getItem('movies'))
-    : [];
 }
 
 function setMoviesToShowOnMount() {
@@ -43,7 +34,6 @@ function onShowMore() {
 
 export {
   onMoviesRequest,
-  setMoviesOnMount,
   setMoviesToShowOnMount,
   onShowMore
 };

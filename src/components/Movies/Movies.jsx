@@ -12,7 +12,6 @@ import MoviesApi from '../../utils/MoviesApi.js';
 import { MOVIES_API_BASE_PATH } from '../../consts/consts.js';
 import {
   onMoviesRequest,
-  setMoviesOnMount,
   onShowMore,
   setMoviesToShowOnMount,
 } from './moviesUtils.js';
@@ -26,7 +25,6 @@ function Movies() {
   // useState
   const [moviesApi, setMoviesApi] = useState(new MoviesApi(MOVIES_API_BASE_PATH)); // TODO: change to ref?
   const [isOnStandby, setIsOnStandby] = useState(false);
-  const [movies, setMovies] = useState(setMoviesOnMount());
   const [cardsShownQuantity, setCardsShownQuantity] = useState(0);
   const [moviesToShow, setMoviesToShow] = useState(setMoviesToShowOnMount());
 
@@ -39,8 +37,6 @@ function Movies() {
       moviesApi,
       updateErrorMessage: {},
       setIsOnStandby,
-      setMovies,
-      movies,
       moviesToShow,
       setMoviesToShow
     });
