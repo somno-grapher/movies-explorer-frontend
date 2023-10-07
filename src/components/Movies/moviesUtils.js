@@ -3,10 +3,10 @@ function onMoviesRequest(
   updateErrorMessage,
   updateIsOnStanby,
   updateMovies,
+  movies
 ) {
-  const localStorageMovies = localStorage.getItem('movies');
-  if (localStorageMovies) {
-    updateMovies([...JSON.parse(localStorageMovies)]);
+  if (movies.length !== 0) {
+    updateMovies([...movies]);
   } else {
     updateIsOnStanby(true);
     api.getMovies()

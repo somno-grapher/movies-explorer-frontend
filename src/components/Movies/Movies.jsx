@@ -31,7 +31,7 @@ function Movies() {
   // functions
 
   function handleMoviesRequest() {
-    onMoviesRequest(moviesApi, {}, setIsOnStandby, setMovies);
+    onMoviesRequest(moviesApi, {}, setIsOnStandby, setMovies, movies);
   }
 
   // 2B rendered
@@ -42,7 +42,7 @@ function Movies() {
           onSubmit={handleMoviesRequest}
         />
         {isOnStandby && (<Preloader />)}
-        {(!isOnStandby && movies.length !== 0)
+        {!isOnStandby && movies.length !== 0
           && (<MoviesCardList
             movies={movies}
           />)
