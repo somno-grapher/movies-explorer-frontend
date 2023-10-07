@@ -14,6 +14,7 @@ import {
   onMoviesRequest,
   setMoviesOnMount,
   onShowMore,
+  setMoviesToShowOnMount,
 } from './moviesUtils.js';
 
 // CSS import
@@ -27,14 +28,14 @@ function Movies() {
   const [isOnStandby, setIsOnStandby] = useState(false);
   const [movies, setMovies] = useState(setMoviesOnMount());
   const [cardsShownQuantity, setCardsShownQuantity] = useState(0);
-  const [moviesToShow, setMoviesToShow] = useState([]);
+  const [moviesToShow, setMoviesToShow] = useState(setMoviesToShowOnMount());
 
   // useEffect
 
   // functions
 
   function handleMoviesRequest() {
-    onMoviesRequest(moviesApi, {}, setIsOnStandby, setMovies, moviesToShow, setMoviesToShow);
+    onMoviesRequest(moviesApi, {}, setIsOnStandby, setMovies, movies,moviesToShow, setMoviesToShow);
   }
 
   function handleShowMore() {
