@@ -16,4 +16,13 @@ function onMoviesRequest(
     .finally(() => { updateIsOnStanby(false); });
 }
 
-export { onMoviesRequest };
+function setMoviesOnMount() {
+  return localStorage.getItem('movies')
+    ? JSON.parse(localStorage.getItem('movies'))
+    : [];
+}
+
+export {
+  onMoviesRequest,
+  setMoviesOnMount,
+};
