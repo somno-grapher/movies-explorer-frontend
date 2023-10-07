@@ -59,9 +59,9 @@ function MoviesCard({
           {movie.nameRU}
         </h2>
         <p className="movies-card__duration">
-          {movie.duration}
+          {`${Math.floor(movie.duration / 60)}ч ${movie.duration % 60}м`}
         </p>
-      </div>
+        </div>
 
     </li>
   );

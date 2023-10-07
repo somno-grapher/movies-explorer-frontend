@@ -1,6 +1,8 @@
 /* .movies-card */
 
 .movies-card {
+  /* to prevent grid from distortion when using nowrap*/
+  min-width: 0;
   position: relative;
   margin: 0;
   padding: 0;
@@ -154,6 +156,7 @@
   font-size: 13px;
   line-height: 1.23;
   font-weight: 500;
+  display: block;
 }
 
 @media screen and (max-width: 520px) {
@@ -174,4 +177,5 @@
   font-size: 11px;
   line-height: .91;
   font-weight: 400;
+  white-space: nowrap;
 }
