@@ -42,7 +42,7 @@ function Movies() {
           onSubmit={handleMoviesRequest}
         />
         {isOnStandby && (<Preloader />)}
-        {(!isOnStandby && movies)
+        {(!isOnStandby && movies.length !== 0)
           && (<MoviesCardList
             movies={movies}
           />)
