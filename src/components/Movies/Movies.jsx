@@ -35,7 +35,15 @@ function Movies() {
   // functions
 
   function handleMoviesRequest() {
-    onMoviesRequest(moviesApi, {}, setIsOnStandby, setMovies, movies,moviesToShow, setMoviesToShow);
+    onMoviesRequest({
+      moviesApi,
+      updateErrorMessage: {},
+      setIsOnStandby,
+      setMovies,
+      movies,
+      moviesToShow,
+      setMoviesToShow
+    });
   }
 
   function handleShowMore() {

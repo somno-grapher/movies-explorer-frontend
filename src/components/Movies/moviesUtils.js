@@ -1,27 +1,27 @@
 function onMoviesRequest(
-  api,
-  updateErrorMessage,
-  updateIsOnStanby,
-  updateMovies,
-  movies,
-  moviesToShow,
-  updateMoviesToShow
+  { moviesApi,
+    updateErrorMessage,
+    setIsOnStandby,
+    setMovies,
+    movies,
+    moviesToShow,
+    setMoviesToShow }
 ) {
   if (moviesToShow.length !== 0) {
-    updateMoviesToShow([...moviesToShow.slice(0, 12)]);
+    setMoviesToShow([...moviesToShow.slice(0, 12)]);
   } else {
-    updateIsOnStanby(true);
-    api.getMovies()
+    setIsOnStandby(true);
+    moviesApi.getMovies()
       .then((responseObject) => {
         localStorage.setItem('movies', JSON.stringify(responseObject));
-        updateMovies([...responseObject]);
-        updateMoviesToShow([...responseObject].slice(0, 12));
+        setMovies([...responseObject]);
+        setMoviesToShow([...responseObject].slice(0, 12));
       })
       .catch(() => {
         console.log('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
         // updateErrorMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
       })
-      .finally(() => { updateIsOnStanby(false); });
+      .finally(() => { setIsOnStandby(false); });
   }
 }
 
