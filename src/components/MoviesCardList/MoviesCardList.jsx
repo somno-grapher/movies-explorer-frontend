@@ -12,6 +12,8 @@ import './MoviesCardList.css';
 function MoviesCardList({
   movies,
   onShowMore,
+  isErrorShown,
+  isNotFoundShown,
 }) {
 
   // vars

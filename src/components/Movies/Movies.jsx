@@ -27,6 +27,8 @@ function Movies() {
   const [isOnStandby, setIsOnStandby] = useState(false);
   const [cardsShownQuantity, setCardsShownQuantity] = useState(0);
   const [moviesToShow, setMoviesToShow] = useState(setMoviesToShowOnMount());
+  const [isError, setIsError] = useState(false);
+  const [isNotFound, setIsNotFound] = useState(false);
 
   // useEffect
 
@@ -38,7 +40,8 @@ function Movies() {
       updateErrorMessage: {},
       setIsOnStandby,
       moviesToShow,
-      setMoviesToShow
+      setMoviesToShow,
+      setIsError
     });
   }
 
@@ -54,6 +57,16 @@ function Movies() {
           onSubmit={handleMoviesRequest}
         />
         {isOnStandby && (<Preloader />)}
+        {isError && (
+          <p className="movies__error">
+            Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз
+          </p>
+        )}
+        {isNotFound && (
+          <p className="movies__not-found">
+            Ничего не найдено
+          </p>
+        )}
         {!isOnStandby && moviesToShow.length !== 0
           && (<MoviesCardList
             movies={moviesToShow}

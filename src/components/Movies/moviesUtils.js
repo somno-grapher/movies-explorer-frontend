@@ -3,7 +3,9 @@ function onMoviesRequest(
     updateErrorMessage,
     setIsOnStandby,
     moviesToShow,
-    setMoviesToShow }
+    setMoviesToShow,
+    setIsError
+  }
 ) {
   if (moviesToShow.length !== 0) {
     setMoviesToShow([...JSON.parse(localStorage.getItem('movies')).slice(0, getInitialCardsQuantity())]);
@@ -15,8 +17,7 @@ function onMoviesRequest(
         setMoviesToShow([...responseObject].slice(0, getInitialCardsQuantity()));
       })
       .catch(() => {
-        console.log('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
-        // updateErrorMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
+        setIsError(true);
       })
       .finally(() => { setIsOnStandby(false); });
   }

@@ -1,3 +1,5 @@
+/* .movies */
+
 .movies {
   padding-left: 70px;
   padding-right: 70px;
@@ -18,4 +20,31 @@
     padding-left: 10px;
     padding-right: 10px;
   }
+}
+
+/* .movies__error */
+
+.movies__error {
+  margin: 0;
+  padding: 0;
+  align-self: center;
+  max-width: 900px;
+  text-align: center;
+  color: #ee3465;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.21;
+}
+
+/* .movies__error */
+
+.movies__not-found {
+  margin: 0;
+  padding: 0;
+  align-self: center;
+  text-align: center;
+  color: #fff;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.21;
 }
