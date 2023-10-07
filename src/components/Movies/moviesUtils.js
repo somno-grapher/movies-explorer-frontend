@@ -3,16 +3,18 @@ function onMoviesRequest(
   updateErrorMessage,
   updateIsOnStanby,
   updateMovies,
-  movies
+  moviesToShow,
+  updateMoviesToShow
 ) {
-  if (movies.length !== 0) {
-    updateMovies([...movies]);
+  if (moviesToShow.length !== 0) {
+    updateMoviesToShow([...moviesToShow]);
   } else {
     updateIsOnStanby(true);
     api.getMovies()
       .then((responseObject) => {
         localStorage.setItem('movies', JSON.stringify(responseObject));
         updateMovies([...responseObject]);
+        updateMoviesToShow([...responseObject]);
       })
       .catch(() => {
         console.log('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
@@ -28,7 +30,12 @@ function setMoviesOnMount() {
     : [];
 }
 
+function onShowMore() {
+
+}
+
 export {
   onMoviesRequest,
   setMoviesOnMount,
+  onShowMore
 };

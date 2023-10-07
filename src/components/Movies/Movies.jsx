@@ -13,6 +13,7 @@ import { MOVIES_API_BASE_PATH } from '../../consts/consts.js';
 import {
   onMoviesRequest,
   setMoviesOnMount,
+  onShowMore,
 } from './moviesUtils.js';
 
 // CSS import
@@ -22,16 +23,22 @@ import './Movies.css';
 function Movies() {
 
   // useState
-  const [moviesApi, setMoviesApi] = useState(new MoviesApi(MOVIES_API_BASE_PATH)); //TODO: change to ref?
+  const [moviesApi, setMoviesApi] = useState(new MoviesApi(MOVIES_API_BASE_PATH)); // TODO: change to ref?
   const [isOnStandby, setIsOnStandby] = useState(false);
   const [movies, setMovies] = useState(setMoviesOnMount());
+  const [cardsShownQuantity, setCardsShownQuantity] = useState(0);
+  const [moviesToShow, setMoviesToShow] = useState([]);
 
   // useEffect
 
   // functions
 
   function handleMoviesRequest() {
-    onMoviesRequest(moviesApi, {}, setIsOnStandby, setMovies, movies);
+    onMoviesRequest(moviesApi, {}, setIsOnStandby, setMovies, moviesToShow, setMoviesToShow);
+  }
+
+  function handleShowMore() {
+    onShowMore();
   }
 
   // 2B rendered
@@ -42,9 +49,10 @@ function Movies() {
           onSubmit={handleMoviesRequest}
         />
         {isOnStandby && (<Preloader />)}
-        {!isOnStandby && movies.length !== 0
+        {!isOnStandby && moviesToShow.length !== 0
           && (<MoviesCardList
-            movies={movies}
+            movies={moviesToShow}
+            onShowMore={handleShowMore}
           />)
         }
       </main>

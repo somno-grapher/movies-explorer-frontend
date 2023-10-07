@@ -8,10 +8,21 @@ import MoviesContext from '../../contexts/MoviesContext.jsx'
 // CSS import
 import './MoviesCardList.css';
 
-function MoviesCardList({ movies }) {
+// main function
+function MoviesCardList({
+  movies,
+  onShowMore,
+}) {
 
+  // vars
   const moviesContext = useContext(MoviesContext);
 
+  // functions
+  function handleShowMore() {
+    onShowMore();
+  }
+
+  // 2B rendered
   return (
     <section className="movies-card-list">
       <ul className="movies-card-list__grid">
@@ -28,7 +39,9 @@ function MoviesCardList({ movies }) {
             ${moviesContext === "saved-movies" && "movies-card-list__controls_saved-movies"}`}>
         {moviesContext === "movies" &&
           <button type="button"
-            className={`movies-card-list__more-button`}>
+            className={`movies-card-list__more-button`}
+            onClick={handleShowMore}
+          >
             Ещё
           </button>
         }
