@@ -14,7 +14,7 @@ function onMoviesRequest(
     moviesApi.getMovies()
       .then((responseObject) => {
         localStorage.setItem('movies', JSON.stringify(responseObject));
-        setMoviesToShow([...responseObject].slice(0, getInitialCardsQuantity()));
+        setMoviesToShow([...responseObject.slice(0, getInitialCardsQuantity())]);
       })
       .catch(() => {
         setIsError(true);
@@ -29,7 +29,8 @@ function setMoviesToShowOnMount() {
     : [];
 }
 
-function onShowMore() {
+function onShowMore({ moviesToShow, setMoviesToShow }) {
+  setMoviesToShow([...JSON.parse(localStorage.getItem('movies')).slice(0, moviesToShow.length + getIncrement(moviesToShow.length))]);
 }
 
 function getInitialCardsQuantity() {
@@ -44,8 +45,20 @@ function getInitialCardsQuantity() {
   return quantity;
 }
 
+function getIncrement(currentCardsQuantity) {
+  let increment;
+  if (window.innerWidth > 768) {
+    increment = 3 - currentCardsQuantity % 3;
+  } else if (window.innerWidth > 520) {
+    increment = 2 - currentCardsQuantity % 2;
+  } else {
+    increment = 2;
+  };
+  return increment;
+}
+
 export {
   onMoviesRequest,
   setMoviesToShowOnMount,
-  onShowMore
+  onShowMore,
 };

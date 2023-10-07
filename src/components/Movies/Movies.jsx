@@ -46,7 +46,7 @@ function Movies() {
   }
 
   function handleShowMore() {
-    onShowMore();
+    onShowMore({ moviesToShow,setMoviesToShow });
   }
 
   // 2B rendered
