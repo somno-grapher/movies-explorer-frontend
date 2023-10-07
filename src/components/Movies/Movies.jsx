@@ -31,7 +31,6 @@ function Movies() {
   // functions
 
   function handleMoviesRequest() {
-    setIsOnStandby(true);
     onMoviesRequest(moviesApi, {}, setIsOnStandby, setMovies);
   }
 

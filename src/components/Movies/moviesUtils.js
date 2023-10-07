@@ -2,12 +2,13 @@ function onMoviesRequest(
   api,
   updateErrorMessage,
   updateIsOnStanby,
-  setMovies,
+  updateMovies,
 ) {
+  updateIsOnStanby(true);
   api.getMovies()
     .then((responseObject) => {
       localStorage.setItem('movies', JSON.stringify(responseObject));
-      setMovies([...responseObject]);
+      updateMovies([...responseObject]);
     })
     .catch(() => {
       console.log('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
