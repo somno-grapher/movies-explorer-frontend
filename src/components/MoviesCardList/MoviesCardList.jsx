@@ -12,8 +12,7 @@ import './MoviesCardList.css';
 function MoviesCardList({
   movies,
   onShowMore,
-  isErrorShown,
-  isNotFoundShown,
+  isShowMoreButtonDisplayed,
 }) {
 
   // vars
@@ -39,13 +38,14 @@ function MoviesCardList({
       </ul>
       <form className={`movies-card-list__controls
             ${moviesContext === "saved-movies" && "movies-card-list__controls_saved-movies"}`}>
-        {moviesContext === "movies" &&
-          <button type="button"
-            className={`movies-card-list__more-button`}
-            onClick={handleShowMore}
-          >
-            Ещё
-          </button>
+        {moviesContext === "movies" && isShowMoreButtonDisplayed
+          && (
+            <button type="button"
+              className={`movies-card-list__more-button`}
+              onClick={handleShowMore}
+            >
+              Ещё
+            </button>)
         }
       </form>
     </section>

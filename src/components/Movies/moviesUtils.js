@@ -57,8 +57,13 @@ function getIncrement(currentCardsQuantity) {
   return increment;
 }
 
+function isShowMoreButtonDisplayed(moviesToShow) {
+  return moviesToShow.length < JSON.parse(localStorage.getItem('movies')).length;
+}
+
 export {
   onMoviesRequest,
   setMoviesToShowOnMount,
   onShowMore,
+  isShowMoreButtonDisplayed,
 };

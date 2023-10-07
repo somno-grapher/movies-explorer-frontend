@@ -14,6 +14,7 @@ import {
   onMoviesRequest,
   onShowMore,
   setMoviesToShowOnMount,
+  isShowMoreButtonDisplayed,
 } from './moviesUtils.js';
 
 // CSS import
@@ -25,7 +26,6 @@ function Movies() {
   // useState
   const [moviesApi, setMoviesApi] = useState(new MoviesApi(MOVIES_API_BASE_PATH)); // TODO: change to ref?
   const [isOnStandby, setIsOnStandby] = useState(false);
-  const [cardsShownQuantity, setCardsShownQuantity] = useState(0);
   const [moviesToShow, setMoviesToShow] = useState(setMoviesToShowOnMount());
   const [isError, setIsError] = useState(false);
   const [isNotFound, setIsNotFound] = useState(false);
@@ -46,7 +46,7 @@ function Movies() {
   }
 
   function handleShowMore() {
-    onShowMore({ moviesToShow,setMoviesToShow });
+    onShowMore({ moviesToShow, setMoviesToShow });
   }
 
   // 2B rendered
@@ -71,6 +71,7 @@ function Movies() {
           && (<MoviesCardList
             movies={moviesToShow}
             onShowMore={handleShowMore}
+            isShowMoreButtonDisplayed={isShowMoreButtonDisplayed(moviesToShow)}
           />)
         }
       </main>
