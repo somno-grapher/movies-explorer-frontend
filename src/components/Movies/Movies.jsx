@@ -43,13 +43,16 @@ function Movies() {
         return item.duration > 70;
       })]);
     } else {
-      setMoviesToShow([...JSON.parse(localStorage.getItem('movies')).slice(0, 12)]);
+      if (JSON.parse(localStorage.getItem('movies')).length !== 0) {
+        setMoviesToShow([...JSON.parse(localStorage.getItem('movies')).slice(0, 12)]);
+      }
     }
   }, [isShort]);
 
   // functions
 
-  function handleMoviesRequest() {
+  function handleMoviesRequest(searchFormExpression) {
+    setSearchExpression(searchFormExpression);
     onMoviesRequest({
       moviesApi,
       updateErrorMessage: {},
@@ -58,6 +61,7 @@ function Movies() {
       setMoviesToShow,
       setIsError,
       setMovies,
+      searchFormExpression,
     });
   }
 

@@ -5,11 +5,13 @@ function onMoviesRequest(
     moviesToShow,
     setMoviesToShow,
     setIsError,
-    setMovies
+    setMovies,
+    searchFormExpression,
   }
 ) {
   if (moviesToShow.length !== 0) {
     setMoviesToShow([...JSON.parse(localStorage.getItem('movies')).slice(0, getInitialCardsQuantity())]);
+    // setMoviesToShow([...JSON.parse(localStorage.getItem('movies')).slice(0, getInitialCardsQuantity())]);
   } else {
     setIsOnStandby(true);
     moviesApi.getMovies()
@@ -22,6 +24,10 @@ function onMoviesRequest(
         setIsError(true);
       })
       .finally(() => { setIsOnStandby(false); });
+  }
+
+  function checkMovieOnExpression(movie) {
+    return (movie.nameRU.toLowerCase().includes(searchFormExpression.toLowerCase()) || movie.nameEN.toLowerCase().includes(searchFormExpression.toLowerCase()));
   }
 }
 

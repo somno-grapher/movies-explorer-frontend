@@ -32,7 +32,7 @@ function SearchForm({
     e.preventDefault();
     if (inputRef.current.validity.valid) {
       setErrorMessage('');
-      onSubmit();
+      onSubmit(inputRef.current.value);
     } else {
       setErrorMessage('Нужно ввести ключевое слово');
     }
@@ -47,7 +47,6 @@ function SearchForm({
     <form
       name={`search-form`}
       className="search-form"
-      // TODO provide js validation
       noValidate
       onSubmit={handleSubmit}
     >
