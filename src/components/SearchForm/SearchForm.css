@@ -28,14 +28,14 @@
   align-self: stretch;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding-bottom: 46px;
+  align-items: flex-start;
+  padding-bottom: 31px;
   position: relative;
 }
 
 @media screen and (max-width: 520px) {
   .search-form__upper-container {
-    padding-bottom: 53px;
+    padding-bottom: 43px;
   }
 }
 
@@ -72,6 +72,8 @@
 }
 
 .search-form__input-label {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   margin-right: 10px;
   margin-left: 10px;
@@ -101,8 +103,10 @@
   outline: none;
 }
 
+/* TODO: enhance implementation */
 @media screen and (max-width: 520px) {
   .search-form__input {
+    padding-top: 7px;
     text-align: left;
     font-size: 18px;
   }
@@ -110,6 +114,24 @@
 
 .search-form__input::placeholder {
   color: #8b8b8b;
+}
+
+.search-form__input-error {
+  margin: 0;
+  padding: 0;
+  align-self: center;
+  text-align: center;
+  color: #ee3465;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.21;
+  min-height: 15px;
+}
+
+@media screen and (max-width: 520px) {
+  .search-form__input-error {
+    align-self: flex-start;
+  }
 }
 
 .search-form__submit-button {

@@ -15,6 +15,7 @@ import {
   onShowMore,
   setMoviesToShowOnMount,
   isShowMoreButtonDisplayed,
+  setMoviesOnMount
 } from './moviesUtils.js';
 
 // CSS import
@@ -31,6 +32,8 @@ function Movies() {
   const [isNotFound, setIsNotFound] = useState(false);
   const [isShort, setIsShort] = useState(false);
   // const [moviesFilteredByExpression, setMoviesFilteredByExpression] = useState([]);
+  const [movies, setMovies] = useState(setMoviesOnMount());
+  const [searchExpression, setSearchExpression] = useState('');
 
   // useEffect
 
@@ -53,7 +56,8 @@ function Movies() {
       setIsOnStandby,
       moviesToShow,
       setMoviesToShow,
-      setIsError
+      setIsError,
+      setMovies,
     });
   }
 

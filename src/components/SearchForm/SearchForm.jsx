@@ -1,6 +1,5 @@
 // react vendor import
-import React from 'react';
-import { useState } from "react";
+import React, { useState, useRef } from 'react';
 
 // react project import
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
@@ -17,16 +16,26 @@ function SearchForm({
 }) {
   // useState
   const [input, setInput] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  // refs
+  const inputRef = useRef();
 
   // functions
 
   function handleInputChange(e) {
+    setErrorMessage('');
     setInput(e.target.value);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    onSubmit();
+    if (inputRef.current.validity.valid) {
+      setErrorMessage('');
+      onSubmit();
+    } else {
+      setErrorMessage('Нужно ввести ключевое слово');
+    }
   }
 
   function handleShortsSelectorClick(status) {
@@ -53,6 +62,7 @@ function SearchForm({
 
         <label className="search-form__input-label">
           <input
+            ref={inputRef}
             value={input}
             onChange={handleInputChange}
             name="search-form-input"
@@ -61,7 +71,7 @@ function SearchForm({
             id="search-movie-input"
             className="search-form__input"
             required />
-          <span className="search-movie-input-error"></span>
+          <span className="search-form__input-error">{errorMessage}</span>
         </label>
 
         <button

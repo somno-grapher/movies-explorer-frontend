@@ -4,7 +4,8 @@ function onMoviesRequest(
     setIsOnStandby,
     moviesToShow,
     setMoviesToShow,
-    setIsError
+    setIsError,
+    setMovies
   }
 ) {
   if (moviesToShow.length !== 0) {
@@ -14,6 +15,7 @@ function onMoviesRequest(
     moviesApi.getMovies()
       .then((responseObject) => {
         localStorage.setItem('movies', JSON.stringify(responseObject));
+        setMovies(responseObject); // no destructurizing
         setMoviesToShow([...responseObject.slice(0, getInitialCardsQuantity())]);
       })
       .catch(() => {
@@ -21,6 +23,13 @@ function onMoviesRequest(
       })
       .finally(() => { setIsOnStandby(false); });
   }
+}
+
+function setMoviesOnMount() {
+  const localStorageMovies = localStorage.getItem('movies');
+  return localStorageMovies
+    ? JSON.parse(localStorageMovies)
+    : [];
 }
 
 function setMoviesToShowOnMount() {
@@ -66,4 +75,5 @@ export {
   setMoviesToShowOnMount,
   onShowMore,
   isShowMoreButtonDisplayed,
+  setMoviesOnMount
 };
