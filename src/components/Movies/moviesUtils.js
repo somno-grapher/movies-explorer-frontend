@@ -6,19 +6,22 @@ function onMoviesRequest(
     setMoviesToShow,
     setIsError,
     setMovies,
-    searchFormExpression,
+    keyword,
+    setKeyword,
   }
 ) {
+  setKeyword(keyword);
   if (moviesToShow.length !== 0) {
-    setMoviesToShow([...JSON.parse(localStorage.getItem('movies')).slice(0, getInitialCardsQuantity())]);
-    // setMoviesToShow([...JSON.parse(localStorage.getItem('movies')).slice(0, getInitialCardsQuantity())]);
+    setMoviesToShow([...JSON.parse(localStorage.getItem('movies')).filter(checkMovieOnExpression).slice(0, getInitialCardsQuantity())]);
+    localStorage.setItem('keyword', keyword);
   } else {
     setIsOnStandby(true);
     moviesApi.getMovies()
       .then((responseObject) => {
         localStorage.setItem('movies', JSON.stringify(responseObject));
         setMovies(responseObject); // no destructurizing
-        setMoviesToShow([...responseObject.slice(0, getInitialCardsQuantity())]);
+        setMoviesToShow([...responseObject.filter(checkMovieOnExpression).slice(0, getInitialCardsQuantity())]);
+        localStorage.setItem('keyword', keyword);
       })
       .catch(() => {
         setIsError(true);
@@ -27,14 +30,28 @@ function onMoviesRequest(
   }
 
   function checkMovieOnExpression(movie) {
-    return (movie.nameRU.toLowerCase().includes(searchFormExpression.toLowerCase()) || movie.nameEN.toLowerCase().includes(searchFormExpression.toLowerCase()));
+    return (movie.nameRU.toLowerCase().includes(keyword.toLowerCase()) || movie.nameEN.toLowerCase().includes(keyword.toLowerCase()));
   }
 }
 
+function setKeywordOnMount() {
+  const keyword = localStorage.getItem('keyword');
+  return keyword
+    ? keyword
+    : '';
+}
+
 function setMoviesOnMount() {
-  const localStorageMovies = localStorage.getItem('movies');
-  return localStorageMovies
-    ? JSON.parse(localStorageMovies)
+  const movies = localStorage.getItem('movies');
+  return movies
+    ? JSON.parse(movies)
+    : [];
+}
+
+function setKeywordMoviesOnMount() {
+  const movies = localStorage.getItem('keywordMovies');
+  return movies
+    ? JSON.parse(movies)
     : [];
 }
 
@@ -81,5 +98,7 @@ export {
   setMoviesToShowOnMount,
   onShowMore,
   isShowMoreButtonDisplayed,
-  setMoviesOnMount
+  setMoviesOnMount,
+  setKeywordMoviesOnMount,
+  setKeywordOnMount,
 };

@@ -15,7 +15,9 @@ import {
   onShowMore,
   setMoviesToShowOnMount,
   isShowMoreButtonDisplayed,
-  setMoviesOnMount
+  setMoviesOnMount,
+  setKeywordMoviesOnMount,
+  setKeywordOnMount,
 } from './moviesUtils.js';
 
 // CSS import
@@ -31,9 +33,9 @@ function Movies() {
   const [isError, setIsError] = useState(false);
   const [isNotFound, setIsNotFound] = useState(false);
   const [isShort, setIsShort] = useState(false);
-  // const [moviesFilteredByExpression, setMoviesFilteredByExpression] = useState([]);
   const [movies, setMovies] = useState(setMoviesOnMount());
-  const [searchExpression, setSearchExpression] = useState('');
+  const [keywordMovies, setKeywordMovies] = useState(setKeywordMoviesOnMount());
+  const [keyword, setKeyword] = useState(setKeywordOnMount());
 
   // useEffect
 
@@ -43,7 +45,8 @@ function Movies() {
         return item.duration > 70;
       })]);
     } else {
-      if (JSON.parse(localStorage.getItem('movies')).length !== 0) {
+      // TODO: check "if"
+      if (localStorage.getItem('movies')) {
         setMoviesToShow([...JSON.parse(localStorage.getItem('movies')).slice(0, 12)]);
       }
     }
@@ -51,8 +54,7 @@ function Movies() {
 
   // functions
 
-  function handleMoviesRequest(searchFormExpression) {
-    setSearchExpression(searchFormExpression);
+  function handleMoviesRequest(keyword) {
     onMoviesRequest({
       moviesApi,
       updateErrorMessage: {},
@@ -61,7 +63,8 @@ function Movies() {
       setMoviesToShow,
       setIsError,
       setMovies,
-      searchFormExpression,
+      keyword,
+      setKeyword,
     });
   }
 
@@ -76,6 +79,7 @@ function Movies() {
         <SearchForm
           onSubmit={handleMoviesRequest}
           onShortsSelectorClick={setIsShort}
+          keywordOnMount={keyword}
         />
         {isOnStandby && (<Preloader />)}
         {isError && (

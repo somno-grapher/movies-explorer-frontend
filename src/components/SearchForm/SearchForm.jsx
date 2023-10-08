@@ -13,9 +13,10 @@ import searchIconPath from '../../images/icons/magnifier.svg';
 function SearchForm({
   onSubmit,
   onShortsSelectorClick,
+  keywordOnMount,
 }) {
   // useState
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState(keywordOnMount);
   const [errorMessage, setErrorMessage] = useState('');
 
   // refs
