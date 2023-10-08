@@ -29,8 +29,20 @@ function Movies() {
   const [moviesToShow, setMoviesToShow] = useState(setMoviesToShowOnMount());
   const [isError, setIsError] = useState(false);
   const [isNotFound, setIsNotFound] = useState(false);
+  const [isShort, setIsShort] = useState(false);
+  // const [moviesFilteredByExpression, setMoviesFilteredByExpression] = useState([]);
 
   // useEffect
+
+  useEffect(() => {
+    if (isShort) {
+      setMoviesToShow([...moviesToShow.filter(function (item) {
+        return item.duration > 70;
+      })]);
+    } else {
+      setMoviesToShow([...JSON.parse(localStorage.getItem('movies')).slice(0, 12)]);
+    }
+  }, [isShort]);
 
   // functions
 
@@ -55,6 +67,7 @@ function Movies() {
       <main className="movies">
         <SearchForm
           onSubmit={handleMoviesRequest}
+          onShortsSelectorClick={setIsShort}
         />
         {isOnStandby && (<Preloader />)}
         {isError && (

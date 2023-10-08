@@ -13,6 +13,7 @@ import searchIconPath from '../../images/icons/magnifier.svg';
 
 function SearchForm({
   onSubmit,
+  onShortsSelectorClick,
 }) {
   // useState
   const [input, setInput] = useState('');
@@ -28,6 +29,9 @@ function SearchForm({
     onSubmit();
   }
 
+  function handleShortsSelectorClick(status) {
+    onShortsSelectorClick(status);
+  }
   // 2B rendered
   return (
 
@@ -68,7 +72,9 @@ function SearchForm({
       </div>
 
       <div className="search-form__checkbox-area">
-        <FilterCheckbox />
+        <FilterCheckbox
+          onClick={handleShortsSelectorClick}
+        />
         <span>Короткометражки</span>
       </div>
 
