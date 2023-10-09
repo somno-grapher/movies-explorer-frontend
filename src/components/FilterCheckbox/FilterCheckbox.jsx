@@ -4,13 +4,18 @@ import React, { useState } from 'react';
 // CSS import
 import './FilterCheckbox.css';
 
-function FilterCheckbox({ onClick }) {
+function FilterCheckbox({
+  onClick,
+  isShortOnMount,
+}) {
 
-  const [status, setStatus] = useState(false);
+  const [status, setStatus] = useState(isShortOnMount);
 
   function handleClick(e) {
     setStatus(e.target.checked);
     onClick(e.target.checked);
+    // TODO: move to moviesUtils
+    localStorage.setItem('isShort', e.target.checked);
   }
 
   return (

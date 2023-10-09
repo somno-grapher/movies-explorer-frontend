@@ -14,6 +14,7 @@ function SearchForm({
   onSubmit,
   onShortsSelectorClick,
   keywordOnMount,
+  isShortOnMount,
 }) {
   // useState
   const [input, setInput] = useState(keywordOnMount);
@@ -84,6 +85,7 @@ function SearchForm({
       <div className="search-form__checkbox-area">
         <FilterCheckbox
           onClick={handleShortsSelectorClick}
+          isShortOnMount={isShortOnMount}
         />
         <span>Короткометражки</span>
       </div>

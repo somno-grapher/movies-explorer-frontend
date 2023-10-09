@@ -88,6 +88,8 @@ export default function App() {
   function handleSignOut() {
     localStorage.removeItem('jwt');
     localStorage.removeItem('movies');
+    localStorage.removeItem('keyword');
+    localStorage.removeItem('isShort');
     mainApi.setToken('');
     setIsLoggedIn(false);
     setCurrentUser({

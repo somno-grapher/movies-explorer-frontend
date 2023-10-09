@@ -61,6 +61,13 @@ function setMoviesToShowOnMount() {
     : [];
 }
 
+function setIsShortOnMount() {
+  const isShort = localStorage.getItem('isShort');
+  return isShort
+    ? JSON.parse(isShort)
+    : false;
+}
+
 function onShowMore({ moviesToShow, setMoviesToShow }) {
   setMoviesToShow([...JSON.parse(localStorage.getItem('movies')).slice(0, moviesToShow.length + getIncrement(moviesToShow.length))]);
 }
@@ -101,4 +108,5 @@ export {
   setMoviesOnMount,
   setKeywordMoviesOnMount,
   setKeywordOnMount,
+  setIsShortOnMount
 };

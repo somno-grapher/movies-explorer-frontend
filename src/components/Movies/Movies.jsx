@@ -18,6 +18,7 @@ import {
   setMoviesOnMount,
   setKeywordMoviesOnMount,
   setKeywordOnMount,
+  setIsShortOnMount,
 } from './moviesUtils.js';
 
 // CSS import
@@ -32,8 +33,10 @@ function Movies() {
   const [moviesToShow, setMoviesToShow] = useState(setMoviesToShowOnMount());
   const [isError, setIsError] = useState(false);
   const [isNotFound, setIsNotFound] = useState(false);
-  const [isShort, setIsShort] = useState(false);
+  const [isShort, setIsShort] = useState(setIsShortOnMount());
+  console.log(isShort)
   const [movies, setMovies] = useState(setMoviesOnMount());
+  // TODO: exlude?
   const [keywordMovies, setKeywordMovies] = useState(setKeywordMoviesOnMount());
   const [keyword, setKeyword] = useState(setKeywordOnMount());
 
@@ -80,6 +83,7 @@ function Movies() {
           onSubmit={handleMoviesRequest}
           onShortsSelectorClick={setIsShort}
           keywordOnMount={keyword}
+          isShortOnMount={isShort}
         />
         {isOnStandby && (<Preloader />)}
         {isError && (
