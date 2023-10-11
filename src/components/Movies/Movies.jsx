@@ -38,11 +38,7 @@ function Movies() {
   // TODO: exlude?
   const [keywordMovies, setKeywordMovies] = useState(setKeywordMoviesOnMount());
   const [keywordShortMovies, setKeywordShortMovies] = useState(setKeywordShortMoviesOnMount());
-  
   const [moviesToShow, setMoviesToShow] = useState(setMoviesToShowOnMount());
-  console.log(setMoviesToShowOnMount())
-  console.log(moviesToShow)
-
   const [keyword, setKeyword] = useState(setKeywordOnMount());
 
   // useEffect
@@ -50,16 +46,16 @@ function Movies() {
   // useEffect(() => { setMoviesToShow(setMoviesToShowOnMount()) },[]);
 
   useEffect(() => {
-    if (isShort) {
-      setMoviesToShow([...moviesToShow.filter(function (item) {
-        return item.duration > 70;
-      })]);
-    } else {
-      // TODO: check "if"
-      if (localStorage.getItem('movies')) {
-        setMoviesToShow([...JSON.parse(localStorage.getItem('movies')).slice(0, 12)]);
-      }
-    }
+    // if (isShort) {
+    //   setMoviesToShow([...moviesToShow.filter(function (item) {
+    //     return item.duration > 70;
+    //   })]);
+    // } else {
+    //   // TODO: check "if"
+    //   if (localStorage.getItem('movies')) {
+    //     setMoviesToShow([...JSON.parse(localStorage.getItem('movies')).slice(0, 12)]);
+    //   }
+    // }
   }, [isShort]);
 
   // functions
@@ -78,6 +74,7 @@ function Movies() {
       setKeywordMovies,
       setKeywordShortMovies,
       movies,
+      isShort,
     });
   }
 
@@ -110,13 +107,14 @@ function Movies() {
           && (<MoviesCardList
             movies={moviesToShow}
             onShowMore={handleShowMore}
-          isShowMoreButtonDisplayed={isShowMoreButtonDisplayed(
-            {
-              moviesToShow,
-              keywordMovies,
-              keywordShortMovies,
-              isShort
-            })}
+            isShowMoreButtonDisplayed={isShowMoreButtonDisplayed(
+              {
+                moviesToShow,
+                keywordMovies,
+                keywordShortMovies,
+                isShort
+              }
+            )}
           />)
         }
       </main>
