@@ -19,6 +19,7 @@ import {
   setKeywordMoviesOnMount,
   setKeywordOnMount,
   setIsShortOnMount,
+  setKeywordShortMoviesOnMount,
 } from './moviesUtils.js';
 
 // CSS import
@@ -30,17 +31,23 @@ function Movies() {
   // useState
   const [moviesApi, setMoviesApi] = useState(new MoviesApi(MOVIES_API_BASE_PATH)); // TODO: change to ref?
   const [isOnStandby, setIsOnStandby] = useState(false);
-  const [moviesToShow, setMoviesToShow] = useState(setMoviesToShowOnMount());
   const [isError, setIsError] = useState(false);
   const [isNotFound, setIsNotFound] = useState(false);
   const [isShort, setIsShort] = useState(setIsShortOnMount());
-  console.log(isShort)
   const [movies, setMovies] = useState(setMoviesOnMount());
   // TODO: exlude?
   const [keywordMovies, setKeywordMovies] = useState(setKeywordMoviesOnMount());
+  const [keywordShortMovies, setKeywordShortMovies] = useState(setKeywordShortMoviesOnMount());
+  
+  const [moviesToShow, setMoviesToShow] = useState(setMoviesToShowOnMount());
+  console.log(setMoviesToShowOnMount())
+  console.log(moviesToShow)
+
   const [keyword, setKeyword] = useState(setKeywordOnMount());
 
   // useEffect
+
+  // useEffect(() => { setMoviesToShow(setMoviesToShowOnMount()) },[]);
 
   useEffect(() => {
     if (isShort) {
@@ -68,6 +75,9 @@ function Movies() {
       setMovies,
       keyword,
       setKeyword,
+      setKeywordMovies,
+      setKeywordShortMovies,
+      movies,
     });
   }
 
@@ -100,7 +110,13 @@ function Movies() {
           && (<MoviesCardList
             movies={moviesToShow}
             onShowMore={handleShowMore}
-            isShowMoreButtonDisplayed={isShowMoreButtonDisplayed(moviesToShow)}
+          isShowMoreButtonDisplayed={isShowMoreButtonDisplayed(
+            {
+              moviesToShow,
+              keywordMovies,
+              keywordShortMovies,
+              isShort
+            })}
           />)
         }
       </main>

@@ -90,6 +90,9 @@ export default function App() {
     localStorage.removeItem('movies');
     localStorage.removeItem('keyword');
     localStorage.removeItem('isShort');
+    localStorage.removeItem('keywordMovies');
+    localStorage.removeItem('keywordShortMovies');
+    localStorage.removeItem('moviesToShow');
     mainApi.setToken('');
     setIsLoggedIn(false);
     setCurrentUser({

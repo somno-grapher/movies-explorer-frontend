@@ -1,3 +1,5 @@
+const moviesToShowKey = 'moviesToShow';
+
 function onMoviesRequest(
   { moviesApi,
     updateErrorMessage,
@@ -8,25 +10,47 @@ function onMoviesRequest(
     setMovies,
     keyword,
     setKeyword,
+    setKeywordShortMoviesOnMount,
+    setKeywordMovies,
+    setKeywordShortMovies,
+    movies,
   }
 ) {
   setKeyword(keyword);
-  if (moviesToShow.length !== 0) {
-    setMoviesToShow([...JSON.parse(localStorage.getItem('movies')).filter(checkMovieOnExpression).slice(0, getInitialCardsQuantity())]);
-    localStorage.setItem('keyword', keyword);
-  } else {
+  if (movies.length === 0) {
     setIsOnStandby(true);
     moviesApi.getMovies()
       .then((responseObject) => {
-        localStorage.setItem('movies', JSON.stringify(responseObject));
         setMovies(responseObject); // no destructurizing
-        setMoviesToShow([...responseObject.filter(checkMovieOnExpression).slice(0, getInitialCardsQuantity())]);
+        localStorage.setItem('movies', JSON.stringify(movies));
+        const keywordMovies = responseObject.filter(checkMovieOnExpression);
+        setKeywordMovies(keywordMovies);
+        const keywordShortMovies = keywordMovies.filter((movie) => {
+          // ! change duration
+          return movie.duration > 70;
+        });
+        setKeywordShortMovies(keywordShortMovies);
+        const moviesToShow = keywordShortMovies.slice(0, getInitialCardsQuantity());
+        setMoviesToShow([...moviesToShow]);
         localStorage.setItem('keyword', keyword);
+        localStorage.setItem(moviesToShowKey, JSON.stringify(moviesToShow));
+        console.log(moviesToShow)
       })
       .catch(() => {
         setIsError(true);
       })
-      .finally(() => { setIsOnStandby(false); });
+      .finally(() => {
+        setIsOnStandby(false);
+        return;
+      });
+    if (movies.length !== 0) {
+      const moviesToShow = JSON.parse(localStorage.getItem(moviesToShowKey));
+      console.log(moviesToShow)
+      localStorage.setItem('keyword', keyword);
+      setMoviesToShow([...moviesToShow]);
+      localStorage.setItem(moviesToShowKey, JSON.stringify(moviesToShow));
+      return;
+    }
   }
 
   function checkMovieOnExpression(movie) {
@@ -55,10 +79,21 @@ function setKeywordMoviesOnMount() {
     : [];
 }
 
-function setMoviesToShowOnMount() {
-  return localStorage.getItem('movies')
-    ? JSON.parse(localStorage.getItem('movies')).slice(0, getInitialCardsQuantity())
+function setKeywordShortMoviesOnMount() {
+  const movies = localStorage.getItem('keywordShortMovies');
+  return movies
+    ? JSON.parse(movies).filter(function (movie) {
+      return movie.duration > 70; // TODO: update length
+    })
     : [];
+}
+
+function setMoviesToShowOnMount() {
+  const movies = localStorage.getItem(moviesToShowKey);
+  const returnValue = movies
+    ? JSON.parse(movies)
+    : [];
+  return returnValue;
 }
 
 function setIsShortOnMount() {
@@ -96,8 +131,14 @@ function getIncrement(currentCardsQuantity) {
   return increment;
 }
 
-function isShowMoreButtonDisplayed(moviesToShow) {
-  return moviesToShow.length < JSON.parse(localStorage.getItem('movies')).length;
+function isShowMoreButtonDisplayed({
+  moviesToShow,
+  keywordMovies,
+  keywordShortMovies,
+  isShort,
+}) {
+  const baseLength = !isShort ? keywordMovies.length : keywordShortMovies.length;
+  return moviesToShow.length < baseLength;
 }
 
 export {
@@ -108,5 +149,6 @@ export {
   setMoviesOnMount,
   setKeywordMoviesOnMount,
   setKeywordOnMount,
-  setIsShortOnMount
+  setIsShortOnMount,
+  setKeywordShortMoviesOnMount,
 };
