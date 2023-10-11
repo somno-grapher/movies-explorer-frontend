@@ -24,29 +24,13 @@ function onMoviesRequest(
   }
 ) {
   setKeyword(keyword);
-  if (movies.length === 0) {
+  if (!movies.length) {
     setIsOnStandby(true);
     moviesApi.getMovies()
       .then((responseObject) => {
         setMovies(responseObject); // no destructurizing
-        localStorage.setItem(moviesKey, JSON.stringify(movies));
-
-        const keywordMovies = responseObject.filter(checkMovieOnExpression);
-        setKeywordMovies(keywordMovies);
-        localStorage.setItem(keywordMoviesKey, JSON.stringify(keywordMovies));
-
-        const keywordShortMovies = keywordMovies.filter(filterShortMoviesCallback);
-        setKeywordShortMovies(keywordShortMovies);
-        localStorage.setItem(keywordShortMoviesKey, JSON.stringify(keywordShortMovies));
-
-        const moviesToShow = !isShort
-          ? keywordMovies.slice(0, getInitialCardsQuantity())
-          : keywordShortMovies.filter(checkMovieOnExpression).slice(0, getInitialCardsQuantity());
-        setMoviesToShow([...moviesToShow]);
-        localStorage.setItem(moviesToShowKey, JSON.stringify(moviesToShow));
-
-        localStorage.setItem(keywordKey, keyword);
-        // isShort is stored via FilterCheckbox
+        localStorage.setItem(moviesKey, JSON.stringify(responseObject));
+        handleSearch(responseObject);
       })
       .catch(() => {
         setIsError(true);
@@ -56,8 +40,12 @@ function onMoviesRequest(
         return;
       });
   }
+  if (movies.length) {
+    handleSearch(movies);
+    return;
+  }
 
-  if (movies.length !== 0) {
+  function handleSearch(movies) {
     const keywordMovies = movies.filter(checkMovieOnExpression);
     setKeywordMovies(keywordMovies);
     localStorage.setItem(keywordMoviesKey, JSON.stringify(keywordMovies));
@@ -73,8 +61,6 @@ function onMoviesRequest(
     localStorage.setItem(moviesToShowKey, JSON.stringify(moviesToShow));
 
     localStorage.setItem(keywordKey, keyword);
-
-    return;
   }
 
   function checkMovieOnExpression(movie) {
