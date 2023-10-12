@@ -101,9 +101,15 @@
 /* .movies-card__image-container */
 
 .movies-card__image-container {
+  display: block;
   position: relative;
   width: 100%;
   padding-bottom: 56%;
+  transition: .3s;
+}
+
+.movies-card__image-container:hover {
+  opacity: .7;
 }
 
 /* .movies-card__image */

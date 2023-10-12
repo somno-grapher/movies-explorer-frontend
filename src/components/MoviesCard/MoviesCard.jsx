@@ -44,14 +44,18 @@ function MoviesCard({
       }
 
       {/* image */}
-      <div className='movies-card__image-container'>
+      <a className='movies-card__image-container'
+        href={movie.trailerLink}
+        target="_blank"
+        rel="noreferrer"
+      >
         <img
           className="movies-card__image"
           src={`https://api.nomoreparties.co${movie.image.url}`}
           alt={movie.nameRU}
         //  onClick={handleCardClick}
         />
-      </div>
+      </a>
 
       {/* info */}
       <div className="movies-card__info">
@@ -61,7 +65,7 @@ function MoviesCard({
         <p className="movies-card__duration">
           {`${Math.floor(movie.duration / 60)}ч ${movie.duration % 60}м`}
         </p>
-        </div>
+      </div>
 
     </li>
   );

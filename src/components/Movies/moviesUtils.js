@@ -161,7 +161,7 @@ function getIncrement(currentCardsQuantity) {
 }
 
 function filterShortMoviesCallback(movie) {
-  return movie.duration > 80;
+  return movie.duration <= 40;
 }
 
 function isShowMoreButtonDisplayed({
