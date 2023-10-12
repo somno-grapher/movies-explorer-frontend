@@ -21,6 +21,7 @@ import {
   setIsShortOnMount,
   setKeywordShortMoviesOnMount,
   filterOnIsShortChange,
+  setIsNotFoundOnMount
 } from './moviesUtils.js';
 
 // CSS import
@@ -33,13 +34,13 @@ function Movies() {
   const [moviesApi, setMoviesApi] = useState(new MoviesApi(MOVIES_API_BASE_PATH)); // TODO: change to ref?
   const [isOnStandby, setIsOnStandby] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [isNotFound, setIsNotFound] = useState(false);
   const [isShort, setIsShort] = useState(setIsShortOnMount());
   const [movies, setMovies] = useState(setMoviesOnMount());
   // TODO: exlude?
   const [keywordMovies, setKeywordMovies] = useState(setKeywordMoviesOnMount());
   const [keywordShortMovies, setKeywordShortMovies] = useState(setKeywordShortMoviesOnMount());
   const [moviesToShow, setMoviesToShow] = useState(setMoviesToShowOnMount());
+  const [isNotFound, setIsNotFound] = useState(() => { return setIsNotFoundOnMount({ movies, moviesToShow }) });
   const [keyword, setKeyword] = useState(setKeywordOnMount());
 
   // useEffect
@@ -70,6 +71,7 @@ function Movies() {
       setKeywordShortMovies,
       movies,
       isShort,
+      setIsNotFound,
     });
   }
 
