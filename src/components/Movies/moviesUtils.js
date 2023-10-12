@@ -47,6 +47,7 @@ function onMoviesRequest(
     return;
   }
 
+  // TODO: exclude localStorage
   function handleSearch({ movies, setIsNotFound }) {
     const keywordMovies = movies.filter(checkMovieOnExpression);
     setKeywordMovies(keywordMovies);
@@ -61,7 +62,7 @@ function onMoviesRequest(
       : keywordShortMovies.filter(checkMovieOnExpression).slice(0, getInitialCardsQuantity());
     setMoviesToShow([...moviesToShow]);
     localStorage.setItem(moviesToShowKey, JSON.stringify(moviesToShow));
-    setIsNotFound(setIsNotFound = moviesToShow.length ? false : true);
+    setIsNotFound(moviesToShow.length ? false : true);
 
     localStorage.setItem(keywordKey, keyword);
   }
@@ -174,24 +175,45 @@ function isShowMoreButtonDisplayed({
   return moviesToShow.length < baseLength;
 }
 
-function filterOnIsShortChange({
-  isShort,
-  moviesToShow,
-  keywordMovies,
-  setMoviesToShow
-}) {
-  const moviesToShowLength = moviesToShow.length;
-  if (!moviesToShowLength) { return };
-  let updatedMoviesToShow;
-  if (isShort) {
-    updatedMoviesToShow = ([...moviesToShow.filter(filterShortMoviesCallback)]);
-  } else {
-    const lastShownCardId = moviesToShow[moviesToShowLength - 1].id;
-    const numberOfMoviesToShow = keywordMovies.findIndex((movie) => { return movie.id === lastShownCardId }) + 1;
-    updatedMoviesToShow = keywordMovies.slice(0, numberOfMoviesToShow);
-  }
-  setMoviesToShow(updatedMoviesToShow);
-}
+
+// TODO: exclude?
+// function filterOnIsShortChange({
+//   isShort,
+//   moviesToShow,
+//   keywordMovies,
+//   keywordShortMovies,
+//   setMoviesToShow,
+//   setIsNotFound,
+// }) {
+//   if (!moviesToShow.length) { return; };
+//   const updatedMoviesToShow = !isShort
+//     ? keywordMovies.slice(0, getInitialCardsQuantity())
+//     : keywordShortMovies.slice(0, getInitialCardsQuantity());
+//   setMoviesToShow([...updatedMoviesToShow]);
+//   localStorage.setItem(moviesToShowKey, JSON.stringify(updatedMoviesToShow));
+//   setIsNotFound(updatedMoviesToShow.length ? false : true);
+//   setMoviesToShow(updatedMoviesToShow);
+// }
+
+// ! old version
+// function filterOnIsShortChange({
+//   isShort,
+//   moviesToShow,
+//   keywordMovies,
+//   setMoviesToShow
+// }) {
+//   const moviesToShowLength = moviesToShow.length;
+//   if (!moviesToShowLength) { return };
+//   let updatedMoviesToShow;
+//   if (isShort) {
+//     updatedMoviesToShow = ([...moviesToShow.filter(filterShortMoviesCallback)]);
+//   } else {
+//     const lastShownCardId = moviesToShow[moviesToShowLength - 1].id;
+//     const numberOfMoviesToShow = keywordMovies.findIndex((movie) => { return movie.id === lastShownCardId }) + 1;
+//     updatedMoviesToShow = keywordMovies.slice(0, numberOfMoviesToShow);
+//   }
+//   setMoviesToShow(updatedMoviesToShow);
+// }
 
 export {
   onMoviesRequest,
@@ -203,6 +225,6 @@ export {
   setKeywordOnMount,
   setIsShortOnMount,
   setKeywordShortMoviesOnMount,
-  filterOnIsShortChange,
+  // filterOnIsShortChange,
   setIsNotFoundOnMount,
 };

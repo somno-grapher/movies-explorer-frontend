@@ -46,12 +46,30 @@ function Movies() {
   // useEffect
 
   useEffect(() => {
-    filterOnIsShortChange({
-      isShort,
+    // filterOnIsShortChange({
+    //   isShort,
+    //   moviesToShow,
+    //   keywordMovies,
+    //   keywordShortMovies,
+    //   setMoviesToShow,
+    //   setIsNotFound,
+    // });
+    onMoviesRequest({
+      moviesApi,
+      updateErrorMessage: {},
+      setIsOnStandby,
       moviesToShow,
-      keywordMovies,
       setMoviesToShow,
-    })
+      setIsError,
+      setMovies,
+      keyword,
+      setKeyword,
+      setKeywordMovies,
+      setKeywordShortMovies,
+      movies,
+      isShort,
+      setIsNotFound,
+    });
   }, [isShort]);
 
   // functions
