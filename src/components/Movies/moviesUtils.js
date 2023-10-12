@@ -110,8 +110,22 @@ function setIsShortOnMount() {
     : false;
 }
 
-function onShowMore({ moviesToShow, setMoviesToShow }) {
-  setMoviesToShow([...JSON.parse(localStorage.getItem(moviesKey)).slice(0, moviesToShow.length + getIncrement(moviesToShow.length))]);
+function onShowMore({
+  moviesToShow,
+  keywordMovies,
+  keywordShortMovies,
+  isShort,
+  setMoviesToShow,
+}) {
+  let baseMovies;
+  if (isShort) {
+    baseMovies = keywordShortMovies;
+  } else {
+    baseMovies = keywordMovies;
+  }
+  const updatedMoviesToShow = baseMovies.slice(0, moviesToShow.length + getIncrement(moviesToShow.length));
+  setMoviesToShow([...updatedMoviesToShow]);
+  localStorage.setItem(moviesToShowKey, JSON.stringify(updatedMoviesToShow));
 }
 
 function getInitialCardsQuantity() {
@@ -128,6 +142,7 @@ function getInitialCardsQuantity() {
 
 function getIncrement(currentCardsQuantity) {
   let increment;
+  // TODO: show additional row
   if (window.innerWidth > 768) {
     increment = 3 - currentCardsQuantity % 3;
   } else if (window.innerWidth > 520) {

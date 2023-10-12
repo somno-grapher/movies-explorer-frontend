@@ -74,7 +74,13 @@ function Movies() {
   }
 
   function handleShowMore() {
-    onShowMore({ moviesToShow, setMoviesToShow });
+    onShowMore({
+      moviesToShow,
+      keywordMovies,
+      keywordShortMovies,
+      isShort,
+      setMoviesToShow,
+    });
   }
 
   // 2B rendered
@@ -102,14 +108,14 @@ function Movies() {
           && (<MoviesCardList
             movies={moviesToShow}
             onShowMore={handleShowMore}
-            isShowMoreButtonDisplayed={isShowMoreButtonDisplayed(
-              {
+            isShowMoreButtonDisplayed={
+              isShowMoreButtonDisplayed({
                 moviesToShow,
                 keywordMovies,
                 keywordShortMovies,
                 isShort
-              }
-            )}
+              })
+            }
           />)
         }
       </main>
