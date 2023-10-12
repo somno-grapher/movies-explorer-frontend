@@ -20,7 +20,6 @@ import {
   setKeywordOnMount,
   setIsShortOnMount,
   setKeywordShortMoviesOnMount,
-  filterOnIsShortChange,
   setIsNotFoundOnMount
 } from './moviesUtils.js';
 
@@ -46,19 +45,9 @@ function Movies() {
   // useEffect
 
   useEffect(() => {
-    // filterOnIsShortChange({
-    //   isShort,
-    //   moviesToShow,
-    //   keywordMovies,
-    //   keywordShortMovies,
-    //   setMoviesToShow,
-    //   setIsNotFound,
-    // });
     onMoviesRequest({
       moviesApi,
-      updateErrorMessage: {},
       setIsOnStandby,
-      moviesToShow,
       setMoviesToShow,
       setIsError,
       setMovies,
@@ -77,9 +66,7 @@ function Movies() {
   function handleMoviesRequest(keyword) {
     onMoviesRequest({
       moviesApi,
-      updateErrorMessage: {},
       setIsOnStandby,
-      moviesToShow,
       setMoviesToShow,
       setIsError,
       setMovies,

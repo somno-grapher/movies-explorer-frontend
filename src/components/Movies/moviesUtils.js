@@ -8,15 +8,12 @@ const isShortKey = 'isShort';
 
 function onMoviesRequest(
   { moviesApi,
-    updateErrorMessage,
     setIsOnStandby,
-    moviesToShow,
     setMoviesToShow,
     setIsError,
     setMovies,
     keyword,
     setKeyword,
-    setKeywordShortMoviesOnMount,
     setKeywordMovies,
     setKeywordShortMovies,
     movies,
@@ -175,46 +172,6 @@ function isShowMoreButtonDisplayed({
   return moviesToShow.length < baseLength;
 }
 
-
-// TODO: exclude?
-// function filterOnIsShortChange({
-//   isShort,
-//   moviesToShow,
-//   keywordMovies,
-//   keywordShortMovies,
-//   setMoviesToShow,
-//   setIsNotFound,
-// }) {
-//   if (!moviesToShow.length) { return; };
-//   const updatedMoviesToShow = !isShort
-//     ? keywordMovies.slice(0, getInitialCardsQuantity())
-//     : keywordShortMovies.slice(0, getInitialCardsQuantity());
-//   setMoviesToShow([...updatedMoviesToShow]);
-//   localStorage.setItem(moviesToShowKey, JSON.stringify(updatedMoviesToShow));
-//   setIsNotFound(updatedMoviesToShow.length ? false : true);
-//   setMoviesToShow(updatedMoviesToShow);
-// }
-
-// ! old version
-// function filterOnIsShortChange({
-//   isShort,
-//   moviesToShow,
-//   keywordMovies,
-//   setMoviesToShow
-// }) {
-//   const moviesToShowLength = moviesToShow.length;
-//   if (!moviesToShowLength) { return };
-//   let updatedMoviesToShow;
-//   if (isShort) {
-//     updatedMoviesToShow = ([...moviesToShow.filter(filterShortMoviesCallback)]);
-//   } else {
-//     const lastShownCardId = moviesToShow[moviesToShowLength - 1].id;
-//     const numberOfMoviesToShow = keywordMovies.findIndex((movie) => { return movie.id === lastShownCardId }) + 1;
-//     updatedMoviesToShow = keywordMovies.slice(0, numberOfMoviesToShow);
-//   }
-//   setMoviesToShow(updatedMoviesToShow);
-// }
-
 export {
   onMoviesRequest,
   setMoviesToShowOnMount,
@@ -225,6 +182,5 @@ export {
   setKeywordOnMount,
   setIsShortOnMount,
   setKeywordShortMoviesOnMount,
-  // filterOnIsShortChange,
   setIsNotFoundOnMount,
 };
