@@ -152,6 +152,25 @@ function isShowMoreButtonDisplayed({
   return moviesToShow.length < baseLength;
 }
 
+function filterOnIsShortChange({
+  isShort,
+  moviesToShow,
+  keywordMovies,
+  setMoviesToShow
+}) {
+  const moviesToShowLength = moviesToShow.length;
+  if (!moviesToShowLength) { return };
+  let updatedMoviesToShow;
+  if (isShort) {
+    updatedMoviesToShow = ([...moviesToShow.filter(filterShortMoviesCallback)]);
+  } else {
+    const lastShownCardId = moviesToShow[moviesToShowLength - 1].id;
+    const numberOfMoviesToShow = keywordMovies.findIndex((movie) => { return movie.id === lastShownCardId }) + 1;
+    updatedMoviesToShow = keywordMovies.slice(0, numberOfMoviesToShow);
+  }
+  setMoviesToShow(updatedMoviesToShow);
+}
+
 export {
   onMoviesRequest,
   setMoviesToShowOnMount,
@@ -162,4 +181,5 @@ export {
   setKeywordOnMount,
   setIsShortOnMount,
   setKeywordShortMoviesOnMount,
+  filterOnIsShortChange,
 };

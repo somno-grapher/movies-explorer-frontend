@@ -20,6 +20,7 @@ import {
   setKeywordOnMount,
   setIsShortOnMount,
   setKeywordShortMoviesOnMount,
+  filterOnIsShortChange,
 } from './moviesUtils.js';
 
 // CSS import
@@ -43,19 +44,13 @@ function Movies() {
 
   // useEffect
 
-  // useEffect(() => { setMoviesToShow(setMoviesToShowOnMount()) },[]);
-
   useEffect(() => {
-    // if (isShort) {
-    //   setMoviesToShow([...moviesToShow.filter(function (item) {
-    //     return item.duration > 70;
-    //   })]);
-    // } else {
-    //   // TODO: check "if"
-    //   if (localStorage.getItem('movies')) {
-    //     setMoviesToShow([...JSON.parse(localStorage.getItem('movies')).slice(0, 12)]);
-    //   }
-    // }
+    filterOnIsShortChange({
+      isShort,
+      moviesToShow,
+      keywordMovies,
+      setMoviesToShow,
+    })
   }, [isShort]);
 
   // functions
