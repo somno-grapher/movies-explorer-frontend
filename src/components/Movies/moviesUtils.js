@@ -31,7 +31,8 @@ function onMoviesRequest(
       .then((responseObject) => {
         setMovies(responseObject); // no destructurizing
         localStorage.setItem(moviesKey, JSON.stringify(responseObject));
-        handleSearch(responseObject);
+        handleSearch({ movies: responseObject, setIsNotFound });
+        setIsError(false);
       })
       .catch(() => {
         setIsError(true);
@@ -60,7 +61,7 @@ function onMoviesRequest(
       : keywordShortMovies.filter(checkMovieOnExpression).slice(0, getInitialCardsQuantity());
     setMoviesToShow([...moviesToShow]);
     localStorage.setItem(moviesToShowKey, JSON.stringify(moviesToShow));
-    setIsNotFound(setIsNotFound = moviesToShow.length ? false : true)
+    setIsNotFound(setIsNotFound = moviesToShow.length ? false : true);
 
     localStorage.setItem(keywordKey, keyword);
   }
