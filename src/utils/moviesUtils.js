@@ -20,16 +20,19 @@ function onMoviesRequest(
     isShort,
     setIsNotFound,
     mainApi,
-    savedMovies=[],
+    setSavedMovies,
+    isSavedMoviesReceived,
+    setIsSavedMoviesReceived,
   }
 ) {
   setKeyword(keyword);
 
-  if (!savedMovies.length) {
-    handleRequest();
+  if (!isSavedMoviesReceived) {
+    setIsOnStandby(true);
     mainApi.getSavedMovies()
       .then((responseObject) => {
-        // setSavedMovies
+        setSavedMovies(responseObject);
+        setIsSavedMoviesReceived(true);
         handleRequest();
       })
       .catch(() => {
@@ -91,69 +94,6 @@ function onMoviesRequest(
     return (movie.nameRU.toLowerCase().includes(keyword.toLowerCase()) || movie.nameEN.toLowerCase().includes(keyword.toLowerCase()));
   }
 }
-
-// function onMoviesRequest(
-//   { moviesApi,
-//     setIsOnStandby,
-//     setMoviesToShow,
-//     setIsError,
-//     setMovies,
-//     keyword,
-//     setKeyword,
-//     setKeywordMovies,
-//     setKeywordShortMovies,
-//     movies,
-//     isShort,
-//     setIsNotFound,
-//   }
-// ) {
-//   setKeyword(keyword);
-//   if (!movies.length) {
-//     setIsOnStandby(true);
-//     moviesApi.getMovies()
-//       .then((responseObject) => {
-//         setMovies(responseObject); // no destructurizing
-//         localStorage.setItem(moviesKey, JSON.stringify(responseObject));
-//         handleSearch({ movies: responseObject, setIsNotFound });
-//         setIsError(false);
-//       })
-//       .catch(() => {
-//         setIsError(true);
-//       })
-//       .finally(() => {
-//         setIsOnStandby(false);
-//         return;
-//       });
-//   }
-//   if (movies.length) {
-//     handleSearch({ movies, setIsNotFound });
-//     return;
-//   }
-
-//   // TODO: exclude localStorage
-//   function handleSearch({ movies, setIsNotFound }) {
-//     const keywordMovies = movies.filter(checkMovieOnExpression);
-//     setKeywordMovies(keywordMovies);
-//     localStorage.setItem(keywordMoviesKey, JSON.stringify(keywordMovies));
-
-//     const keywordShortMovies = keywordMovies.filter(filterShortMoviesCallback);
-//     setKeywordShortMovies(keywordShortMovies);
-//     localStorage.setItem(keywordShortMoviesKey, JSON.stringify(keywordShortMovies));
-
-//     const moviesToShow = !isShort
-//       ? keywordMovies.slice(0, getInitialCardsQuantity())
-//       : keywordShortMovies.filter(checkMovieOnExpression).slice(0, getInitialCardsQuantity());
-//     setMoviesToShow([...moviesToShow]);
-//     localStorage.setItem(moviesToShowKey, JSON.stringify(moviesToShow));
-//     setIsNotFound(moviesToShow.length ? false : true);
-
-//     localStorage.setItem(keywordKey, keyword);
-//   }
-
-//   function checkMovieOnExpression(movie) {
-//     return (movie.nameRU.toLowerCase().includes(keyword.toLowerCase()) || movie.nameEN.toLowerCase().includes(keyword.toLowerCase()));
-//   }
-// }
 
 function setKeywordOnMount() {
   const keyword = localStorage.getItem(keywordKey);
@@ -258,6 +198,10 @@ function isShowMoreButtonDisplayed({
   return moviesToShow.length < baseLength;
 }
 
+function onLikeCLick() {
+
+}
+
 export {
   onMoviesRequest,
   setMoviesToShowOnMount,
@@ -269,4 +213,5 @@ export {
   setIsShortOnMount,
   setKeywordShortMoviesOnMount,
   setIsNotFoundOnMount,
+  onLikeCLick,
 };

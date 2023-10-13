@@ -20,7 +20,8 @@ import {
   setKeywordOnMount,
   setIsShortOnMount,
   setKeywordShortMoviesOnMount,
-  setIsNotFoundOnMount
+  setIsNotFoundOnMount,
+  onLikeClick,
 } from '../../utils/moviesUtils.js';
 
 // CSS import
@@ -41,6 +42,8 @@ function Movies({ mainApi }) {
   const [moviesToShow, setMoviesToShow] = useState(setMoviesToShowOnMount());
   const [isNotFound, setIsNotFound] = useState(() => { return setIsNotFoundOnMount({ movies, moviesToShow }) });
   const [keyword, setKeyword] = useState(setKeywordOnMount());
+  const [savedMovies, setSavedMovies] = useState([]);
+  const [isSavedMoviesReceived, setIsSavedMoviesReceived] = useState(false);
 
   // useEffect
 
@@ -60,6 +63,9 @@ function Movies({ mainApi }) {
         isShort,
         setIsNotFound,
         mainApi,
+        setSavedMovies,
+        isSavedMoviesReceived,
+        setIsSavedMoviesReceived,
       });
     }
   }, [isShort]);
@@ -81,6 +87,9 @@ function Movies({ mainApi }) {
       isShort,
       setIsNotFound,
       mainApi,
+      setSavedMovies,
+      isSavedMoviesReceived,
+      setIsSavedMoviesReceived,
     });
   }
 
@@ -92,6 +101,10 @@ function Movies({ mainApi }) {
       isShort,
       setMoviesToShow,
     });
+  }
+
+  function handleLikeClick() {
+    onLikeClick();
   }
 
   // 2B rendered
@@ -127,6 +140,8 @@ function Movies({ mainApi }) {
                 isShort
               })
             }
+            savedMovies={savedMovies}
+            onLikeClick={handleLikeClick}
           />)
         }
       </main>

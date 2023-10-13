@@ -13,6 +13,8 @@ function MoviesCardList({
   movies,
   onShowMore,
   isShowMoreButtonDisplayed,
+  savedMovies,
+  onLikeClick,
 }) {
 
   // vars
@@ -32,6 +34,8 @@ function MoviesCardList({
             <MoviesCard
               key={movie.id}
               movie={movie}
+              savedMovies={savedMovies}
+              onLikeClick={onLikeClick}
             />
           )
         })}

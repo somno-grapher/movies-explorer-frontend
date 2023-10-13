@@ -1,5 +1,5 @@
 // react vendor import
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 // react project import
 import MoviesContext from '../../contexts/MoviesContext.jsx'
@@ -8,15 +8,20 @@ import MoviesContext from '../../contexts/MoviesContext.jsx'
 import './MoviesCard.css';
 
 function MoviesCard({
-  movie
+  movie,
+  savedMovies,
+  onLikeClick,
 }) {
+
+  const [isLiked, setIsLiked] = useState(() => {
+    return savedMovies.some((savedMovie) => { return savedMovie.movieId === movie.id })
+  });
 
   const moviesContext = useContext(MoviesContext);
 
-  // TODO: update
-  const styles = [
-    "movies-card__like-button_liked"
-  ]
+  function handleLikeClick() {
+    onLikeClick();
+  }
 
   return (
     <li className='movies-card'>
@@ -27,10 +32,9 @@ function MoviesCard({
         <button
           type="button"
           className={`movies-card__like-button
-        // TODO update
-         ${styles[Math.round(Math.random())]}
+         ${isLiked && "movies-card__like-button_liked"}
         `}
-        //  onClick={handleLikeClick}
+          onClick={handleLikeClick}
         >
         </button>
         :
@@ -53,7 +57,6 @@ function MoviesCard({
           className="movies-card__image"
           src={`https://api.nomoreparties.co${movie.image.url}`}
           alt={movie.nameRU}
-        //  onClick={handleCardClick}
         />
       </a>
 
