@@ -27,6 +27,18 @@ function onMoviesRequest(
 
   if (!savedMovies.length) {
     handleRequest();
+    mainApi.getSavedMovies()
+      .then((responseObject) => {
+        // setSavedMovies
+        handleRequest();
+      })
+      .catch(() => {
+        setIsError(true);
+      })
+      .finally(() => {
+        setIsOnStandby(false);
+        return;
+      })
   } else {
     handleRequest();
   }

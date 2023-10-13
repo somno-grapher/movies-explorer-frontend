@@ -118,14 +118,14 @@ class MainApi {
     return this._handleJsonResponse(jsonResponse, 'userUpdate');
   }
 
-  async getSavedMovies(jwt) {
+  async getSavedMovies() {
     let jsonResponse;
     try {
       jsonResponse = await fetch(`${this._basePath}/movies`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${jwt}` // Bearer is optional
+          'Authorization': `Bearer ${this._token}` // Bearer is optional
         }
       });
     } catch {
