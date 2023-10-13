@@ -27,7 +27,7 @@ import {
 import './Movies.css';
 
 // main function
-function Movies() {
+function Movies({ mainApi }) {
 
   // useState
   const [moviesApi, setMoviesApi] = useState(new MoviesApi(MOVIES_API_BASE_PATH)); // TODO: change to ref?
@@ -45,20 +45,23 @@ function Movies() {
   // useEffect
 
   useEffect(() => {
-    onMoviesRequest({
-      moviesApi,
-      setIsOnStandby,
-      setMoviesToShow,
-      setIsError,
-      setMovies,
-      keyword,
-      setKeyword,
-      setKeywordMovies,
-      setKeywordShortMovies,
-      movies,
-      isShort,
-      setIsNotFound,
-    });
+    if (movies.length) {
+      onMoviesRequest({
+        moviesApi,
+        setIsOnStandby,
+        setMoviesToShow,
+        setIsError,
+        setMovies,
+        keyword,
+        setKeyword,
+        setKeywordMovies,
+        setKeywordShortMovies,
+        movies,
+        isShort,
+        setIsNotFound,
+        mainApi,
+      });
+    }
   }, [isShort]);
 
   // functions
@@ -77,6 +80,7 @@ function Movies() {
       movies,
       isShort,
       setIsNotFound,
+      mainApi,
     });
   }
 
