@@ -134,6 +134,38 @@ class MainApi {
     return this._handleJsonResponse(jsonResponse, 'getSavedMovies');
   }
 
+  async saveMovie({ movie }) {
+    let jsonResponse;
+    try {
+      jsonResponse = await fetch(
+        `${this._basePath}/movies`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${this._token}` // Bearer is optional
+          },
+          body: JSON.stringify({
+            country: movie.country,
+            director: movie.director,
+            duration: movie.duration,
+            year: movie.year,
+            description: movie.description,
+            image: 'https://api.nomoreparties.co' + movie.url,
+            trailerLink: movie.trailerLink,
+            thumbnail: 'https://api.nomoreparties.co' + movie.image.formats.thumbnail.url,
+            movieId: movie.id,
+            nameRU: movie.nameRU,
+            nameEN: movie.nameEN,
+          })
+        },
+      )
+    } catch {
+      throw new Error(`Проверьте соединение.`);
+    }
+    return this._handleJsonResponse(jsonResponse, 'saveMovie');
+  }
+
 }
 
 export default MainApi;

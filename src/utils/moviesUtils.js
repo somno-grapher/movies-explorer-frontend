@@ -198,8 +198,18 @@ function isShowMoreButtonDisplayed({
   return moviesToShow.length < baseLength;
 }
 
-function onLikeCLick() {
-
+function onLikeClick({ mainApi, movie, setIsLiked, setSavedMovies, savedMovies }) {
+  mainApi.saveMovie({ movie })
+    .then((responseObject) => {
+      console.log(responseObject);
+      setSavedMovies([...savedMovies, responseObject]);
+      setIsLiked(true);
+    })
+    .catch((error) => {
+      console.log(error.message)
+    })
+    .finally(() => {
+    });
 }
 
 export {
@@ -213,5 +223,5 @@ export {
   setIsShortOnMount,
   setKeywordShortMoviesOnMount,
   setIsNotFoundOnMount,
-  onLikeCLick,
+  onLikeClick,
 };

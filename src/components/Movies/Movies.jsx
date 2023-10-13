@@ -103,8 +103,8 @@ function Movies({ mainApi }) {
     });
   }
 
-  function handleLikeClick() {
-    onLikeClick();
+  function handleLikeClick({ movie, setIsLiked }) {
+    onLikeClick({ mainApi, movie, setIsLiked, setSavedMovies, savedMovies });
   }
 
   // 2B rendered
