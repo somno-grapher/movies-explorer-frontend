@@ -21,7 +21,7 @@ import {
   setIsShortOnMount,
   setKeywordShortMoviesOnMount,
   setIsNotFoundOnMount
-} from './moviesUtils.js';
+} from '../../utils/moviesUtils.js';
 
 // CSS import
 import './Movies.css';
