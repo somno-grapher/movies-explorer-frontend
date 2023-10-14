@@ -20,7 +20,7 @@ function MoviesCard({
   const moviesContext = useContext(MoviesContext);
 
   function handleLikeClick() {
-    onLikeClick({ movie, setIsLiked });
+    onLikeClick({ movie, setIsLiked, isLiked });
   }
 
   return (

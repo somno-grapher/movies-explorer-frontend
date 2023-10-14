@@ -198,18 +198,32 @@ function isShowMoreButtonDisplayed({
   return moviesToShow.length < baseLength;
 }
 
-function onLikeClick({ mainApi, movie, setIsLiked, setSavedMovies, savedMovies }) {
-  mainApi.saveMovie({ movie })
-    .then((responseObject) => {
-      console.log(responseObject);
-      setSavedMovies([...savedMovies, responseObject]);
-      setIsLiked(true);
-    })
-    .catch((error) => {
-      console.log(error.message)
-    })
-    .finally(() => {
-    });
+function onLikeClick({ mainApi, movie, setIsLiked, setSavedMovies, savedMovies, isLiked }) {
+  // TODO: provide button inactivation while processing
+  if (!isLiked) {
+    mainApi.saveMovie({ movie })
+      .then((responseObject) => {
+        setSavedMovies([...savedMovies, responseObject]);
+        setIsLiked(true);
+      })
+      .catch((error) => {
+        console.log(error.message)
+      })
+  } else {
+    const longId = savedMovies.find((savedMovie) => { return savedMovie.movieId === movie.id })._id;
+    const shortId = movie.id;
+    mainApi.deleteMovie({ id: longId })
+      .then(() => {
+        const index = savedMovies.findIndex((savedMovie) => {
+          return shortId === savedMovie.movieId
+        });
+        setSavedMovies([...savedMovies.splice(index, 1)]);
+        setIsLiked(false);
+      })
+      .catch((error) => {
+        console.log(error.message)
+      })
+  }
 }
 
 export {

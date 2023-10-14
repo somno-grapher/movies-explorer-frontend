@@ -166,6 +166,25 @@ class MainApi {
     return this._handleJsonResponse(jsonResponse, 'saveMovie');
   }
 
+  async deleteMovie({ id }) {
+    let jsonResponse;
+    try {
+      jsonResponse = await fetch(
+        `${this._basePath}/movies/${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${this._token}` // Bearer is optional
+          },
+        }
+      )
+    } catch {
+      throw new Error(`Проверьте соединение.`);
+    }
+    return this._handleJsonResponse(jsonResponse, 'deleteMovie');
+  }
+
 }
 
 export default MainApi;
