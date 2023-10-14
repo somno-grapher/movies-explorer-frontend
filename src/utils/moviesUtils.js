@@ -217,7 +217,8 @@ function onLikeClick({ mainApi, movie, setIsLiked, setSavedMovies, savedMovies, 
         const index = savedMovies.findIndex((savedMovie) => {
           return shortId === savedMovie.movieId
         });
-        setSavedMovies([...savedMovies.splice(index, 1)]);
+        savedMovies.splice(index, 1);
+        setSavedMovies([...savedMovies]);
         setIsLiked(false);
       })
       .catch((error) => {
@@ -231,20 +232,25 @@ function onSavedMoviesMount({
   setIsOnStandby,
   setSavedMovies,
   setMoviesToShow,
+  setIsError,
+  setIsNotFound,
 }) {
   mainApi.getSavedMovies()
     .then((responseObject) => {
       setSavedMovies(responseObject);
       setMoviesToShow(responseObject);
-      // setIsSavedMoviesReceived(true);
-      // handleRequest();
+      setIsNotFound(() => { return responseObject.length ? false : true });
     })
     .catch(() => {
-      // setIsError(true);
+      setIsError(true);
     })
     .finally(() => {
       setIsOnStandby(false);
     })
+}
+
+function onSavedMoviesRequest() {
+
 }
 
 export {
@@ -260,4 +266,5 @@ export {
   setIsNotFoundOnMount,
   onLikeClick,
   onSavedMoviesMount,
+  onSavedMoviesRequest,
 };

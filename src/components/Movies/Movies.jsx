@@ -45,6 +45,8 @@ function Movies({ mainApi }) {
   const [savedMovies, setSavedMovies] = useState([]);
   const [isSavedMoviesReceived, setIsSavedMoviesReceived] = useState(false);
 
+  // TODO: get saved movies only once
+
   // useEffect
 
   useEffect(() => {

@@ -13,6 +13,7 @@ function MoviesCard({
   onLikeClick,
 }) {
   const moviesContext = useContext(MoviesContext);
+  console.log(savedMovies)
 
   const [isLiked, setIsLiked] = useState(() => {
     if (moviesContext === 'movies') {
