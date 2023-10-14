@@ -249,12 +249,29 @@ function onSavedMoviesMount({
     })
 }
 
-function onSavedMoviesRequest() {
-
-}
-
-function onSavedMoviesShortsFilter() {
-
+function onSavedMoviesRequest({
+  keyword,
+  isShort,
+  savedMovies,
+  setMoviesToShow,
+  setIsNotFound,
+}) {
+  let keywordMovies;
+  if (keyword) {
+    keywordMovies = savedMovies.filter((savedMovie) => {
+      return (savedMovie.nameRU.toLowerCase().includes(keyword.toLowerCase()) || savedMovie.nameEN.toLowerCase().includes(keyword.toLowerCase()))
+    });
+  } else {
+    keywordMovies = savedMovies;
+  }
+  let moviesToShow;
+  if (isShort) {
+    moviesToShow = keywordMovies.filter(filterShortMoviesCallback);
+  } else {
+    moviesToShow = keywordMovies;
+  }
+  setIsNotFound(moviesToShow.length ? false : true);
+  setMoviesToShow(moviesToShow);
 }
 
 export {
@@ -271,5 +288,4 @@ export {
   onLikeClick,
   onSavedMoviesMount,
   onSavedMoviesRequest,
-  onSavedMoviesShortsFilter,
 };

@@ -10,7 +10,6 @@ import Preloader from '../Preloader/Preloader.jsx';
 import {
   onSavedMoviesMount,
   onSavedMoviesRequest,
-  onSavedMoviesShortsFilter,
 } from '../../utils/moviesUtils.js';
 
 // CSS import
@@ -24,17 +23,19 @@ function SavedMovies({ mainApi }) {
   const [moviesToShow, setMoviesToShow] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
   const [isShort, setIsShort] = useState(false);
+  const [keyword, setKeyword] = useState('');
+
 
   // TODO: get saved movies only once
 
   function handleSavedMoviesRequest(keyword) {
     onSavedMoviesRequest({
       keyword,
+      isShort,
+      savedMovies,
+      setMoviesToShow,
+      setIsNotFound,
     });
-  }
-
-  function handleShortsFilter() {
-    onSavedMoviesShortsFilter();
   }
 
   useEffect(() => {
@@ -49,7 +50,7 @@ function SavedMovies({ mainApi }) {
   }, []);
 
   useEffect(() => {
-    handleShortsFilter();
+    handleSavedMoviesRequest();
   }, [isShort]);
 
   return (
@@ -57,8 +58,8 @@ function SavedMovies({ mainApi }) {
       <main className="saved-movies">
         <SearchForm
           onSubmit={handleSavedMoviesRequest}
-          onShortsSelectorClick={setIsShort}
-        // keywordOnMount={keyword}
+          onShortsSelectorClick={handleSavedMoviesRequest}
+          keywordOnMount={''}
         // isShortOnMount={isShort}
         />
         {isOnStandby && (<Preloader />)}
