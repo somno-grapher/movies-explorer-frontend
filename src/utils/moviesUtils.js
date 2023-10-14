@@ -253,6 +253,10 @@ function onSavedMoviesRequest() {
 
 }
 
+function onSavedMoviesShortsFilter() {
+
+}
+
 export {
   onMoviesRequest,
   setMoviesToShowOnMount,
@@ -267,4 +271,5 @@ export {
   onLikeClick,
   onSavedMoviesMount,
   onSavedMoviesRequest,
+  onSavedMoviesShortsFilter,
 };

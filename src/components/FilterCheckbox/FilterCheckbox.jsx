@@ -14,8 +14,6 @@ function FilterCheckbox({
   function handleClick(e) {
     setStatus(e.target.checked);
     onClick(e.target.checked);
-    // TODO: move to moviesUtils
-    localStorage.setItem('isShort', e.target.checked);
   }
 
   return (

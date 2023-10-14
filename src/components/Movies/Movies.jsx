@@ -109,13 +109,19 @@ function Movies({ mainApi }) {
     onLikeClick({ mainApi, movie, setIsLiked, setSavedMovies, savedMovies, isLiked });
   }
 
+  function handleShortsFilter(isShort) {
+    setIsShort(isShort);
+    localStorage.setItem('isShort', isShort);
+  }
+
   // 2B rendered
   return (
     <MoviesContext.Provider value="movies">
       <main className="movies">
         <SearchForm
           onSubmit={handleMoviesRequest}
-          onShortsSelectorClick={setIsShort}
+          onShortsSelectorClick={handleShortsFilter}
+          // onShortsSelectorClick={setIsShort}
           keywordOnMount={keyword}
           isShortOnMount={isShort}
         />

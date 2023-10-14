@@ -10,6 +10,7 @@ import Preloader from '../Preloader/Preloader.jsx';
 import {
   onSavedMoviesMount,
   onSavedMoviesRequest,
+  onSavedMoviesShortsFilter,
 } from '../../utils/moviesUtils.js';
 
 // CSS import
@@ -32,6 +33,10 @@ function SavedMovies({ mainApi }) {
     });
   }
 
+  function handleShortsFilter() {
+    onSavedMoviesShortsFilter();
+  }
+
   useEffect(() => {
     onSavedMoviesMount({
       mainApi,
@@ -43,12 +48,16 @@ function SavedMovies({ mainApi }) {
     })
   }, []);
 
+  useEffect(() => {
+    handleShortsFilter();
+  }, [isShort]);
+
   return (
     <MoviesContext.Provider value="saved-movies">
       <main className="saved-movies">
         <SearchForm
           onSubmit={handleSavedMoviesRequest}
-        // onShortsSelectorClick={setIsShort}
+          onShortsSelectorClick={setIsShort}
         // keywordOnMount={keyword}
         // isShortOnMount={isShort}
         />
