@@ -11,6 +11,7 @@ function MoviesCard({
   movie,
   savedMovies,
   onLikeClick,
+  onDeleteClick,
 }) {
   const moviesContext = useContext(MoviesContext);
   const [isLiked, setIsLiked] = useState(() => {
@@ -23,6 +24,10 @@ function MoviesCard({
 
   function handleLikeClick() {
     onLikeClick({ movie, setIsLiked, isLiked });
+  }
+
+  function handleDeleteClick() {
+    onDeleteClick({ movie });
   }
 
   return (
@@ -44,7 +49,7 @@ function MoviesCard({
           type="button"
           className={`movies-card__delete-button
         `}
-        //  onClick={handleDeleteClick}
+          onClick={handleDeleteClick}
         >
         </button>
       }
@@ -60,7 +65,7 @@ function MoviesCard({
           src={`${(moviesContext === 'movies')
             ? `https://api.nomoreparties.co${movie.image.url}`
             : `${movie.image}`
-        }`}
+            }`}
           // src={`https://api.nomoreparties.co${movie.image.url}`}
           alt={movie.nameRU}
         />

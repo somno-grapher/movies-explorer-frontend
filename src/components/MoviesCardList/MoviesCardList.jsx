@@ -15,6 +15,7 @@ function MoviesCardList({
   isShowMoreButtonDisplayed,
   savedMovies,
   onLikeClick,
+  onDeleteClick,
 }) {
 
   // vars
@@ -37,6 +38,7 @@ function MoviesCardList({
               movie={movie}
               savedMovies={savedMovies}
               onLikeClick={onLikeClick}
+              onDeleteClick={onDeleteClick}
             />
           )
         })}

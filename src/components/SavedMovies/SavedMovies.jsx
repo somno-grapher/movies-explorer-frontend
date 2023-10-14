@@ -10,7 +10,7 @@ import Preloader from '../Preloader/Preloader.jsx';
 import {
   onSavedMoviesMount,
   onSavedMoviesRequest,
-  onSavedMoviesFilter,
+  onDeleteClick,
 } from '../../utils/moviesUtils.js';
 
 // CSS import
@@ -53,6 +53,10 @@ function SavedMovies({ mainApi }) {
     });
   }
 
+  function handleDeleteClick({movie}) {
+    onDeleteClick({ mainApi, movie, setSavedMovies, savedMovies});
+  }
+
   useEffect(() => {
     onSavedMoviesMount({
       mainApi,
@@ -75,7 +79,6 @@ function SavedMovies({ mainApi }) {
           onSubmit={handleSavedMoviesRequest}
           onShortsSelectorClick={handleSavedMoviesFilter}
           keywordOnMount={''}
-        // isShortOnMount={isShort}
         />
         {isOnStandby && (<Preloader />)}
         {
@@ -96,6 +99,7 @@ function SavedMovies({ mainApi }) {
           && (
             <MoviesCardList
               movies={moviesToShow}
+              onDeleteClick={handleDeleteClick}
             />
           )}
       </main>

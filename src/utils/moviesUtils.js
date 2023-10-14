@@ -278,9 +278,21 @@ function onSavedMoviesRequest({
   setMoviesToShow(moviesToShow);
 }
 
-function onSavedMoviesFilter() {
-
-}
+function onDeleteClick({ mainApi, movie, setSavedMovies, savedMovies, }) {
+  // TODO: provide button inactivation while processing
+    const longId = movie._id;
+    mainApi.deleteMovie({ id: longId })
+      .then(() => {
+        const index = savedMovies.findIndex((savedMovie) => {
+          return longId === savedMovie._id;
+        });
+        savedMovies.splice(index, 1);
+        setSavedMovies([...savedMovies]);
+      })
+      .catch((error) => {
+        console.log(error.message)
+      })
+ }
 
 export {
   onMoviesRequest,
@@ -296,5 +308,5 @@ export {
   onLikeClick,
   onSavedMoviesMount,
   onSavedMoviesRequest,
-  onSavedMoviesFilter,
+  onDeleteClick,
 };
