@@ -29,10 +29,11 @@ function MoviesCardList({
   return (
     <section className="movies-card-list">
       <ul className="movies-card-list__grid">
-        {movies.map((movie) => {
+        {movies.map((movie,i) => {
           return (
             <MoviesCard
-              key={movie.id}
+              key={i}
+              // key={movie.id}
               movie={movie}
               savedMovies={savedMovies}
               onLikeClick={onLikeClick}
