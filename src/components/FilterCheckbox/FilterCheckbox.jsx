@@ -6,7 +6,7 @@ import './FilterCheckbox.css';
 
 function FilterCheckbox({
   onClick,
-  isShortOnMount,
+  isShortOnMount=false,
 }) {
 
   const [status, setStatus] = useState(isShortOnMount);
