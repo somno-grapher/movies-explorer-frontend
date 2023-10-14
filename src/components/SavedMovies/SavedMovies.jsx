@@ -10,6 +10,7 @@ import Preloader from '../Preloader/Preloader.jsx';
 import {
   onSavedMoviesMount,
   onSavedMoviesRequest,
+  onSavedMoviesFilter,
 } from '../../utils/moviesUtils.js';
 
 // CSS import
@@ -31,7 +32,21 @@ function SavedMovies({ mainApi }) {
   function handleSavedMoviesRequest(keyword) {
     onSavedMoviesRequest({
       keyword,
+      setKeyword,
       isShort,
+      setIsShort,
+      savedMovies,
+      setMoviesToShow,
+      setIsNotFound,
+    });
+  }
+
+  function handleSavedMoviesFilter(isShort) {
+    onSavedMoviesRequest({
+      keyword,
+      setKeyword,
+      isShort,
+      setIsShort,
       savedMovies,
       setMoviesToShow,
       setIsNotFound,
@@ -58,7 +73,7 @@ function SavedMovies({ mainApi }) {
       <main className="saved-movies">
         <SearchForm
           onSubmit={handleSavedMoviesRequest}
-          onShortsSelectorClick={handleSavedMoviesRequest}
+          onShortsSelectorClick={handleSavedMoviesFilter}
           keywordOnMount={''}
         // isShortOnMount={isShort}
         />

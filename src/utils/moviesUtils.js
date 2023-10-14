@@ -251,12 +251,16 @@ function onSavedMoviesMount({
 
 function onSavedMoviesRequest({
   keyword,
+  setKeyword,
   isShort,
+  setIsShort,
   savedMovies,
   setMoviesToShow,
   setIsNotFound,
 }) {
   let keywordMovies;
+  setKeyword(keyword);
+  setIsShort(isShort);
   if (keyword) {
     keywordMovies = savedMovies.filter((savedMovie) => {
       return (savedMovie.nameRU.toLowerCase().includes(keyword.toLowerCase()) || savedMovie.nameEN.toLowerCase().includes(keyword.toLowerCase()))
@@ -274,6 +278,10 @@ function onSavedMoviesRequest({
   setMoviesToShow(moviesToShow);
 }
 
+function onSavedMoviesFilter() {
+
+}
+
 export {
   onMoviesRequest,
   setMoviesToShowOnMount,
@@ -288,4 +296,5 @@ export {
   onLikeClick,
   onSavedMoviesMount,
   onSavedMoviesRequest,
+  onSavedMoviesFilter,
 };
