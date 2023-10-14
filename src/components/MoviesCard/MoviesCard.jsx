@@ -12,12 +12,15 @@ function MoviesCard({
   savedMovies,
   onLikeClick,
 }) {
+  const moviesContext = useContext(MoviesContext);
 
   const [isLiked, setIsLiked] = useState(() => {
-    return savedMovies.some((savedMovie) => { return savedMovie.movieId === movie.id })
+    if (moviesContext === 'movies') {
+      return savedMovies.some((savedMovie) => { return savedMovie.movieId === movie.id })
+    }
+    // otherwise no need to handle like state
   });
 
-  const moviesContext = useContext(MoviesContext);
 
   function handleLikeClick() {
     onLikeClick({ movie, setIsLiked, isLiked });
@@ -55,7 +58,11 @@ function MoviesCard({
       >
         <img
           className="movies-card__image"
-          src={`https://api.nomoreparties.co${movie.image.url}`}
+          src={`${(moviesContext === 'movies')
+            ? `https://api.nomoreparties.co${movie.image.url}`
+            : `${movie.image}`
+        }`}
+          // src={`https://api.nomoreparties.co${movie.image.url}`}
           alt={movie.nameRU}
         />
       </a>

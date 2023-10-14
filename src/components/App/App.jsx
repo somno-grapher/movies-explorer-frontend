@@ -178,6 +178,7 @@ export default function App() {
                 <ProtectedRouteElement
                   element={SavedMovies}
                   isLoggedIn={isLoggedIn}
+                  mainApi={mainApi}
                 />
                 <Footer />
               </>

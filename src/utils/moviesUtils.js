@@ -226,6 +226,27 @@ function onLikeClick({ mainApi, movie, setIsLiked, setSavedMovies, savedMovies, 
   }
 }
 
+function onSavedMoviesMount({
+  mainApi,
+  setIsOnStandby,
+  setSavedMovies,
+  setMoviesToShow,
+}) {
+  mainApi.getSavedMovies()
+    .then((responseObject) => {
+      setSavedMovies(responseObject);
+      setMoviesToShow(responseObject);
+      // setIsSavedMoviesReceived(true);
+      // handleRequest();
+    })
+    .catch(() => {
+      // setIsError(true);
+    })
+    .finally(() => {
+      setIsOnStandby(false);
+    })
+}
+
 export {
   onMoviesRequest,
   setMoviesToShowOnMount,
@@ -238,4 +259,5 @@ export {
   setKeywordShortMoviesOnMount,
   setIsNotFoundOnMount,
   onLikeClick,
+  onSavedMoviesMount,
 };
