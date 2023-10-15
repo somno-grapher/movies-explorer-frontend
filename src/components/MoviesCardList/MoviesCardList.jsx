@@ -16,6 +16,7 @@ function MoviesCardList({
   savedMovies,
   onLikeClick,
   onDeleteClick,
+  isSavedMoviesNotation = false,
 }) {
 
   // vars
@@ -26,15 +27,18 @@ function MoviesCardList({
     onShowMore();
   }
 
+  function getMovieKey(movie, isSavedMoviesNotation) {
+    return isSavedMoviesNotation ? movie._id : movie.id
+  }
+
   // 2B rendered
   return (
     <section className="movies-card-list">
       <ul className="movies-card-list__grid">
-        {movies.map((movie,i) => {
+        {movies.map((movie) => {
           return (
             <MoviesCard
-              key={i}
-              // key={movie.id}
+              key={getMovieKey(movie, isSavedMoviesNotation)}
               movie={movie}
               savedMovies={savedMovies}
               onLikeClick={onLikeClick}

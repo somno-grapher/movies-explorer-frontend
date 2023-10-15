@@ -53,8 +53,13 @@ function SavedMovies({ mainApi }) {
     });
   }
 
-  function handleDeleteClick({movie}) {
-    onDeleteClick({ mainApi, movie, setSavedMovies, savedMovies});
+  function handleDeleteClick({ movie }) {
+    onDeleteClick({
+      mainApi,
+      movie,
+      setSavedMovies,
+      savedMovies,
+    });
   }
 
   useEffect(() => {
@@ -70,7 +75,7 @@ function SavedMovies({ mainApi }) {
 
   useEffect(() => {
     handleSavedMoviesRequest();
-  }, [isShort]);
+  }, [isShort, savedMovies]);
 
   return (
     <MoviesContext.Provider value="saved-movies">
@@ -100,6 +105,7 @@ function SavedMovies({ mainApi }) {
             <MoviesCardList
               movies={moviesToShow}
               onDeleteClick={handleDeleteClick}
+              isSavedMoviesNotation={true}
             />
           )}
       </main>
