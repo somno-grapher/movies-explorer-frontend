@@ -7,7 +7,7 @@
 
 Ссылка на задеплоенный на сервере проект: 
 IP 158.160.11.22
-http://frontent.diploma.nomoredomainsrocks.ru
+https://frontent.diploma.nomoredomainsrocks.ru
 
 ## Ссылка на макет
 

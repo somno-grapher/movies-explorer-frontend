@@ -6,6 +6,9 @@ import Dialog from '../Dialog/Dialog.jsx';
 import DialogStylingContext from '../../contexts/DialogStylingContext.jsx'
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 
+// js import
+import { EMAIL_PATTERN } from '../../consts/consts.js';
+
 // main function
 export default function Profile({
   onSubmit,
@@ -70,6 +73,7 @@ export default function Profile({
             validationAttributes: {
               type: "email",
               required: true,
+              pattern: EMAIL_PATTERN,
             },
           }
         ]}

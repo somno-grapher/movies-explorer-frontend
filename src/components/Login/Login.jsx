@@ -5,6 +5,8 @@ import React from "react";
 import Dialog from '../Dialog/Dialog.jsx';
 import DialogStylingContext from '../../contexts/DialogStylingContext.jsx'
 
+// js import
+import { EMAIL_PATTERN } from '../../consts/consts.js';
 
 // main function
 export default function Login({ onSubmit }) {
@@ -45,6 +47,7 @@ export default function Login({ onSubmit }) {
             validationAttributes: {
               type: "email",
               required: true,
+              pattern: EMAIL_PATTERN,
             },
           },
           {

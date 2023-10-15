@@ -2,10 +2,12 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 
-
 // react project import
 import Dialog from '../Dialog/Dialog.jsx';
 import DialogStylingContext from '../../contexts/DialogStylingContext.jsx'
+
+// js import
+import { EMAIL_PATTERN } from '../../consts/consts.js';
 
 // main function
 function Register({ onSubmit }) {
@@ -65,6 +67,7 @@ function Register({ onSubmit }) {
             validationAttributes: {
               type: "email",
               required: true,
+              pattern: EMAIL_PATTERN,
             }
           },
           {
