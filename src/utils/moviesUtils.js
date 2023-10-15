@@ -234,10 +234,12 @@ function onSavedMoviesMount({
   setMoviesToShow,
   setIsError,
   setIsNotFound,
+  setKeywordMovies,
 }) {
   mainApi.getSavedMovies()
     .then((responseObject) => {
       setSavedMovies(responseObject);
+      setKeywordMovies(responseObject);
       setMoviesToShow(responseObject);
       setIsNotFound(() => { return responseObject.length ? false : true });
     })
@@ -257,6 +259,7 @@ function onSavedMoviesRequest({
   savedMovies,
   setMoviesToShow,
   setIsNotFound,
+  setKeywordMovies,
 }) {
   let keywordMovies;
   setKeyword(keyword);
@@ -268,6 +271,7 @@ function onSavedMoviesRequest({
   } else {
     keywordMovies = savedMovies;
   }
+  setKeywordMovies(keywordMovies);
   let moviesToShow;
   if (isShort) {
     moviesToShow = keywordMovies.filter(filterShortMoviesCallback);
@@ -278,20 +282,59 @@ function onSavedMoviesRequest({
   setMoviesToShow([...moviesToShow]);
 }
 
-function onDeleteClick({ mainApi, movie, setSavedMovies, savedMovies, }) {
+function onDeleteClick({
+  mainApi,
+  movie,
+  setSavedMovies,
+  savedMovies,
+  moviesToShow,
+  setMoviesToShow,
+  keywordMovies,
+  setKeywordMovies,
+}) {
   // TODO: provide button inactivation while processing
   const longId = movie._id;
   mainApi.deleteMovie({ id: longId })
     .then(() => {
-      const index = savedMovies.findIndex((savedMovie) => {
-        return longId === savedMovie._id;
+      let index = savedMovies.findIndex((movie) => {
+        return longId === movie._id;
       });
       savedMovies.splice(index, 1);
       setSavedMovies([...savedMovies]);
+
+      index = keywordMovies.findIndex((movie) => {
+        return longId === movie._id;
+      });
+      keywordMovies.splice(index, 1);
+      setKeywordMovies([...keywordMovies]);
+
+      index = moviesToShow.findIndex((movie) => {
+        return longId === movie._id;
+      });
+      moviesToShow.splice(index, 1);
+      setMoviesToShow([...moviesToShow]);
     })
     .catch((error) => {
       console.log(error.message)
     })
+}
+
+function onSavedMoviesFilter({
+  isShort,
+  setIsShort,
+  keywordMovies,
+  setMoviesToShow,
+  setIsNotFound,
+}) {
+  setIsShort(isShort);
+  let moviesToShow;
+  if (isShort) {
+    moviesToShow = keywordMovies.filter(filterShortMoviesCallback);
+  } else {
+    moviesToShow = keywordMovies;
+  }
+  setIsNotFound(moviesToShow.length ? false : true);
+  setMoviesToShow([...moviesToShow]);
 }
 
 export {
@@ -309,4 +352,5 @@ export {
   onSavedMoviesMount,
   onSavedMoviesRequest,
   onDeleteClick,
+  onSavedMoviesFilter,
 };

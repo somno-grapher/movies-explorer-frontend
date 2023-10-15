@@ -11,6 +11,7 @@ import {
   onSavedMoviesMount,
   onSavedMoviesRequest,
   onDeleteClick,
+  onSavedMoviesFilter,
 } from '../../utils/moviesUtils.js';
 
 // CSS import
@@ -25,6 +26,7 @@ function SavedMovies({ mainApi }) {
   const [savedMovies, setSavedMovies] = useState([]);
   const [isShort, setIsShort] = useState(false);
   const [keyword, setKeyword] = useState('');
+  const [keywordMovies, setKeywordMovies] = useState([]);
 
 
   // TODO: get saved movies only once
@@ -38,27 +40,32 @@ function SavedMovies({ mainApi }) {
       savedMovies,
       setMoviesToShow,
       setIsNotFound,
+      setKeywordMovies,
     });
   }
 
   function handleSavedMoviesFilter(isShort) {
-    onSavedMoviesRequest({
-      keyword,
-      setKeyword,
+    onSavedMoviesFilter({
       isShort,
       setIsShort,
-      savedMovies,
+      keywordMovies,
       setMoviesToShow,
       setIsNotFound,
     });
   }
 
-  function handleDeleteClick({ movie }) {
+  function handleDeleteClick({
+    movie,
+  }) {
     onDeleteClick({
       mainApi,
       movie,
       setSavedMovies,
       savedMovies,
+      moviesToShow,
+      setMoviesToShow,
+      keywordMovies,
+      setKeywordMovies,
     });
   }
 
@@ -70,12 +77,21 @@ function SavedMovies({ mainApi }) {
       setMoviesToShow,
       setIsError,
       setIsNotFound,
+      setKeywordMovies,
     })
   }, []);
 
   useEffect(() => {
-    handleSavedMoviesRequest();
-  }, [isShort, savedMovies]);
+    onSavedMoviesFilter({
+      isShort,
+      setIsShort,
+      keywordMovies,
+      setMoviesToShow,
+      setIsNotFound,
+    });
+    // handleSavedMoviesRequest();
+  }, [isShort]);
+  // }, [isShort, savedMovies]);
 
   return (
     <MoviesContext.Provider value="saved-movies">
