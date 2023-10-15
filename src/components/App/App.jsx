@@ -12,6 +12,7 @@ import Register from '../Register/Register.jsx';
 import Login from '../Login/Login.jsx';
 import Profile from '../Profile/Profile.jsx';
 import NotFound from '../NotFound/NotFound.jsx';
+import InfoTooltip from '../InfoTooltip/InfoTooltip.jsx';
 import ProtectedRouteElement from '../ProtectedRoute/ProtectedRoute.jsx';
 import CurrentUserContext from '../../contexts/CurrentUserContext.jsx';
 
@@ -29,6 +30,7 @@ export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [mainApi, setMainApi] = useState(new MainApi(MAIN_API_BASE_PATH)); //TODO: change to ref?
+  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
 
   // useNavigate
   const navigate = useNavigate();
@@ -116,6 +118,7 @@ export default function App() {
           name: responseObject.name,
           email: responseObject.email,
         });
+        setIsInfoTooltipOpen(true);
         updateIsEditMode(false);
       })
       .catch((err) => {
@@ -124,6 +127,10 @@ export default function App() {
       .finally(() => {
         updateIsOnStanby(false);
       });
+  }
+
+  function closeAllPopups() {
+    setIsInfoTooltipOpen(false);
   }
 
   // useEffect
@@ -223,12 +230,11 @@ export default function App() {
 
       {/* popups */}
 
-      {/* TODO update */}
-      {/* <InfoTooltip
+      <InfoTooltip
         isOpen={isInfoTooltipOpen}
         onClose={closeAllPopups}
-        infoTooltipData={infoTooltipData}
-      /> */}
+        infoTooltipData={{ message: "Данные успешно обновлены" }}
+      />
 
     </CurrentUserContext.Provider>
   );
