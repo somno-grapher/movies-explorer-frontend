@@ -1,6 +1,5 @@
 // react vendor import
-import React from 'react';
-import { useState } from "react";
+import React, { useState, useRef } from 'react';
 
 // react project import
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
@@ -12,28 +11,46 @@ import './SearchForm.css';
 import searchIconPath from '../../images/icons/magnifier.svg';
 
 function SearchForm({
-  isOpen,
-  // name,
-  onClose,
   onSubmit,
-  title,
-  children
+  onShortsSelectorClick,
+  keywordOnMount,
+  isShortOnMount,
 }) {
+  // useState
+  const [input, setInput] = useState(keywordOnMount);
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const [input, setInput] = useState('');
+  // refs
+  const inputRef = useRef();
+
+  // functions
 
   function handleInputChange(e) {
+    setErrorMessage('');
     setInput(e.target.value);
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (inputRef.current.validity.valid) {
+      setErrorMessage('');
+      onSubmit(inputRef.current.value);
+    } else {
+      setErrorMessage('Нужно ввести ключевое слово');
+    }
+  }
+
+  function handleShortsSelectorClick(status) {
+    onShortsSelectorClick(status);
+  }
+  // 2B rendered
   return (
 
     <form
       name={`search-form`}
       className="search-form"
-      // TODO provide js validation
-      // noValidate
-      onSubmit={onSubmit}
+      noValidate
+      onSubmit={handleSubmit}
     >
       <div className="search-form__upper-container">
 
@@ -46,6 +63,7 @@ function SearchForm({
 
         <label className="search-form__input-label">
           <input
+            ref={inputRef}
             value={input}
             onChange={handleInputChange}
             name="search-form-input"
@@ -53,10 +71,8 @@ function SearchForm({
             placeholder="Фильм"
             id="search-movie-input"
             className="search-form__input"
-            // minLength="2"
-            // maxLength="40"
             required />
-          <span className="search-movie-input-error"></span>
+          <span className="search-form__input-error">{errorMessage}</span>
         </label>
 
         <button
@@ -67,7 +83,10 @@ function SearchForm({
       </div>
 
       <div className="search-form__checkbox-area">
-        <FilterCheckbox />
+        <FilterCheckbox
+          onClick={handleShortsSelectorClick}
+          isShortOnMount={isShortOnMount}
+        />
         <span>Короткометражки</span>
       </div>
 

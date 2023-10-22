@@ -88,6 +88,11 @@
   grid-column: 1/3;
   margin-top: 15px;
   padding-top: 1px;
+  text-align: right;
+}
+
+.dialog-input__error_visible {
+  visibility: visible;
 }
 
 .dialog-input__error::before {
@@ -103,8 +108,4 @@
 
 .dialog-input__field:focus+.dialog-input__error::before {
   border-color: #4285f4;
-}
-
-.dialog__input__error_visible {
-  visibility: visible;
 }

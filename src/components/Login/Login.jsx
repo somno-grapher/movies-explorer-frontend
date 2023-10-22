@@ -3,13 +3,31 @@ import React from "react";
 
 // react project import
 import Dialog from '../Dialog/Dialog.jsx';
-import DialogStylingContext from '../../contexts/dialogStylingContext.js'
+import DialogStylingContext from '../../contexts/DialogStylingContext.jsx'
 
+// js import
+import { EMAIL_PATTERN } from '../../consts/consts.js';
 
 // main function
-export default function Login() {
+export default function Login({ onSubmit }) {
+  // consts
+  const emailId = 'login-email';
+  const passwordId = 'login-password';
 
+  // functions
 
+  function handleSubmit(
+    inputsValues,
+    updateErrorMessage,
+    updateIsOnStanby,
+  ) {
+    onSubmit(
+      inputsValues[emailId],
+      inputsValues[passwordId],
+      updateErrorMessage,
+      updateIsOnStanby,
+    );
+  }
 
   // 2B rendered
   return (
@@ -20,26 +38,28 @@ export default function Login() {
         linkTip="Еще не зарегистрированы?"
         linkTitle="Регистрация"
         linkPath="/signup"
-        inputs={[
+        onSubmit={handleSubmit}
+        inputsAttributes={[
           {
-            id: "register-email",
+            id: emailId,
             label: "E-mail",
             placeholder: "Введите почту",
             validationAttributes: {
               type: "email",
               required: true,
-            }
+              pattern: EMAIL_PATTERN,
+            },
           },
           {
-            id: "register-password",
+            id: passwordId,
             label: "Пароль",
             placeholder: "Введите пароль",
             validationAttributes: {
               type: "password",
-              minLength: 8,
+              minLength: 2,
               maxLength: 30,
               required: true,
-            }
+            },
           }
         ]}
       >

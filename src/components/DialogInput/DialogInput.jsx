@@ -1,32 +1,96 @@
 // react vendor import
-import React, { useState, useContext } from "react";
+import React,
+{
+  useContext,
+  useEffect,
+  useState,
+  useRef,
+}
+  from "react";
 
 // react project import
-import DialogStylingContext from '../../contexts/dialogStylingContext.js'
+import DialogStylingContext from '../../contexts/DialogStylingContext.jsx'
 
 // CSS import
 import './DialogInput.css';
 
+// main function
+// TODO get rid of extra renders and calculations
 export default function DialogInput({
-  // TODO check if name and id are needed
+  index,
+  // TODO check if name and id is needed
   id,
   label,
   placeholder,
+  initialValue = "",
   validationAttributes,
-  isDisabled
+  disabledAttribute,
+  assignFormInputStatus,
+  setInputsValidity,
+  setInputsUpdateStatus,
+  updateFormInputsValues,
 }) {
+  // contexts
+  const styling = useContext(DialogStylingContext);
 
-  // control input
+  // states
+  const [value, setValue] = useState(initialValue);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isValid, setIsValid] = useState(false);
+  const [isOnChangeTriggered, setIsOnChangeTriggered] = useState(false);
+  const [isInvalidStyle, setIsInvalidStyle] = useState(true);
 
-  const [value, setValue] = useState('');
+  // refs
+  const inputRef = useRef();
 
-  function handleChange(e) {
-    const value = e.target.value;
-    setValue(value);
+  // functions
+
+  function isUpdated(currentValue, prevValue) {
+    return currentValue !== prevValue ? true : false
   }
 
-  // utils
-  const styling = useContext(DialogStylingContext);
+  function liftUpInputData(input) {
+    assignFormInputStatus(index, input.validity.valid, setInputsValidity);
+    assignFormInputStatus(index, isUpdated(input.value, initialValue), setInputsUpdateStatus);
+    updateFormInputsValues(input.name, input.value);
+  }
+
+  function handleValidationStatus(input) {
+    setIsValid(input.validity.valid);
+    setErrorMessage(input.validationMessage);
+  }
+
+  function handleChange(e) {
+    // TODO think about excluding repeated code
+    const input = e.target;
+    setValue(input.value);
+    setIsOnChangeTriggered(true);
+    handleValidationStatus(input);
+    liftUpInputData(input);
+  }
+
+  // effects
+
+  useEffect(() => {
+    // TODO think about excluding repeated code
+    const input = inputRef.current;
+    handleValidationStatus(input);
+    liftUpInputData(input)
+  },
+    []);
+
+  useEffect(() => {
+    setErrorMessage(inputRef.current.validationMessage);
+  },
+    [disabledAttribute]);
+
+  useEffect(() => {
+    setIsInvalidStyle(!isValid
+      && (isOnChangeTriggered || value !== "")
+      && !disabledAttribute.disabled
+      ? true : false)
+  },
+    [isValid, isOnChangeTriggered, value, disabledAttribute]);
 
   // 2B rendered
   return (
@@ -42,25 +106,26 @@ export default function DialogInput({
       {/* field */}
       <input
         className={`dialog-input__field
-          dialog-input__field_styling_${styling}`}
+          dialog-input__field_styling_${styling}
+          ${isInvalidStyle && 'dialog-input__field_invalid'}`}
+        ref={inputRef}
         name={id}
         id={id}
         placeholder={placeholder}
-        value={value}
         onChange={handleChange}
         {...validationAttributes}
-        {...isDisabled}
+        {...disabledAttribute}
+        value={value}
       />
 
       {/* error */}
       <span className={`dialog-input__error
       dialog-input__error_styling_${styling}
+      ${isInvalidStyle && 'dialog-input__error_visible'}
       ${id}-error`}>
-        {/* TODO: delete */}
-        Error message
+        {errorMessage}
       </span>
 
     </div>
   );
-
 }

@@ -164,11 +164,6 @@
   font-weight: 400;
   text-align: center;
   color: #ee3465;
-  visibility: hidden;
-}
-
-.dialog__error_visible {
-  visibility: visible;
 }
 
 /* .dialog__edit-button */

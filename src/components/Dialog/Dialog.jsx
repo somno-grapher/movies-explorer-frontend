@@ -1,9 +1,16 @@
 // react vendor import
-import React, { useState, useContext } from "react";
+import React,
+{
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+}
+  from "react";
 import { Link } from 'react-router-dom';
 
 // react project import
-import DialogStylingContext from '../../contexts/dialogStylingContext.js'
+import DialogStylingContext from '../../contexts/DialogStylingContext.jsx'
 import DialogInput from '../DialogInput/DialogInput.jsx';
 import Logo from '../Logo/Logo.jsx';
 
@@ -11,6 +18,7 @@ import Logo from '../Logo/Logo.jsx';
 import './Dialog.css';
 
 // main function
+// TODO get rid of extra renders and calculations
 export default function Dialog({
   name,
   title,
@@ -19,24 +27,96 @@ export default function Dialog({
   linkTitle,
   linkPath,
   onSubmit,
-  inputs
+  inputsAttributes,
+  onLinkClick,
 }) {
-
-  // utils
-
+  // contexts
   const styling = useContext(DialogStylingContext);
 
+  // useState
   const [isEditMode, setIsEditMode] = useState(() => {
-    if (styling === "profile") {
-      return false
-    } else {
-      return true
-    };
+    return styling === "profile" ? false : true;
   });
+  const [inputsValidity, setInputsValidity] = useState(createInputsInitialStates(false));
+  const [isValid, setIsValid] = useState(false);
+  const [inputsUpdateStatus, setInputsUpdateStatus] = useState(createInputsInitialStates(false));
+  const [isUpdated, setIsUpdated] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isOnStandby, setIsOnStandby] = useState(false);
 
+  // useRef
+
+  const inputsValuesRef = useRef({});
+
+  // consts
+  // TODO think about useMemo
   const isLogoDisplayed = styling !== "profile"
     ? true
     : false;
+
+  // functions
+  // TODO think about useCallback
+
+  function validateForm() {
+    setIsValid(!inputsValidity.some((inputValidity) => {
+      return inputValidity === false
+    }))
+  }
+
+  function checkUpdate() {
+    setIsUpdated(inputsUpdateStatus.some((inputUpdateStatus) => {
+      return inputUpdateStatus === true
+    }))
+  }
+
+  const assignInputStatus = (inputIndex, inputStatus, setInputStatus) => {
+    setInputStatus((prevInputsStatus) => {
+      prevInputsStatus[inputIndex] = inputStatus;
+      return [...prevInputsStatus];
+    });
+  }
+
+  function createInputsInitialStates(initialState) {
+    return inputsAttributes.map(() => {
+      return initialState;
+    })
+  }
+
+  function isSubmitDisabled() {
+    return !isValid
+      || (styling === "profile" && !isUpdated)
+      || isOnStandby;
+  }
+
+  function updateInputsValues(name, value) {
+    inputsValuesRef.current[name] = value;
+  }
+
+  // TODO: change to function declaration
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrorMessage('');
+    await setIsOnStandby(true); // await for changing state takes place
+    onSubmit(
+      inputsValuesRef.current,
+      setErrorMessage,
+      setIsOnStandby,
+      setIsEditMode
+    );
+  }
+
+  // effects
+
+  // TODO think about how to prevent double rendering on inputsValidity change
+  useEffect(() => {
+    validateForm();
+  },
+    [inputsValidity]);
+
+  useEffect(() => {
+    checkUpdate();
+  },
+    [inputsUpdateStatus]);
 
   // 2B rendered
   return (
@@ -68,28 +148,34 @@ export default function Dialog({
         <form className="dialog__form"
           // TODO: check the purpose
           name={`${name}-form`}
-          // TODO: provide js validation
-          // noValidate
-          onSubmit={onSubmit}>
+          noValidate
+          onSubmit={handleSubmit}
+        >
           <div className={`dialog__inputs-container
           dialog__inputs-container_styling_${styling}`}>
-            {inputs.map((input, i) => {
+            {inputsAttributes.map((input, i) => {
               return (
                 <DialogInput
                   key={i}
+                  index={i}
                   id={input.id}
                   label={input.label}
                   placeholder={input.placeholder}
+                  initialValue={input.initialValue}
                   validationAttributes={input.validationAttributes}
-                  isDisabled={input.isDisabled}
+                  disabledAttribute={!isEditMode && { disabled: true }}
+                  assignFormInputStatus={assignInputStatus}
+                  setInputsValidity={setInputsValidity}
+                  setInputsUpdateStatus={setInputsUpdateStatus}
+                  updateFormInputsValues={updateInputsValues}
                 />
               )
             })}
           </div>
           <div className="dialog__lower-container">
-            <span className="dialog__error">
-              {/* TODO update */}
-              Ошибка
+            <span className={`dialog__error`}>
+              {errorMessage}
+              {/* TODO: remove errors message on typing? */}
             </span>
             {!isEditMode &&
               <button className="dialog__edit-button"
@@ -100,7 +186,9 @@ export default function Dialog({
               </button>
             }
             {isEditMode &&
-              <button className="dialog__submit-button"
+              <button
+                className={`dialog__submit-button
+                ${isSubmitDisabled() && 'dialog__submit-button_disabled'}`}
                 type="submit"
               >
                 {buttonText}
@@ -116,9 +204,13 @@ export default function Dialog({
             <p className="dialog__link-tip">
               {linkTip}
             </p>
+            {/* TODO: create separate element for signout */}
             <Link className={`dialog__link
           dialog__link_styling_${styling}`}
-              to={linkPath}>
+              to={linkPath}
+              onClick={onLinkClick}
+            // TODO: provide replace
+            >
               {linkTitle}
             </Link>
           </nav>

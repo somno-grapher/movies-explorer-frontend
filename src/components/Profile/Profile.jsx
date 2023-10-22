@@ -1,60 +1,85 @@
 // react vendor import
-import React from "react";
+import React, { useContext } from "react";
 
 // react project import
 import Dialog from '../Dialog/Dialog.jsx';
-import DialogStylingContext from '../../contexts/dialogStylingContext.js'
+import DialogStylingContext from '../../contexts/DialogStylingContext.jsx'
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
+// js import
+import { EMAIL_PATTERN } from '../../consts/consts.js';
 
 // main function
-export default function Login() {
+export default function Profile({
+  onSubmit,
+  onLinkClick,
+}) {
+  // consts
+  const nameId = 'profile-name';
+  const emailId = 'profile-email';
 
-  // TODO update
-  const userName = "Жак Ив"
-  const title = "Привет, " + userName + "!";
+  // contexts
+  const user = useContext(CurrentUserContext);
+
+  // functions
+
+  function handleSubmit(
+    inputsValues,
+    updateErrorMessage,
+    updateIsOnStanby,
+    updateIsEditMode
+  ) {
+    onSubmit(
+      {
+        name: inputsValues[nameId],
+        email: inputsValues[emailId],
+      },
+      updateErrorMessage,
+      updateIsOnStanby,
+      updateIsEditMode
+    );
+  }
 
   // 2B rendered
   return (
     <DialogStylingContext.Provider value='profile'>
       <Dialog
-        title={title}
+        title={"Привет, " + user.name + "!"}
         buttonText="Сохранить"
         linkTitle="Выйти из аккаунта"
         linkPath="/"
-        inputs={[
+        onLinkClick={onLinkClick}
+        onSubmit={handleSubmit}
+        // TODO make general structure for repeated inputs
+        inputsAttributes={[
           {
-            id: "register-name",
+            id: "profile-name",
             label: "Имя",
             placeholder: "Введите имя",
+            initialValue: user.name,
             validationAttributes: {
+              // TODO enhance validation
               type: "text",
               minLength: 2,
               maxLength: 30,
               required: true,
-              value: userName
             },
-            isDisabled: {
-              disabled: true
-            }
           },
           {
-            id: "register-email",
+            id: "profile-email",
             label: "E-mail",
             placeholder: "Введите e-mail",
+            initialValue: user.email,
             validationAttributes: {
               type: "email",
               required: true,
-              value: "arbitrary.email"
-            }
-            ,
-            isDisabled: {
-              disabled: true
-            }
+              pattern: EMAIL_PATTERN,
+            },
           }
         ]}
       >
       </Dialog>
-    </DialogStylingContext.Provider>
+    </DialogStylingContext.Provider >
   );
 
 }

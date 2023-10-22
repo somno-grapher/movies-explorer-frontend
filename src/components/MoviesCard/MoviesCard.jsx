@@ -1,22 +1,34 @@
 // react vendor import
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 // react project import
-import MoviesContext from '../../contexts/moviesContext.js'
+import MoviesContext from '../../contexts/MoviesContext.jsx'
 
 // CSS import
 import './MoviesCard.css';
 
 function MoviesCard({
-  cardData
+  movie,
+  savedMovies,
+  onLikeClick,
+  onDeleteClick,
 }) {
-
   const moviesContext = useContext(MoviesContext);
+  const [isLiked, setIsLiked] = useState(() => {
+    if (moviesContext === 'movies') {
+      return savedMovies.some((savedMovie) => { return savedMovie.movieId === movie.id })
+    }
+    // otherwise no need to handle like state
+  });
 
-  // TODO: update
-  const styles = [
-    "movies-card__like-button_liked"
-  ]
+
+  function handleLikeClick() {
+    onLikeClick({ movie, setIsLiked, isLiked });
+  }
+
+  function handleDeleteClick() {
+    onDeleteClick({ movie });
+  }
 
   return (
     <li className='movies-card'>
@@ -27,10 +39,9 @@ function MoviesCard({
         <button
           type="button"
           className={`movies-card__like-button
-        // TODO update
-         ${styles[Math.round(Math.random())]}
+         ${isLiked && "movies-card__like-button_liked"}
         `}
-        //  onClick={handleLikeClick}
+          onClick={handleLikeClick}
         >
         </button>
         :
@@ -38,28 +49,35 @@ function MoviesCard({
           type="button"
           className={`movies-card__delete-button
         `}
-        //  onClick={handleDeleteClick}
+          onClick={handleDeleteClick}
         >
         </button>
       }
 
       {/* image */}
-      <div className='movies-card__image-container'>
+      <a className='movies-card__image-container'
+        href={movie.trailerLink}
+        target="_blank"
+        rel="noreferrer"
+      >
         <img
           className="movies-card__image"
-          src={`https://api.nomoreparties.co${cardData.image.url}`}
-          alt={cardData.nameRU}
-        //  onClick={handleCardClick}
+          src={`${(moviesContext === 'movies')
+            ? `https://api.nomoreparties.co${movie.image.url}`
+            : `${movie.image}`
+            }`}
+          // src={`https://api.nomoreparties.co${movie.image.url}`}
+          alt={movie.nameRU}
         />
-      </div>
+      </a>
 
       {/* info */}
       <div className="movies-card__info">
         <h2 className="movies-card__title">
-          {cardData.nameRU}
+          {movie.nameRU}
         </h2>
         <p className="movies-card__duration">
-          {cardData.duration}
+          {`${Math.floor(movie.duration / 60)}ч ${movie.duration % 60}м`}
         </p>
       </div>
 
